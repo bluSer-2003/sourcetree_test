@@ -1,0 +1,48 @@
+Renesas Optimizing Linker (W3.07.00 )             17-Mar-2025 10:20:43
+
+*** Options ***
+
+-MAKEUD=DefaultBuild\EMB_1.3.1.lk.ud
+-subcommand=DefaultBuild\EMB_1.3.1.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-debug
+-nocompress
+-NOOPtimize
+-output=DefaultBuild\EMB_1.3.1.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\EMB_1.3.1.map
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+E0562310:Undefined external symbol "_AliCheck" referenced in "DefaultBuild\gtm.obj"

@@ -1,0 +1,87 @@
+Renesas Optimizing Linker (W3.06.00 )             20-Jan-2026 17:34:23
+
+*** Options ***
+
+-subcommand=DefaultBuild\EMB YC_2.0_FR.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-input=DefaultBuild\Flash_ParaSet.obj
+-input=DefaultBuild\Brake.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\OBDII_APP_IO.obj
+-input=DefaultBuild\OBDII_Diag_CallBack.obj
+-input=DefaultBuild\OBDII_Diag_Snapshot.obj
+-input=DefaultBuild\OBDII_DiagData_Detect.obj
+-input=DefaultBuild\UDS_APP.obj
+-input=DefaultBuild\OBDII_DTC.obj
+-input=DefaultBuild\OBDII_DTC_Trans_Protocol.obj
+-input=DefaultBuild\UDS_Version.obj
+-library=UDS_APP\UDS_LIB.lib
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB YC_2.0_FR.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB YC_2.0_FR.map"
+-start=RESET,EIINTTBL/00020000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00024000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+W0561322:Section alignment mismatch : ".text"
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00020000  000201f7       1f8   200
+EIINTTBL
+                                  00020200  00020447       248   200
+.const
+                                  00024000  0002485b       85c   4
+.INIT_DSEC.const
+                                  0002485c  00024867         c   4
+.INIT_BSEC.const
+                                  00024868  0002486f         8   4
+.text
+                                  00024870  00051c37     2d3c8   4
+.data
+                                  00051c38  00052b5f       f28   4
+.data.R
+                                  fede0000  fede0f27       f28   4
+.bss
+                                  fede0f28  fedf9c0f     18ce8   4
+.stack.bss
+                                  fedf9c10  fedf9e0f       200   4

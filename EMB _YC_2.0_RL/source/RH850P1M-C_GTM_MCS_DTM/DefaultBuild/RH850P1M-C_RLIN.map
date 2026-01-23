@@ -1,0 +1,48 @@
+Renesas Optimizing Linker (V3.03.00 )             19-Dec-2022 19:59:26
+
+*** Options ***
+
+-MAKEUD=DefaultBuild\RH850P1M-C_RLIN.lk.ud
+-subcommand=DefaultBuild\RH850P1M-C_RLIN.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-debug
+-nocompress
+-NOOPtimize
+-output=DefaultBuild\RH850P1M-C_RLIN.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\RH850P1M-C_RLIN.map
+-start=RESET,EIINTTBL/00020000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00028000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00020000  000201f7       1f8   200
+EIINTTBL
+                                  00020200  000209ff       800   200
+.const
+                                  00028000  00028000         0   4
+.INIT_DSEC.const
+                                  00028000  0002800b         c   4
+.INIT_BSEC.const
+                                  0002800c  00028013         8   4
+.text
+                                  00028014  00028385       372   2
+.data
+                                  00028388  00028388         0   4
+.data.R
+                                  fede0000  fede0000         0   4
+.bss
+                                  fede0000  fede0000         0   4
+.stack.bss
+                                  fede0000  fede01ff       200   4

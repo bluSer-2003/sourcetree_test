@@ -1,0 +1,3 @@
+---- 0xFFF81F10 Æ¥Åä (2 in 2 ÎÄ¼þ) ----
+Iodefine.h:#define MSR_LM11               (*(volatile unsigned long  *)0xFFF81F10)
+Main.c:	(*((volatile int *) 0xFFF81F10))=0x0000;		// enable RLIN3 clock

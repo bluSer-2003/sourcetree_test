@@ -1,0 +1,910 @@
+QualityReport
+2025年9月7日 12:21:11
+
+------ Start build(EMB _2.1.2, DefaultBuild) ------
+------ Build ended(Error:0, Warning:0)(EMB _2.1.2, DefaultBuild) ------
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe source\Protection.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+D:\EMB\complete_program\EMB _2.1.3\EMB _2.1.3\EMB _2.1.3\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe source\Protection.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+D:\EMB\complete_program\EMB _2.1.3\EMB _2.1.3\EMB _2.1.3\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+para_update.c(8):E0520020:Identifier "uint32_t" is undefined
+para_update.c(24):E0520020:Identifier "pressure_data" is undefined
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+para_update.c(8):E0520020:Identifier "uint32_t" is undefined
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe para_update.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB _2.1.2.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+
+--- CommandFile 1 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 2 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 3 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 4 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 5 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 6 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 7 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 8 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 9 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 10 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 11 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+--- CommandFile 12 ---
+DefaultBuild\EMB _2.1.2.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB _2.1.2.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB _2.1.2.map"
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB _2.1.2.abs"
+-output="DefaultBuild\EMB _2.1.2.mot"
+-form=stype
+-exit
+
+
+--- SHA1 hash value of output files ---
+D:\EMB\complete_program\EMB _2.1.3\EMB _2.1.3\EMB _2.1.3\DefaultBuild\EMB _2.1.2.abs: c3c02c2ad55a7396742b8e5160812e4ce0f46ee6
+D:\EMB\complete_program\EMB _2.1.3\EMB _2.1.3\EMB _2.1.3\DefaultBuild\EMB _2.1.2.mot: e79b7637fae763e3c953a2c9669e5a64a2237358
+
+
+--- System Information ---
+*OS Version
+ Microsoft Windows 11 家庭版 (-, 10.0.26100, WOW64)
+*Language
+ 中文(中国)
+*.NET Framework Version
+ Microsoft .NET Framework 4 [.NET 4.8 or later] (533320)
+
+--- Application Information ---
+*Product Name
+ CS+ for CC
+*Package Version
+ V8.12.00  [06 Jun 2024]
+*Version
+ V9.12.00.03 [17 May 2024]
+*Assembly Version
+ 3.12.10.1
+*Sales Area
+ Global
+*Product License
+ 
+*Execution Place
+ C:\Program Files (x86)\Renesas Electronics\CS+\CC
+*Memory Usage
+ *Private Working Set
+  336 MB
+ *Number of GDI Objects
+  2591
+ *Number of USER Objects
+  1223
+ *Opened Files
+  12 editors, 12 files, 85 KB
+
+--- Build Tool Plug-in Information ---
+RH850 Build tool CC-RH Plug-in
+ *Version
+  V8.09.00.00 [07 Oct 2022]
+ *Assembly Version
+  1.1.10.12
+ *DLL File Name
+  BuildToolCCRH.dll
+RL78 Build tool CC-RL Plug-in
+ *Version
+  V8.11.00.00 [29 Sep 2023]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  BuildToolCCRL.dll
+RX Build tool CC-RX Plug-in
+ *Version
+  V8.09.00.00 [07 Oct 2022]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  BuildToolCCRX.dll
+RH850 Build tool GHS CCRH850 Plug-in
+ *Version
+  V1.09.00.00 [27 Mar 2024]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  BuildToolGHSCCRH850.dll
+
+--- Debug Tool Plug-in Information ---
+Debugger Collection Plug-in
+ *Version
+  V8.12.00.03 [23 May 2024]
+ *Assembly Version
+  2.12.10.1
+ *DLL File Name
+  DebugToolCollection.dll
+
+--- Other Plug-in Information ---
+Code Generator Plug-in for RH850
+ *Version
+  V1.02.02.05 [25 May 2018]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  CodeGeneratorRH850.dll
+Code Generator Plug-in
+ *Version
+  V4.08.06.01 [28 Oct 2022]
+ *Assembly Version
+  3.0.0.0
+ *DLL File Name
+  CodePart.dll
+Code Generator/PinView Plug-in
+ *Version
+  V2.10.07.02 [08 Nov 2021]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  CodePart2.dll
+Debug Console Plug-in
+ *Version
+  V8.09.00.03 [24 Nov 2022]
+ *Assembly Version
+  8.9.0.0
+ *DLL File Name
+  DebugConsole.dll
+Quick and Effective tool solution - QE
+ *Version
+  V9.12.00.01 [08 Apr 2024]
+ *Assembly Version
+  1.15.10.16
+ *DLL File Name
+  InCarTools.dll
+Pin Configurator Plug-in
+ *Version
+  V1.54.01.01 [31 Jul 2014]
+ *Assembly Version
+  1.6.10.23
+ *DLL File Name
+  PinConfig.dll
+Program Analyzer Plug-in
+ *Version
+  V4.13.00.03 [24 May 2023]
+ *Assembly Version
+  3.12.11.9
+ *DLL File Name
+  ProgramAnalyzer.dll
+IronPython Console Plug-in
+ *Version
+  V1.48.00.05 [23 May 2024]
+ *Assembly Version
+  1.6.10.23
+ *DLL File Name
+  PythonConsole.dll
+Editor plug-in DLL
+ *Version
+  V1.20.00.03 [20 May 2024]
+ *Assembly Version
+  1.1.0.0
+ *DLL File Name
+  SEditor.dll
+Stack Usage Tracer
+ *Version
+  V1.05.00.02 [30 Jul 2014]
+ *Assembly Version
+  1.30.11.15
+ *DLL File Name
+  Stk.dll
+Update Manager Plug-in
+ *Version
+  V2.03.00.02 [29 Oct 2018]
+ *Assembly Version
+  1.13.6.20
+ *DLL File Name
+  Update.dll
+
+Debug Tool Common Interface
+ *Version
+  V8.12.00.03 [23 May 2024]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  CommonDebuggerInterface.dll
+Device Information Common Interface
+ *Version
+  V9.11.00.03 [13 Oct 2023]
+ *Assembly Version
+  3.0.0.0
+ *DLL File Name
+  DeviceInformation.dll
+
+--- Main Project Information ---
+D:\EMB\complete_program\EMB _2.1.3\EMB _2.1.3\EMB _2.1.3\EMB _2.1.2.mtpj
+Microcontroller Information
+ *R7F701374xAFP
+  *File Name: Version
+   RH850_Productlist.xml: V8.120000
+   R7F701374xAFP_common.xml: V1.30.00.XX.XX
+   DR7F701374.DVF: V1.30
+   -: -
+   -: -
+  
+
+Build Tool Information
+ *CC-RH
+   * Version of plug-in(*.dll)
+     V8.12.00.01 [10 Apr 2024]
+   * The Version of the Compiler Package
+     V2.06.00
+  
+
+Debug Tool Information
+ *RH850 E2
+  Debugger Library V8.12.00.03 [23 May 2024]
+  
+
+Other Tool Information
+ *None
+
+ *None
+
+ *None
+
+ *None
+
+ *Program Analyzer
+  *Version
+   V4.13.00.03 [24 May 2023]
+
+ *None
+
+

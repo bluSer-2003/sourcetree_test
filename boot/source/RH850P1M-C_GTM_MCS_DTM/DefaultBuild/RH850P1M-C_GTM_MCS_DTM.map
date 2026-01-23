@@ -1,0 +1,53 @@
+Renesas Optimizing Linker (V3.03.00 )             29-Dec-2022 16:18:25
+
+*** Options ***
+
+-MAKEUD=DefaultBuild\RH850P1M-C_GTM_MCS_DTM.lk.ud
+-subcommand=DefaultBuild\RH850P1M-C_GTM_MCS_DTM.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-debug
+-nocompress
+-NOOPtimize
+-output=DefaultBuild\RH850P1M-C_GTM_MCS_DTM.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\RH850P1M-C_GTM_MCS_DTM.map
+-start=RESET,EIINTTBL/00000000,fst.text,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,fst.R,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R,fst.text = fst.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00000000  000001f7       1f8   200
+EIINTTBL
+                                  00000200  00000c73       a74   200
+fst.text
+                                  00008000  00008097        98   2
+.const
+                                  00008098  000085a3       50c   4
+.INIT_DSEC.const
+                                  000085a4  000085bb        18   4
+.INIT_BSEC.const
+                                  000085bc  000085c3         8   4
+.text
+                                  000085c4  0000b7e5      3222   2
+.data
+                                  0000b7e8  0000baab       2c4   4
+fst.R
+                                  fede0000  fede0097        98   2
+.data.R
+                                  fede0098  fede035b       2c4   4
+.bss
+                                  fede035c  fede0377        1c   4
+.stack.bss
+                                  fede0378  fede0577       200   4

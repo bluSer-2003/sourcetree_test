@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "mcs_defs.h": "c",
+        "mcs_ram.h": "c"
+    }
+}

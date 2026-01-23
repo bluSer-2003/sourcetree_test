@@ -1,0 +1,2335 @@
+Renesas Optimizing Linker (W3.06.00 )             20-Jan-2026 10:50:29
+
+*** Options ***
+
+-subcommand=DefaultBuild\JWD_1.4.2.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\SWC_BasAsst.obj
+-input=DefaultBuild\SWC_TAS.obj
+-input=DefaultBuild\CAN2.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\TAS_PWM_Angle.obj
+-input=DefaultBuild\UDS_FLASH.obj
+-input=DefaultBuild\can_loader.obj
+-input=DefaultBuild\fad_sample_cf.obj
+-input=DefaultBuild\r_fad_cf_api.obj
+-debug
+-nocompress
+-NOOPtimize
+-map=DefaultBuild\JWD_1.4.2.bls
+-output=DefaultBuild\JWD_1.4.2.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\JWD_1.4.2.map
+-show=symbol,reference,total_size
+-start=RESET,EIINTTBL/00000000,boot_flg.const/00002000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00004000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00000000  000001f7       1f8   200
+EIINTTBL
+                                  00000200  00000447       248   200
+boot_flg.const
+                                  00002000  00002011        12   4
+.const
+                                  00004000  00004bdf       be0   4
+.INIT_DSEC.const
+                                  00004be0  00004beb         c   4
+.INIT_BSEC.const
+                                  00004bec  00004bf3         8   4
+.text
+                                  00004bf4  0001950b     14918   2
+.data
+                                  0001950c  0001a7c7      12bc   4
+.data.R
+                                  fede0000  fede12bb      12bc   4
+.bss
+                                  fede12bc  fedfa3e7     1912c   4
+.stack.bss
+                                  fedfa3e8  fedfa5e7       200   4
+
+*** Total Section Size ***
+
+RAMDATA SECTION:  0001a5e8 Byte(s)
+ROMDATA SECTION:  0000210a Byte(s)
+PROGRAM SECTION:  00014b10 Byte(s)
+
+*** Symbol List ***
+
+SECTION=
+FILE=                               START        END    SIZE
+  SYMBOL                            ADDR        SIZE    INFO      COUNTS  OPT
+
+SECTION=RESET
+FILE=DefaultBuild\boot.obj
+                                  00000000  000001f7       1f8
+
+SECTION=EIINTTBL
+FILE=DefaultBuild\boot.obj
+                                  00000200  00000447       248
+
+SECTION=boot_flg.const
+FILE=DefaultBuild\main.obj
+                                  00002000  00002011        12
+  _Bootloader_FLG
+                                  00002000         8   data ,g         0
+  _FingerPrint
+                                  00002008         a   data ,g         0
+
+SECTION=.const
+FILE=DefaultBuild\gtm.obj
+                                  00004000  0000409f        a0
+FILE=DefaultBuild\mttcan_a.obj
+                                  000040a0  000041ab       10c
+  _MTTCAN_A_CFG_EXAMPLE_1
+                                  000040a0        54   data ,g         1
+  _MTTCAN_A_FILTER_EXAMPLE_1
+                                  000040f4         4   data ,g         1
+  _MTTCAN_A_FILTER_EXAMPLE_test0
+                                  000040f8         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test1
+                                  000040fc         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test2
+                                  00004100         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test3
+                                  00004104         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test4
+                                  00004108         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test5
+                                  0000410c         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test6
+                                  00004110         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test7
+                                  00004114         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_flash1
+                                  00004118         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_flash2
+                                  0000411c         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_flash3
+                                  00004120         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_flash4
+                                  00004124         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test8
+                                  00004128         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test9
+                                  0000412c         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_test10
+                                  00004130         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_newcan1
+                                  00004134         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_newcan2
+                                  00004138         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_newcan3
+                                  0000413c         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_newcan4
+                                  00004140         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_newcan5
+                                  00004144         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_newcan6
+                                  00004148         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_vdc_feedback
+                                  0000414c         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_current_feedback
+                                  00004150         4   data ,g         0
+  _MTTCAN_A_FILTER_EXAMPLE_temp_feedback
+                                  00004154         4   data ,g         0
+  _MTTCAN_A_CFG_EXAMPLE_2
+                                  00004158        54   data ,g         0
+FILE=DefaultBuild\r_fad_df_api.obj
+                                  000041ac  000041be        13
+  _pu1_versionDFStr
+                                  000041ac        13   data ,g         1
+FILE=DefaultBuild\r_fad_local_clock.obj
+                                  000041c0  0000421c        5d
+  _cst_clockFreqTable
+                                  000041c0        48   data ,g         1
+  _cst_pClockFreqTable
+                                  00004208        15   data ,g         1
+FILE=DefaultBuild\fad_flash.obj
+                                  00004220  00004252        33
+FILE=DefaultBuild\SWC_BasAsst.obj
+                                  00004254  00004287        34
+  _SWC_BasAsst_ConstB
+                                  00004254        30   data ,g         0
+  _SWC_BasAsst_M
+                                  00004284         4   data ,g         0
+FILE=DefaultBuild\SWC_TAS.obj
+                                  00004288  00004457       1d0
+  _SWC_TAS_rtZTAS_AngResolutionFlt_Type
+                                  00004288         2   data ,g         1
+  _SWC_TAS_rtZTAS_TrqResolutionFlt_Type
+                                  0000428a         1   data ,g         2
+  _SWC_TAS_ConstP
+                                  0000428c       1c8   data ,g         1
+  _SWC_TAS_M
+                                  00004454         4   data ,g         0
+FILE=DefaultBuild\RSENT_receive.obj
+                                  00004458  00004473        1c
+  _RSENT_BASE_ADDRESSES.1
+                                  00004458         c   data ,l         4
+  _TIMEOUT_THRESHOLD
+                                  00004464         4   data ,g         0
+FILE=DefaultBuild\TAS_PWM_Angle.obj
+                                  00004474  000044bf        4c
+  _WALKER_LUT.1
+                                  00004474        4c   data ,l         1
+FILE=DefaultBuild\can_loader.obj
+                                  000044c0  0000493f       480
+  _nc_uds_keymul
+                                  000044c0        80   data ,g         0
+  _CL_valCRCTable_MP
+                                  00004540       400   data ,g         1
+FILE=DefaultBuild\r_fad_cf_api.obj
+                                  00004940  00004952        13
+  _pu1_versionCFStr
+                                  00004940        13   data ,g         1
+FILE=pi4dtable
+                                  00004954  0000496b        18
+  __REL_pi4d_tbl
+                                  00004954        18   data ,g         8
+FILE=consts
+                                  0000496c  000049cb        60
+  __IFZEROS
+                                  0000496c         0   none ,g         0
+  __IFINFS
+                                  00004970         0   none ,g         0
+  __IFONES
+                                  00004974         0   none ,g         0
+  __HALFS
+                                  00004978         0   none ,g         0
+  __QUOTS
+                                  0000497c         0   none ,g         0
+  __TWOS
+                                  00004980         0   none ,g         0
+  __FOURS
+                                  00004984         0   none ,g         0
+  __PAIS
+                                  00004988         0   none ,g         0
+  __2PAIS
+                                  0000498c         0   none ,g         0
+  __HLFPAIS
+                                  00004990         0   none ,g         0
+  __QUOPAIS
+                                  00004994         0   none ,g         0
+  __LOGE2S
+                                  00004998         0   none ,g         0
+  __NIFZEROS
+                                  0000499c         0   none ,g         0
+  __NIFINFS
+                                  000049a0         0   none ,g         0
+  __NIFONES
+                                  000049a4         0   none ,g         2
+  __NHALFS
+                                  000049a8         0   none ,g         0
+  __NQUOTS
+                                  000049ac         0   none ,g         0
+  __NTWOS
+                                  000049b0         0   none ,g         0
+  __NFOURS
+                                  000049b4         0   none ,g         0
+  __NPAIS
+                                  000049b8         0   none ,g         0
+  __N2PAIS
+                                  000049bc         0   none ,g         0
+  __NHLFPAIS
+                                  000049c0         0   none ,g         0
+  __NQUOPAIS
+                                  000049c4         0   none ,g         0
+  __NLOGE2S
+                                  000049c8         0   none ,g         0
+FILE=_ctype_
+                                  000049cc  00004acc       101
+  __ctype_
+                                  000049cc         0   none ,g         1
+FILE=_frexp10
+                                  00004ad0  00004ae7        18
+  _cxf
+                                  00004ad0         0   none ,l         6
+FILE=_make_mp
+                                  00004ae8  00004af3         c
+  _cxf
+                                  00004ae8         0   none ,l         1
+FILE=literal
+                                  00004af4  00004b0d        1a
+  __REL_A_NAN
+                                  00004af4         0   none ,g         1
+  __REL_A_INF
+                                  00004afa         0   none ,g         0
+  __REL_A_PINF
+                                  00004b00         0   none ,g         1
+  __REL_A_MINF
+                                  00004b07         0   none ,g         1
+FILE=_exp10xd
+                                  00004b10  00004b1b         c
+  _clog10
+                                  00004b10         0   none ,l         1
+FILE=expxd
+                                  00004b1c  00004bdf        c4
+  C_K
+                                  00004b1c         0   none ,l         1
+  C_T
+                                  00004ba0         0   none ,l         0
+
+SECTION=.INIT_DSEC.const
+FILE=DefaultBuild\cstart.obj
+                                  00004be0  00004beb         c
+
+SECTION=.INIT_BSEC.const
+FILE=DefaultBuild\cstart.obj
+                                  00004bec  00004bf3         8
+
+SECTION=.text
+FILE=DefaultBuild\boot.obj
+                                  00004bf4  00004c8d        9a
+  _Dummy
+                                  00004bf4         0   none ,l         d
+  _Dummy_EI
+                                  00004bf6         0   none ,l        11
+  __start
+                                  00004bf8         0   none ,l         1
+  _hdwinit
+                                  00004c52         0   none ,l         1
+  _zeroclr4
+                                  00004c68         0   none ,l         2
+  _set_table_reference_method
+                                  00004c76         0   none ,l         1
+FILE=DefaultBuild\cstart.obj
+                                  00004c8e  00004cff        72
+  __cstart
+                                  00004c8e         0   none ,g         1
+  _exit
+                                  00004cfe         0   none ,l         2
+FILE=DefaultBuild\main.obj
+                                  00004d00  00005345       646
+  _BM_RecCAN_Frame_Handler
+                                  00004d00        b4   func ,g         2
+  _BM_JudgeBootType
+                                  00004db4        4a   func ,g         1
+  _main
+                                  00004dfe       120   func ,g         1
+  _para_Init
+                                  00004f1e       128   func ,g         0
+  _FlashWrite
+                                  00005046       126   func ,g         2
+  _FlashRead
+                                  0000516c       184   func ,g         1
+  _EPSsleep
+                                  000052f0        24   func ,g         0
+  _Clock_Init
+                                  00005314        32   func ,g         1
+FILE=DefaultBuild\port.obj
+                                  00005346  000054f5       1b0
+  _Port_Init
+                                  00005346       1b0   func ,g         1
+FILE=DefaultBuild\gtm.obj
+                                  000054f6  0000a7c7      52d2
+  _svpwm
+                                  000054f6       198   func ,g         0
+  _angle_precess_2order
+                                  0000568e       180   func ,g         0
+  _adjust_if_needed
+                                  0000580e       176   func ,g         1
+  _lowpass_filter_angle
+                                  00005984        98   func ,g         0
+  _filter_2nd_order
+                                  00005a1c        d2   func ,g         0
+  _filter_3nd_order
+                                  00005aee        7e   func ,g         0
+  _init_int
+                                  00005b6c        1c   func ,g         1
+  _GTM_Init
+                                  00005b88       11e   func ,g         0
+  _De_Mos
+                                  00005ca6        20   func ,g        3b
+  _On_Mos
+                                  00005cc6       12e   func ,g         0
+  _INTGTM_ATOM0_7
+                                  00005df4        b6   func ,g         1
+  _SampleAndProtect
+                                  00005eaa       b40   func ,g         0
+  _MainISRInit
+                                  000069ea      25ee   func ,g         0
+  _SIGN
+                                  00008fd8        1e   func ,g         0
+  _Alignment
+                                  00008ff6       164   func ,g         0
+  _Aligment_rotate
+                                  0000915a       302   func ,g         1
+  _Alignment_open
+                                  0000945c        f8   func ,g         1
+  _Aligment_close
+                                  00009554       3d2   func ,g         0
+  _CurRecs
+                                  00009926       108   func ,g         0
+  _Read_ADC_Current
+                                  00009a2e       188   func ,g         0
+  _protection
+                                  00009bb6       94a   func ,g         0
+  _AliCheck
+                                  0000a500        50   func ,g         1
+  _INTGTM_TIM1_1
+                                  0000a550        dc   func ,g         1
+  _GTM_PIC_ADC_Init
+                                  0000a62c        24   func ,g         0
+  _r_csih0_interrupt_receive
+                                  0000a650       178   func ,g         1
+FILE=DefaultBuild\r_adc.obj
+                                  0000a7c8  0000ab73       3ac
+  _R_ADC_ScanGroupInit.1
+                                  0000a7c8        36   func ,l         4
+  _R_ADC_SCanGroup_Bind.1
+                                  0000a7fe        36   func ,l         3
+  _R_ADC_ScanGroup_Start
+                                  0000a834        1a   func ,g         4
+  _R_ADC_diagnostic_Init.1
+                                  0000a84e        62   func ,l         2
+  _R_ADC_Init
+                                  0000a8b0        c0   func ,g         0
+  _R_Drv_ADC_ScanGroup_OperationOn
+                                  0000a970         4   func ,g         0
+  _R_Drv_ADC_UpdateValue
+                                  0000a974        a6   func ,g         4
+  _R_Drv_ADC_diagnostic_test
+                                  0000aa1a        4c   func ,g         0
+  _R_ADC_test
+                                  0000aa66        32   func ,g         1
+  _R_ADCA0_error_interrupt
+                                  0000aa98        3c   func ,g         1
+  _R_ADCA0_Group0_interrupt
+                                  0000aad4        a0   func ,g         1
+FILE=DefaultBuild\tmr.obj
+                                  0000ab74  0000ae01       28e
+  _R_Config_CSIH1_Create
+                                  0000ab74       1fe   func ,g         1
+  _R_Config_CSIH1_Start
+                                  0000ad72        24   func ,g         1
+  _TMR_Init
+                                  0000ad96        40   func ,g         0
+  _R_CSIH1_Master_Send
+                                  0000add6        2c   func ,g         0
+FILE=DefaultBuild\Config_CSIH0.obj
+                                  0000ae02  0000b25b       45a
+  _R_Config_CSIH0_Create
+                                  0000ae02       202   func ,g         1
+  _R_Config_CSIH0_Start
+                                  0000b004         c   func ,g         0
+  _R_Config_CSIH0_TransmissionStart
+                                  0000b010         c   func ,g         0
+  _R_Config_CSIH0_ReceptionStart
+                                  0000b01c         c   func ,g         0
+  _R_Config_CSIH0_Stop
+                                  0000b028        2e   func ,g         1
+  _R_CSIH0_Slave_Receive
+                                  0000b056        26   func ,g         0
+  _R_CSIH0_Slave_Send
+                                  0000b07c        56   func ,g         0
+  _R_CSIH0_Master_Send
+                                  0000b0d2        6c   func ,g         7
+  _R_CSIH0_Master_Receive
+                                  0000b13e        34   func ,g         0
+  _A4911_Config
+                                  0000b172        ea   func ,g         0
+FILE=DefaultBuild\mttcan_a.obj
+                                  0000b25c  0000b803       5a8
+  _MTTCAN_A_DoNothing
+                                  0000b25c         2   func ,g         0
+  _MTTCAN_A_Unit2ReceiveIRQ
+                                  0000b25e        10   func ,g         1
+  _MTTCAN_A_Unit1TransmitIRQ
+                                  0000b26e        10   func ,g         1
+  _MTTCAN_A_GatewayTransmitIRQ
+                                  0000b27e        1c   func ,g         0
+  _MTTCAN_A_GatewayReceiveIRQ
+                                  0000b29a        1c   func ,g         0
+  _MTTCAN_A_GatewayCopy
+                                  0000b2b6        be   func ,g         0
+  _MTTCAN_Reset
+                                  0000b374        1a   func ,g         1
+  _MTTCAN_LoopbackTest
+                                  0000b38e       2d2   func ,g         1
+  _CAN_Init
+                                  0000b660        3e   func ,g         2
+  _MCAN
+                                  0000b69e         6   func ,g         2
+  _Exsend
+                                  0000b6a4       120   func ,g         9
+  _CANsleep
+                                  0000b7c4        22   func ,g         1
+  _CANnormal
+                                  0000b7e6        1e   func ,g         0
+FILE=DefaultBuild\mttcan_p.obj
+                                  0000b804  0000d537      1d34
+  _MTTCAN_IRQDefault
+                                  0000b804         2   func ,g         4
+  _MTTCAN_GetObjectSize
+                                  0000b806        50   func ,g         d
+  _MTTCAN_SetIDData
+                                  0000b856       1a6   func ,g         2
+  _MTTCAN_GetMessage
+                                  0000b9fc       1c4   func ,g         4
+  _MTTCAN_Interrupt
+                                  0000bbc0        6c   func ,g         0
+  _MTTCAN_PortEnable
+                                  0000bc2c        3a   func ,g         0
+  _MTTCAN_PortDisable
+                                  0000bc66        26   func ,g         1
+  _MTTCAN_CreateInterrupt
+                                  0000bc8c        4e   func ,g         2
+  _MTTCAN_SetInterrupt
+                                  0000bcda        72   func ,g         2
+  _MTTCAN_GetStatus
+                                  0000bd4c       322   func ,g         0
+  _MTTCAN_Start
+                                  0000c06e       2c4   func ,g         1
+  _MTTCAN_Stop
+                                  0000c332       140   func ,g         1
+  _MTTCAN_SetBittiming
+                                  0000c472       212   func ,g         2
+  _MTTCAN_SetConfiguration
+                                  0000c684       8da   func ,g         1
+  _MTTCAN_SetStdFilterEntry
+                                  0000cf5e        92   func ,g         1
+  _MTTCAN_SetExtFilterEntry
+                                  0000cff0        82   func ,g         0
+  _MTTCAN_SendMessage
+                                  0000d072       1a0   func ,g         2
+  _MTTCAN_ReceiveMessage
+                                  0000d212       250   func ,g         1
+  _MTTCAN_TxAbort
+                                  0000d462        d6   func ,g         0
+FILE=DefaultBuild\can_command.obj
+                                  0000d538  0000e79b      1264
+  _pack_int16_le
+                                  0000d538        16   func ,g         e
+  _pack_int32_le
+                                  0000d54e        28   func ,g         4
+  _unpack_int16_le
+                                  0000d576        12   func ,g         0
+  _unpack_int32_le
+                                  0000d588        22   func ,g         0
+  _can_command_process
+                                  0000d5aa       b4e   func ,g         0
+  _can_send
+                                  0000e0f8       120   func ,g         2
+  _flash
+                                  0000e218        4e   func ,g         0
+  _ExternSend
+                                  0000e266       536   func ,g         0
+FILE=DefaultBuild\standardports_p.obj
+                                  0000e79c  0000f4f9       d5e
+  _PORT_GetStatus
+                                  0000e79c       578   func ,g         0
+  _PORT_Enable
+                                  0000ed14       698   func ,g         3
+  _PORT_Disable
+                                  0000f3ac        18   func ,g         2
+  _PORT_Write
+                                  0000f3c4        6a   func ,g         1
+  _PORT_Read
+                                  0000f42e        6e   func ,g         2
+  _PORT_WriteBit
+                                  0000f49c        38   func ,g         0
+  _PORT_ReadBit
+                                  0000f4d4        22   func ,g         0
+  _PORT_Oscillator_Switch_Setup
+                                  0000f4f6         4   func ,g         0
+FILE=DefaultBuild\pi_controller.obj
+                                  0000f4fa  0000f7cb       2d2
+  _PI_CUR
+                                  0000f4fa        bc   func ,g         0
+  _PI_SPD
+                                  0000f5b6        ac   func ,g         0
+  _PI_POS
+                                  0000f662        b8   func ,g         0
+  _PI_1
+                                  0000f71a        b2   func ,g         0
+FILE=DefaultBuild\PMIC.obj
+                                  0000f7cc  0000fcbf       4f4
+  _R_Config_CSIH2_Create
+                                  0000f7cc       18c   func ,g         1
+  _R_Config_CSIH2_Start
+                                  0000f958         c   func ,g         0
+  _R_Config_CSIH2_Stop
+                                  0000f964        22   func ,g         4
+  _R_CSIH2_Master_Send
+                                  0000f986        5a   func ,g        15
+  _PMIC_normalConfig
+                                  0000f9e0        50   func ,g         0
+  _PMIC_sleepConfig
+                                  0000fa30        7a   func ,g         0
+  _PMIC_standbyConfig
+                                  0000faaa        be   func ,g         1
+  _Init_PMIC_Config
+                                  0000fb68       158   func ,g         0
+FILE=DefaultBuild\global_struct.obj
+                                  0000fcc0  0000fe43       184
+  _initGlobalVariables
+                                  0000fcc0       184   func ,g         0
+FILE=DefaultBuild\fad_sample_df.obj
+                                  0000fe44  0000ffc7       184
+  _sample_CheckDF0
+                                  0000fe44        18   func ,g         3
+  _sample_CheckDF1
+                                  0000fe5c         6   func ,g         3
+  _sample_CheckBlockDF
+                                  0000fe62         2   func ,g         0
+  _sample_BlankCheckParam
+                                  0000fe64        26   func ,g         1
+  _sample_DF_Write
+                                  0000fe8a         2   func ,g         1
+  _sample_DF_Erase
+                                  0000fe8c        5e   func ,g         1
+  _sample_DF_BlankCheck
+                                  0000feea        de   func ,g         0
+FILE=DefaultBuild\r_fad_common_api.obj
+                                  0000ffc8  00010283       2bc
+  _R_FAD_HW_Init
+                                  0000ffc8        44   func ,g         1
+  _R_FAD_StatusClear
+                                  0001000c        5c   func ,g         0
+  _R_FAD_ForcedStop
+                                  00010068        3e   func ,g         2
+  _R_FAD_GetStatus
+                                  000100a6        c2   func ,g         8
+  _R_FAD_ShiftToReadMode
+                                  00010168        16   func ,g         1
+  _R_FAD_IDAuth
+                                  0001017e        4a   func ,g         0
+  _R_FAD_Suspend
+                                  000101c8        a0   func ,g         0
+  _R_FAD_Resume
+                                  00010268        1c   func ,g         0
+FILE=DefaultBuild\r_fad_df_api.obj
+                                  00010284  00010325        a2
+  _R_FAD_DF_GetApiVersion
+                                  00010284         8   func ,g         0
+  _R_FAD_DF_Write
+                                  0001028c        12   func ,g         0
+  _R_FAD_DF_Erase
+                                  0001029e         e   func ,g         1
+  _R_FAD_DF_BlankCheck
+                                  000102ac        7a   func ,g         1
+FILE=DefaultBuild\r_fad_local.obj
+                                  00010326  00010c57       932
+  _fad_fu4_Write
+                                  00010326        70   func ,g         2
+  _fad_fu4_Erase
+                                  00010396        6a   func ,g         2
+  _fad_fu4_LockBit
+                                  00010400        64   func ,g         2
+  _fad_fu4_LockBitProtectControl
+                                  00010464       206   func ,g         1
+  _fad_fu4_IssueCommandTypeA
+                                  0001066a        88   func ,g         2
+  _fad_fu4_IssueCommandTypeB
+                                  000106f2        28   func ,g         3
+  _fad_fu4_IssueCommandTypeC
+                                  0001071a        10   func ,g         3
+  _fad_fu4_InitializeFlashSequencerSetupRegister
+                                  0001072a        24   func ,g         1
+  _fad_fu4_TransferToFCU
+                                  0001074e       124   func ,g         1
+  _fad_fu4_CheckFlashStatus
+                                  00010872        44   func ,g         6
+  _fad_fu4_IsValidToIssueCommand
+                                  000108b6        16   func ,g         1
+  _fad_fu4_CheckFlashStatusSuspendable
+                                  000108cc        24   func ,g         1
+  _fad_fu4_GetPEModeOrReadMode
+                                  000108f0         e   func ,g         3
+  _fad_fu4_SetPEModeOrReadMode
+                                  000108fe        7a   func ,g         c
+  _fad_fbl_IsFRDY
+                                  00010978        12   func ,g         5
+  _fad_fbl_IsSUSRDY
+                                  0001098a        14   func ,g         2
+  _fad_fbl_IsERSSPD
+                                  0001099e        14   func ,g         3
+  _fad_fbl_IsPRGSPD
+                                  000109b2        14   func ,g         3
+  _fad_fbl_IsCMDLK
+                                  000109c6        14   func ,g         4
+  _fad_fv0_SetLoopCnt
+                                  000109da        1c   func ,g         1
+  _fad_fu4_WaitForDBFULLIsInvalid
+                                  000109f6        36   func ,g         1
+  _fad_fu4_WaitForFRDYIsValid
+                                  00010a2c        32   func ,g         2
+  _fad_fv0_Memcpy4
+                                  00010a5e        16   func ,g         1
+  _fad_fv0_Memcpy1
+                                  00010a74        16   func ,g         1
+  _fad_fu4_GetCheckSum
+                                  00010a8a        22   func ,g         1
+  _fad_fu4_GetDetailErrorInformation
+                                  00010aac        5e   func ,g         1
+  _fad_fu1_GetAcceptedFACICommand
+                                  00010b0a        5c   func ,g         1
+  _fad_fu2_GetFACINumberFromAddress
+                                  00010b66        2a   func ,g         6
+  _fad_fv0_SetFACI
+                                  00010b90        2e   func ,g        13
+  _fad_fu4_SetConfig
+                                  00010bbe        50   func ,g         2
+  _fad_fu4_GetConfig
+                                  00010c0e        38   func ,g         2
+  ___SYNCI
+                                  00010c46         2   func ,g         0
+  ___SYNCP
+                                  00010c48         2   func ,g         0
+  _fad_fu4_SelectFCUFirmArea
+                                  00010c4a         a   func ,g         2
+  _fad_fu4_ClearIcache
+                                  00010c54         4   func ,g         0
+FILE=DefaultBuild\r_fad_local_clock.obj
+                                  00010c58  00010d1b        c4
+  _fad_fu4_SetClock
+                                  00010c58        c4   func ,g         1
+FILE=DefaultBuild\fad_flash.obj
+                                  00010d1c  00010e89       16e
+  _FAD_FlashOperation
+                                  00010d1c        68   func ,g         2
+  _checkError
+                                  00010d84        34   func ,g         6
+  _checkBlankError
+                                  00010db8        3a   func ,g         0
+  _R_FAD_DF_Read
+                                  00010df2        62   func ,g         2
+  _flash_operation
+                                  00010e54        36   func ,g         0
+FILE=DefaultBuild\temperature.obj
+                                  00010e8a  000110d3       24a
+  _ADC_Temperature
+                                  00010e8a       24a   func ,g         0
+FILE=DefaultBuild\SWC_BasAsst.obj
+                                  000110d4  00011bc9       af6
+  _SWC_BasAsst_BINARYSEAR_Dda9nu0m
+                                  000110d4        6e   func ,g         1
+  _SWC_BasAsst_LookUp_rea_uF5G4H1O
+                                  00011142        74   func ,g         7
+  _SWC_BasAsst_plook_u32ff_binc
+                                  000111b6        72   func ,g         4
+  _SWC_BasAsst_intrp2d_fu32fl_pw
+                                  00011228        5c   func ,g         5
+  _SWC_BasAsst_binsearch_u32f
+                                  00011284        2e   func ,g         1
+  _SWC_BasAsst_plook_u16ff_binc
+                                  000112b2        74   func ,g         1
+  _SWC_BasAsst_intrp1d_fu16fl_pw
+                                  00011326        1a   func ,g         1
+  _SWC_BasAsst_binsearch_u16f
+                                  00011340        30   func ,g         1
+  _Rnbl_BA_BoostCurve
+                                  00011370       2ca   func ,g         1
+  _Rnbl_BA_TrqMonitor
+                                  0001163a        1e   func ,g         1
+  _Rnbl_BA_NotchFilter
+                                  00011658       33e   func ,g         1
+  _Rnbl_BA_HighFreqAsst
+                                  00011996        de   func ,g         1
+  _Rnbl_BA_TrqFilter_Init
+                                  00011a74         e   func ,g         0
+  _Rnbl_BA_TrqFilter
+                                  00011a82        bc   func ,g         1
+  _TMT_Rnbl_BA_BlendFilter
+                                  00011b3e         2   func ,g         0
+  _TMT_Rnbl_BA_BoostCurve
+                                  00011b40         4   func ,g         0
+  _TMT_Rnbl_BA_TrqMonitor
+                                  00011b44         4   func ,g         0
+  _TMT_Rnbl_BA_NotchFilter
+                                  00011b48         4   func ,g         0
+  _TMT_Rnbl_BA_HighFreqAsst
+                                  00011b4c         4   func ,g         0
+  _SWC_BasAsst_initialize
+                                  00011b50        7a   func ,g         0
+FILE=DefaultBuild\SWC_TAS.obj
+                                  00011bca  00013973      1daa
+  _plook_s16ff_binx
+                                  00011bca        92   func ,g         1
+  _intrp1d_s16dl_pw
+                                  00011c5c        30   func ,g         1
+  _binsearch_s16f
+                                  00011c8c        30   func ,g         1
+  _SWC_TAS_IfActionSubsystem
+                                  00011cbc        1e   func ,g         4
+  _SWC_TAS_IfActionSubsystem1
+                                  00011cda        26   func ,g         4
+  _SWC_TAS_Chart_Init
+                                  00011d00        12   func ,g         2
+  _SWC_TAS_Chart
+                                  00011d12        3c   func ,g         2
+  _SWC_TAS_Decrease
+                                  00011d4e         e   func ,g         2
+  _SWC_TAS_Increase
+                                  00011d5c         e   func ,g         2
+  _SWC_TAS_IfActionSubsystem_f
+                                  00011d6a         e   func ,g         2
+  _SWC_TAS_IfActionSubsystem3
+                                  00011d78         e   func ,g         1
+  _rt_modf
+                                  00011d86        bc   func ,g         3
+  _SWC_TAS_enter_internal_during
+                                  00011e42        68   func ,g         1
+  _TMT_Rnbl_TAS_StrAng
+                                  00011eaa      1750   func ,g         0
+  _TMT_Rnbl_TAS_StrTrq
+                                  000135fa       1ae   func ,g         0
+  _SWC_TAS_initialize
+                                  000137a8       1cc   func ,g         0
+FILE=DefaultBuild\CAN2.obj
+                                  00013974  00013beb       278
+  _CAN0_UDSSend
+                                  00013974        4e   func ,g         0
+  _can2_command_process
+                                  000139c2        76   func ,g         1
+  _CAN2_ExternSend
+                                  00013a38       1b4   func ,g         0
+FILE=DefaultBuild\para_update.obj
+                                  00013bec  00013dc7       1dc
+  _UpdateRef
+                                  00013bec        2e   func ,g         0
+  _UpdatePara
+                                  00013c1a       1ae   func ,g         0
+FILE=DefaultBuild\RSENT_receive.obj
+                                  00013dc8  00014457       690
+  _init_clocks
+                                  00013dc8         8   func ,g         0
+  _RSENT_port_config
+                                  00013dd0        3c   func ,g         1
+  _RSENT_init_config
+                                  00013e0c        2c   func ,g         3
+  _com_start
+                                  00013e38        24   func ,g         1
+  _com_end
+                                  00013e5c        1c   func ,g         0
+  _no_com_detect
+                                  00013e78        70   func ,g         1
+  _fast_data_receive
+                                  00013ee8        52   func ,g         1
+  _Range_check
+                                  00013f3a         2   func ,g         1
+  _SENT_receive_init
+                                  00013f3c        54   func ,g         0
+  _SENT_receive_start
+                                  00013f90        48   func ,g         0
+  _GTM_init_clocks
+                                  00013fd8         8   func ,g         0
+  _PWM_Port_Init
+                                  00013fe0        3e   func ,g         1
+  _GTM_TIM_init
+                                  0001401e        74   func ,g         1
+  _AngleDiff_Limit
+                                  00014092        a2   func ,g         1
+  _Get_PWM_Data_Init
+                                  00014134        16   func ,g         0
+  _Get_Angle_Data
+                                  0001414a       30e   func ,g         0
+FILE=DefaultBuild\TAS_PWM_Angle.obj
+                                  00014458  00014645       1ee
+  _Pre_Processing
+                                  00014458        7e   func ,g         1
+  _wrsort_err_check
+                                  000144d6        2e   func ,g         1
+  _ptrack_err_check
+                                  00014504        44   func ,g         0
+  _Credibility_Cal
+                                  00014548        68   func ,g         1
+  _Step_equation
+                                  000145b0        96   func ,g         1
+FILE=DefaultBuild\UDS_FLASH.obj
+                                  00014646  00014b4f       50a
+  _UDS_RequestDownload_Process
+                                  00014646       134   func ,g         1
+  _UFlash_MakeCRC
+                                  0001477a        2a   func ,g         3
+  _getThreeBytesValue
+                                  000147a4        16   func ,g         2
+  _compareThreeBytes
+                                  000147ba        38   func ,g         0
+  _UDS_TransferData_Process
+                                  000147f2       248   func ,g         1
+  _UDS_RequestTransferExit_Process
+                                  00014a3a        48   func ,g         1
+  _UDS_CheckAppSoft
+                                  00014a82        ce   func ,g         1
+FILE=DefaultBuild\can_loader.obj
+                                  00014b50  00016587      1a38
+  _OBDII_CmdHandler_Rec
+                                  00014b50       31a   func ,g         1
+  _OBDII_Rec_Diagdata
+                                  00014e6a       114   func ,g         1
+  _OBDII_Unexpect_Frame_Process
+                                  00014f7e       120   func ,g         1
+  _CL_RecDiagService_Process
+                                  0001509e        88   func ,g         1
+  _CL_StartDiagnosticSession_Process
+                                  00015126       25c   func ,g         1
+  _CL_SecurityAccess_Process
+                                  00015382       392   func ,g         1
+  _CL_TesterPresent_Process
+                                  00015714        c2   func ,g         1
+  _CL_EcuReset_Process
+                                  000157d6       1c8   func ,g         1
+  _CL_ReadDataByIdentifier_Process
+                                  0001599e       154   func ,g         1
+  _Requestvehicleinfor_process
+                                  00015af2        d6   func ,g         1
+  _CL_WriteDataByIdentifier_Process
+                                  00015bc8       194   func ,g         1
+  _CL_SecurityAccess_Seed
+                                  00015d5c        26   func ,g         1
+  _CL_SecurityAccess_Key
+                                  00015d82        22   func ,g         1
+  _Write_30_Flash
+                                  00015da4        48   func ,g         0
+  _CL_ControlDTCSetting_Process
+                                  00015dec        2e   func ,g         1
+  _CL_CommunicationControl_Process
+                                  00015e1a        2e   func ,g         1
+  _CL_RoutineControl_Process
+                                  00015e48       3a0   func ,g         1
+  _OBDII_SendControlFrame
+                                  000161e8        46   func ,g         2
+  _OBDII_Send_ResPonsReqdata
+                                  0001622e       126   func ,g         f
+  _OBDII_Send_ResPonsCondata
+                                  00016354       174   func ,g         1
+  _OBDII_Neg_Response
+                                  000164c8        5c   func ,g        1d
+  _OBDII_Neg_78Response
+                                  00016524        22   func ,g         0
+  _OBDII_SendAck
+                                  00016546        36   func ,g         a
+  _OBDII_CallBack_Security_Condition
+                                  0001657c         4   func ,g         0
+  _OBDII_CallBack_RoutineCtl_Condition
+                                  00016580         4   func ,g         0
+  _OBDII_CallBack_EcuReset_Execute
+                                  00016584         2   func ,g         0
+  _CL_EraseBlock
+                                  00016586         2   func ,g         0
+FILE=DefaultBuild\fad_sample_cf.obj
+                                  00016588  000167fb       274
+  _sample_CheckCF0
+                                  00016588        1c   func ,g         4
+  _sample_CheckCF1
+                                  000165a4        14   func ,g         4
+  _sample_CheckBlockCF
+                                  000165b8        14   func ,g         3
+  _sample_CheckBound
+                                  000165cc        10   func ,g         3
+  _sample_CF_Write
+                                  000165dc        86   func ,g         1
+  _sample_CF_Erase
+                                  00016662        68   func ,g         0
+  _sample_CheckCfg
+                                  000166ca        18   func ,g         0
+  _sample_CheckOTP0
+                                  000166e2        18   func ,g         0
+  _sample_CheckOTP1
+                                  000166fa        18   func ,g         0
+  _sample_CF_SetLockBit
+                                  00016712        68   func ,g         0
+  _sample_CF_GetLockBit
+                                  0001677a        82   func ,g         0
+FILE=DefaultBuild\r_fad_cf_api.obj
+                                  000167fc  0001689d        a2
+  _R_FAD_CF_Init
+                                  000167fc        16   func ,g         0
+  _R_FAD_CF_GetApiVersion
+                                  00016812         8   func ,g         0
+  _R_FAD_CF_Write
+                                  0001681a        10   func ,g         1
+  _R_FAD_CF_Erase
+                                  0001682a         c   func ,g         1
+  _R_FAD_CF_SetConfig
+                                  00016836        12   func ,g         0
+  _R_FAD_CF_SetLockBit
+                                  00016848         e   func ,g         1
+  _R_FAD_CF_GetLockBit
+                                  00016856         e   func ,g         1
+  _R_FAD_CF_LockBitProtectControl
+                                  00016864         4   func ,g         0
+  _R_FAD_CF_SetOTP
+                                  00016868        12   func ,g         0
+  _R_FAD_CF_GetConfig
+                                  0001687a        12   func ,g         0
+  _R_FAD_CF_GetOTP
+                                  0001688c        12   func ,g         0
+FILE=abs
+                                  0001689e  000168a7         a
+  _labs
+                                  0001689e         0   none ,g         0
+  _abs
+                                  0001689e         0   none ,g         5
+  T_RET
+                                  000168a4         0   none ,l         1
+FILE=initsct_rh
+                                  000168a8  00016957        b0
+  __INITSCT_RH
+                                  000168a8         0   none ,g         1
+FILE=memcpy
+                                  00016958  0001696f        18
+  _memcpy
+                                  00016958         0   none ,g         8
+  TRET
+                                  0001696e         0   none ,l         1
+FILE=memset
+                                  00016970  00016981        12
+  _memset
+                                  00016970         0   none ,g         4
+  TRET
+                                  00016980         0   none ,l         1
+FILE=printf
+                                  00016982  000169b5        34
+  _printf
+                                  00016982         0   none ,g         4
+FILE=cos
+                                  000169b6  00016afd       148
+  _cos
+                                  000169b6       148   func ,g         1
+FILE=sin
+                                  00016afe  00016c93       196
+  _sin
+                                  00016afe       196   func ,g         1
+FILE=sqrt
+                                  00016c94  00016cdd        4a
+  _sqrt
+                                  00016c94         0   none ,g         4
+FILE=fmax
+                                  00016cde  00016d37        5a
+  _fmax
+                                  00016cde        5a   func ,g         1
+FILE=fabsf
+                                  00016d38  00016d43         c
+  _fabsf
+                                  00016d38         0   none ,g        14
+FILE=floorf
+                                  00016d44  00016d47         4
+  _floorf
+                                  00016d44         0   none ,g         7
+FILE=fmodf
+                                  00016d48  00016db5        6e
+  _fmodf
+                                  00016d48         0   none ,g         3
+FILE=_stdout
+                                  00016db6  00016dbd         8
+  __REL_stdout
+                                  00016db6         0   none ,g         1
+FILE=com7d
+                                  00016dbe  00016dc5         8
+  __REL_errno
+                                  00016dbe         0   none ,g        14
+FILE=vfprintf
+                                  00016dc6  00017141       37c
+  _cast_uns.1
+                                  00016dc6         0   none ,l         3
+  _vfprintf
+                                  00016dd4         0   none ,g         1
+FILE=_wrap_matherrd
+                                  00017142  00017161        20
+  .wrap_matherrd
+                                  00017142         0   none ,g         1
+FILE=fmod
+                                  00017162  00017201        a0
+  _fmod
+                                  00017162        a0   func ,g         2
+FILE=nand
+                                  00017202  00017209         8
+  __REL_nand_value
+                                  00017202         8   func ,g         6
+FILE=sincosdsub
+                                  0001720a  0001732d       124
+  __REL_poly_cosd
+                                  0001720a        92   func ,g         3
+  __REL_poly_cosdn
+                                  0001729c        10   func ,g         2
+  __REL_poly_sind
+                                  000172ac        82   func ,g         2
+FILE=_i_flors
+                                  0001732e  0001736b        3e
+  __in_floors
+                                  0001732e         0   none ,g         1
+FILE=_i_fmds
+                                  0001736c  000174b5       14a
+  __in_fmods
+                                  0001736c         0   none ,g         1
+FILE=_ctoa
+                                  000174b6  00017503        4e
+  __REL_ctoa_r
+                                  000174b6         0   none ,g         1
+FILE=_ftoa
+                                  00017504  00017cd1       7ce
+  _put_tgf_r
+                                  00017504         0   none ,l         0
+  _put_tf_r
+                                  000176a2         0   none ,l         0
+  _put_exp_r
+                                  00017836         0   none ,l         2
+  _put_tge_r
+                                  000178aa         0   none ,l         0
+  _put_te_r
+                                  000179d2         0   none ,l         0
+  _put_excp_r
+                                  00017afc         0   none ,l         1
+  __REL_ftoa_r
+                                  00017ba6         0   none ,g         1
+FILE=_itoa
+                                  00017cd2  00017dc7        f6
+  __REL_itoa_r
+                                  00017cd2         0   none ,g         1
+FILE=_llitoar
+                                  00017dc8  00017ee5       11e
+  __REL_llitoa_r
+                                  00017dc8         0   none ,g         1
+FILE=_otoa
+                                  00017ee6  00017fa9        c4
+  __REL_otoa_r
+                                  00017ee6         0   none ,g         1
+FILE=_putc
+                                  00017faa  00017fc7        1e
+  __REL_putc_r
+                                  00017faa         0   none ,g        35
+  TRET
+                                  00017fc6         0   none ,l         1
+FILE=_stoa
+                                  00017fc8  0001806b        a4
+  __REL_stoa_r
+                                  00017fc8         0   none ,g         1
+FILE=_strtoi
+                                  0001806c  000180c5        5a
+  __REL_strtoi
+                                  0001806c         0   none ,g         2
+FILE=_ullitoar
+                                  000180c6  000181a1        dc
+  __REL_ullitoa_r
+                                  000180c6         0   none ,g         1
+FILE=_ullotoar
+                                  000181a2  000182c3       122
+  __REL_ullotoa_r
+                                  000181a2         0   none ,g         1
+FILE=_ullxtoar
+                                  000182c4  00018467       1a4
+  __REL_ullxtoa_r
+                                  000182c4         0   none ,g         1
+FILE=_utoa
+                                  00018468  00018531        ca
+  __REL_utoa_r
+                                  00018468         0   none ,g         1
+FILE=_xtoa
+                                  00018532  00018685       154
+  __REL_xtoa_r
+                                  00018532         0   none ,g         1
+FILE=_i_fmdd
+                                  00018686  0001886b       1e6
+  __in_fmodd
+                                  00018686       1e6   func ,g         1
+FILE=nanf
+                                  0001886c  00018871         6
+  __REL_nanf_value
+                                  0001886c         0   none ,g         1
+FILE=_divuh
+                                  00018872  0001888f        1e
+  __REL_divuh
+                                  00018872         0   none ,g         2
+  T_RET
+                                  00018880         0   none ,l         1
+  T_RET0
+                                  00018888         0   none ,l         1
+  T_EXCP
+                                  0001888a         0   none ,l         1
+FILE=_divulw
+                                  00018890  00018905        76
+  __REL_divulw
+                                  00018890         0   none ,g         2
+FILE=_frexp10
+                                  00018906  000189cd        c8
+  __REL_frexp10d
+                                  00018906         0   none ,g         1
+FILE=_make_mp
+                                  000189ce  00018a89        bc
+  __REL_make_mp
+                                  000189ce         0   none ,g         5
+FILE=_put_p
+                                  00018a8a  00018aa9        20
+  __REL_put_p_r
+                                  00018a8a         0   none ,g        19
+FILE=_put_pp
+                                  00018aaa  00018ad3        2a
+  __REL_put_pp_r
+                                  00018aaa         0   none ,g         4
+FILE=_put_ps
+                                  00018ad4  00018b37        64
+  __REL_put_pps_r
+                                  00018ad4         0   none ,g         6
+FILE=strlen
+                                  00018b38  00018b47        10
+  _strlen
+                                  00018b38         0   none ,g         1
+FILE=_addxd
+                                  00018b48  00018b95        4e
+  __REL_addxd_i
+                                  00018b48         0   none ,g         1
+FILE=_dtoxd
+                                  00018b96  00018bab        16
+  __REL_dtoxd
+                                  00018b96         0   none ,g         1
+FILE=_exp10xd
+                                  00018bac  00018bcd        22
+  __REL_exp10xd
+                                  00018bac         0   none ,g         1
+FILE=_mulxd
+                                  00018bce  00018c1b        4e
+  __REL_mulxd_i
+                                  00018bce         0   none ,g         5
+FILE=_utoxd
+                                  00018c1c  00018c33        18
+  __REL_utoxd
+                                  00018c1c         0   none ,g         1
+FILE=_xdtou
+                                  00018c34  00018c51        1e
+  __REL_xdtou
+                                  00018c34         0   none ,g         2
+  T_ZERO
+                                  00018c4e         0   none ,l         1
+FILE=log10
+                                  00018c52  00018e3f       1ee
+  _log10
+                                  00018c52        3c   func ,g         0
+  __REL_log10d_i
+                                  00018c8e        10   func ,g         1
+  __log10.1
+                                  00018c9e       1a2   func ,l         2
+FILE=_expxd
+                                  00018e40  00018ea5        66
+  __REL_expxd_i
+                                  00018e40         0   none ,g         1
+FILE=_itoxd
+                                  00018ea6  00018ec7        22
+  __REL_itoxd
+                                  00018ea6         0   none ,g         1
+  T0001
+                                  00018eb2         0   none ,l         1
+FILE=addxfd
+                                  00018ec8  0001901b       154
+  T_EXCP1
+                                  00018ec8         0   none ,l         1
+  RETY
+                                  00018ed0         0   none ,l         1
+  RETY2
+                                  00018ed2         0   none ,l         1
+  T_RET
+                                  00018ed8         0   none ,l         3
+  __REL_addxf.d
+                                  00018edc         0   none ,g         2
+  T0200x
+                                  00018f12         0   none ,l         1
+  T0200
+                                  00018f1a         0   none ,l         1
+  T0201
+                                  00018f36         0   none ,l         1
+  T0202x
+                                  00018f56         0   none ,l         1
+  T0202
+                                  00018f5e         0   none ,l         1
+  T0203
+                                  00018f76         0   none ,l         4
+  T0302
+                                  00018f82         0   none ,l         1
+  T0303
+                                  00018f92         0   none ,l         1
+  TNOR00
+                                  00018fb0         0   none ,l         1
+  TNOR01
+                                  00018fca         0   none ,l         2
+  LZERO
+                                  00018fe4         0   none ,l         1
+  T0501
+                                  00018ff0         0   none ,l         1
+  T_RET2
+                                  00019018         0   none ,l         2
+FILE=com4d
+                                  0001901c  00019077        5c
+  __REL_analyze1d.l
+                                  0001901c         0   none ,g         0
+  __REL_analyze1md.l
+                                  00019040         0   none ,g         1
+  T_RET
+                                  00019060         0   none ,l         2
+  T_EXCP1
+                                  00019062         0   none ,l         1
+  T_EXCP2
+                                  0001906e         0   none ,l         1
+FILE=cvtxwl
+                                  00019078  000190b3        3c
+  __REL_cvtx.wl
+                                  00019078         0   none ,g         2
+  T0102
+                                  0001908c         0   none ,l         1
+  T0103
+                                  00019098         0   none ,l         1
+  T0104
+                                  000190a0         0   none ,l         1
+  LOOP1
+                                  000190a4         0   none ,l         1
+  T0105
+                                  000190aa         0   none ,l         1
+  T_ZERO
+                                  000190ae         0   none ,l         1
+FILE=mulxfd
+                                  000190b4  000191b9       106
+  __REL_mulxf.d
+                                  000190b4         0   none ,g         3
+  T0501
+                                  000191b0         0   none ,l         1
+  ZEROWS
+                                  000191b2         0   none ,l         1
+FILE=frexp
+                                  000191ba  00019279        c0
+  _frexp
+                                  000191ba        c0   func ,g         1
+FILE=logdspecial
+                                  0001927a  000192ad        34
+  __REL_logd_special
+                                  0001927a        34   func ,g         1
+FILE=neginfd
+                                  000192ae  000192b5         8
+  __REL_neginfd_value
+                                  000192ae         8   func ,g         1
+FILE=com1xd
+                                  000192b6  000192e3        2e
+  __REL_nor0xd.l
+                                  000192b6         0   none ,g         1
+  __REL_nor1xd.l
+                                  000192b8         0   none ,g         1
+  TNOR00
+                                  000192c0         0   none ,l         1
+  TNOR01
+                                  000192d2         0   none ,l         2
+FILE=expxd
+                                  000192e4  000194b5       1d2
+  __REL_expxd.l
+                                  000192e4         0   none ,g         1
+  T02000
+                                  000193e4         0   none ,l         1
+  T02001
+                                  00019410         0   none ,l         2
+  T02001x
+                                  00019414         0   none ,l         1
+  T02002
+                                  00019434         0   none ,l         3
+  T02003
+                                  00019458         0   none ,l         3
+  T03001
+                                  00019484         0   none ,l         2
+  T03002
+                                  00019488         0   none ,l         2
+FILE=posinfd
+                                  000194b6  000194bd         8
+  __REL_posinfd_value
+                                  000194b6         8   func ,g         1
+FILE=com2d
+                                  000194be  0001950b        4e
+  __REL_plyd.l
+                                  000194be         0   none ,g         1
+
+SECTION=.data
+FILE=DefaultBuild\main.obj
+                                  0001950c  00019933       428
+FILE=DefaultBuild\gtm.obj
+                                  00019934  00019ab7       184
+FILE=DefaultBuild\r_adc.obj
+                                  00019ab8  00019b01        4a
+FILE=DefaultBuild\tmr.obj
+                                  00019b04  00019b05         2
+FILE=DefaultBuild\mttcan_a.obj
+                                  00019b08  00019b18        11
+FILE=DefaultBuild\mttcan_p.obj
+                                  00019b1c  00019b79        5e
+FILE=DefaultBuild\can_command.obj
+                                  00019b7c  00019be3        68
+FILE=DefaultBuild\standardports_p.obj
+                                  00019be4  00019bf7        14
+FILE=DefaultBuild\global_struct.obj
+                                  00019bf8  00019d0b       114
+FILE=DefaultBuild\fad_flash.obj
+                                  00019d0c  00019d8f        84
+FILE=DefaultBuild\temperature.obj
+                                  00019d90  00019da5        16
+FILE=DefaultBuild\SWC_BasAsst.obj
+                                  00019da8  0001a5a7       800
+FILE=DefaultBuild\SWC_TAS.obj
+                                  0001a5a8  0001a5d7        30
+FILE=DefaultBuild\CAN2.obj
+                                  0001a5d8  0001a5e4         d
+FILE=DefaultBuild\RSENT_receive.obj
+                                  0001a5e8  0001a64d        66
+FILE=DefaultBuild\TAS_PWM_Angle.obj
+                                  0001a650  0001a675        26
+FILE=DefaultBuild\UDS_FLASH.obj
+                                  0001a678  0001a687        10
+FILE=DefaultBuild\can_loader.obj
+                                  0001a688  0001a7ba       133
+FILE=stdout
+                                  0001a7bc  0001a7c7         c
+
+SECTION=.data.R
+FILE=DefaultBuild\main.obj
+                                  fede0000  fede0427       428
+  _sleepflag
+                                  fede0000         4   data ,g         5
+  _flash_test
+                                  fede0004       400   data ,g         0
+  _BM_valRecSeverData_PHY_MP
+                                  fede0404         c   data ,g         6
+  _BM_valRecSeverData_FUN_MP
+                                  fede0410         c   data ,g         6
+  _BM_numExitBoot_MP
+                                  fede041c         4   data ,g         9
+  _BM_fgCheckSumWrong_MP
+                                  fede0420         1   data ,g         2
+  _BM_valBootType_MP
+                                  fede0421         1   data ,g         c
+  _delayForProgramRep
+                                  fede0424         4   data ,g         0
+FILE=DefaultBuild\gtm.obj
+                                  fede0428  fede05ab       184
+  _x_history
+                                  fede0428        10   data ,g         3
+  _y_history
+                                  fede0438        10   data ,g         3
+  _fli_flag
+                                  fede0448         4   data ,g         3
+  _flag_1
+                                  fede044c         4   data ,g         a
+  _B_3
+                                  fede0450        10   data ,g         1
+  _A_3
+                                  fede0460        10   data ,g         1
+  _x_3order
+                                  fede0470        10   data ,g         1
+  _y_3order
+                                  fede0480        10   data ,g         3
+  _testfywp
+                                  fede0490         4   data ,g         0
+  _testfywi
+                                  fede0494         4   data ,g         0
+  _IsrTicker
+                                  fede0498         4   data ,g         b
+  _VirtualTimer
+                                  fede049c         4   data ,g         2
+  _error_state_code_0101
+                                  fede04a0         4   data ,g        d1
+  _SpeedInit
+                                  fede04a4         4   data ,g         0
+  _outrangecount
+                                  fede04a8         4   data ,g        2d
+  _xb
+                                  fede04ac         4   data ,g         6
+  _fyw
+                                  fede04b0         4   data ,g         0
+  _RecsFlag
+                                  fede04b4         4   data ,g        11
+  _TestFlag
+                                  fede04b8         4   data ,g         6
+  _lsw
+                                  fede04bc         4   data ,g         9
+  _FWFlag
+                                  fede04c0         4   data ,g         0
+  _offsetA
+                                  fede04c4         4   data ,g         9
+  _offsetB
+                                  fede04c8         4   data ,g         9
+  _offsetC
+                                  fede04cc         4   data ,g         9
+  _K1
+                                  fede04d0         4   data ,g         2
+  _K2
+                                  fede04d4         4   data ,g         2
+  _Angle_last
+                                  fede04d8         4   data ,g         e
+  _omiga
+                                  fede04dc         8   data ,g         1
+  _s
+                                  fede04e4         4   data ,g         0
+  _flagxb
+                                  fede04e8         4   data ,g         3
+  _flag_5060
+                                  fede04ec         4   data ,g        12
+  _steptest
+                                  fede04f0         4   data ,g         0
+  _clarke1
+                                  fede04f4        14   data ,g        1c
+  _clarke2
+                                  fede0508        14   data ,g         2
+  _park1
+                                  fede051c        1c   data ,g         1
+  _ipark1
+                                  fede0538        1c   data ,g         4
+  _fwenterflag
+                                  fede0554         4   data ,g         0
+  _svgen1
+                                  fede0558        28   data ,g         6
+  _svgentest
+                                  fede0580        28   data ,g         1
+  _counts1
+                                  fede05a8         4   data ,g         0
+FILE=DefaultBuild\r_adc.obj
+                                  fede05ac  fede05f5        4a
+  _Gsu4Adcc.1
+                                  fede05ac         8   data ,l         b
+  _Gu1ReadAdcValue
+                                  fede05b4        40   data ,g         d
+  _flag_adc
+                                  fede05f4         2   data ,g         3
+FILE=DefaultBuild\tmr.obj
+                                  fede05f8  fede05f9         2
+  _g_csih1_rx_total_num
+                                  fede05f8         2   data ,g         0
+FILE=DefaultBuild\mttcan_a.obj
+                                  fede05fc  fede060c        11
+  _MTTCAN_A_FILTER_STD_EXAMPLE_2
+                                  fede05fc         4   data ,g         0
+  _MTTCAN_A_IRQ_REC_1.1
+                                  fede0600         1   data ,l         6
+  _MTTCAN_A_IRQ_TRX_0.2
+                                  fede0601         1   data ,l         6
+  _Canref_idFbk
+                                  fede0604         4   data ,g         0
+  _Canref_iqFbk
+                                  fede0608         4   data ,g         0
+  _CopyCounter_u08.5.MTTCAN_A_GatewayCopy
+                                  fede060c         1   data ,l         3
+FILE=DefaultBuild\mttcan_p.obj
+                                  fede0610  fede066d        5e
+  _ee_mttcan_common_p.1
+                                  fede0610         8   data ,l         9
+  _ee_mttcan_ram_p.2
+                                  fede0618        40   data ,l         9
+  _ee_mttcan_ramsize_p.3
+                                  fede0658         8   data ,l         3
+  _MTTCAN_CIVector.4
+                                  fede0660         c   data ,l         2
+  _MTTCAN_InterruptFlag_Unit_u08
+                                  fede066c         1   data ,g         8
+  _MTTCAN_InterruptFlag_Line_u08
+                                  fede066d         1   data ,g         4
+FILE=DefaultBuild\can_command.obj
+                                  fede0670  fede06d7        68
+  _g_Initial
+                                  fede0670        18   data ,g         2
+  _Flag_CAN_flash
+                                  fede0688         4   data ,g         6
+  _Flag_Cansend
+                                  fede068c         4   data ,g         5
+  _flashcode
+                                  fede0690         4   data ,g         2
+  _sendcode
+                                  fede0694         4   data ,g         2
+  _send_state.1
+                                  fede0698         4   data ,l         6
+  _last_2ms_time.2
+                                  fede069c         4   data ,l         4
+  _last_10ms_time.3
+                                  fede06a0         4   data ,l         4
+  _last_20ms_time.4
+                                  fede06a4         4   data ,l         4
+  _speed_sent.5
+                                  fede06a8         4   data ,l         8
+  _current3_sent.6
+                                  fede06ac         4   data ,l         5
+  _voltage_sent.7
+                                  fede06b0         4   data ,l         5
+  _position_sent.8
+                                  fede06b4         4   data ,l         5
+  _temperature_sent.9
+                                  fede06b8         4   data ,l         5
+  _Canref_O
+                                  fede06bc         4   data ,g         0
+  _Canref_M
+                                  fede06c0         4   data ,g         0
+  _Flash_fix
+                                  fede06c4         4   data ,g         0
+  _vehspd
+                                  fede06c8         4   data ,g         3
+  _Canref
+                                  fede06cc         4   data ,g        1b
+  _error_a
+                                  fede06d0         4   data ,g         2
+  _cantime
+                                  fede06d4         4   data ,g         9
+FILE=DefaultBuild\standardports_p.obj
+                                  fede06d8  fede06eb        14
+  _port_numeric_p.1
+                                  fede06d8         4   data ,l         4
+  _port_mode_numeric_p.2
+                                  fede06dc         4   data ,l        17
+  _port_mode_control_numeric_p.3
+                                  fede06e0         4   data ,l        20
+  _port_function_control_numeric_p.4
+                                  fede06e4         4   data ,l        20
+  _port_function_control2_numeric_p.5
+                                  fede06e8         4   data ,l        20
+FILE=DefaultBuild\global_struct.obj
+                                  fede06ec  fede07ff       114
+  _g_PosInterp
+                                  fede06ec        10   data ,g         1
+  _pi_pos
+                                  fede06fc        34   data ,g         d
+  _pi_fw
+                                  fede0730        34   data ,g        10
+  _pi_spd
+                                  fede0764        34   data ,g        23
+  _pi_id
+                                  fede0798        34   data ,g        15
+  _pi_iq
+                                  fede07cc        34   data ,g        25
+FILE=DefaultBuild\fad_flash.obj
+                                  fede0800  fede0883        84
+  _DFlash_BootFLG_InVaild
+                                  fede0800         4   data ,g         1
+  _Flash_Data
+                                  fede0804        40   data ,g         1
+  _Data_Flash_Read
+                                  fede0844        40   data ,g         1
+FILE=DefaultBuild\temperature.obj
+                                  fede0884  fede0899        16
+  _last_adc_value.1
+                                  fede0884         4   data ,l         3
+  _new_adc_value.2
+                                  fede0888         4   data ,l         4
+  _count.3
+                                  fede088c         2   data ,l         4
+  _ADC_tempstay_count.5
+                                  fede0890         4   data ,l         3
+  _temperature
+                                  fede0894         4   data ,g         f
+  _High_temperature
+                                  fede0898         2   data ,g        17
+FILE=DefaultBuild\SWC_BasAsst.obj
+                                  fede089c  fede109b       800
+  _BA_BC_VehSpd_kph_f32_a12_Cal
+                                  fede089c        30   data ,g         2
+  _BA_BF_CutoffFreq_Hz_f32_a11_Cal
+                                  fede08cc        30   data ,g         1
+  _BA_BF_VehSpd_kph_f32_a11_Cal
+                                  fede08fc        30   data ,g         1
+  _BA_BoostFac_f32_a12_Cal
+                                  fede092c         4   data ,g         2
+  _BA_HFGFac_f32_a1_Cal
+                                  fede0930         4   data ,g         2
+  _BA_HFG_StrTrq_Nm_f32_a10_Cal
+                                  fede0934        28   data ,g         1
+  _BA_HFG_TableData_NA_f32_a10a12_Cal
+                                  fede095c       1e0   data ,g         1
+  _BA_HFlim_f32_a1_Cal
+                                  fede0b3c         4   data ,g         5
+  _BA_HPG_VehSpd_kph_f32_a12_Cal
+                                  fede0b40        30   data ,g         1
+  _BA_LinearAsstGain_NA_f32_Cal
+                                  fede0b70         4   data ,g         2
+  _BA_NF_Fd_a5b12_f32_Cal
+                                  fede0b74        f0   data ,g         1
+  _BA_NF_Fn_a5b12_f32_Cal
+                                  fede0c64        f0   data ,g         1
+  _BA_NF_Zd_a5b12_f32_Cal
+                                  fede0d54        f0   data ,g         1
+  _BA_NF_Zn_a5b12_f32_Cal
+                                  fede0e44        f0   data ,g         1
+  _BA_P0_f32_a12_Cal
+                                  fede0f34        30   data ,g         1
+  _BA_P1_f32_a12_Cal
+                                  fede0f64        30   data ,g         1
+  _BA_P2_f32_a12_Cal
+                                  fede0f94        30   data ,g         1
+  _BA_P3_f32_a12_Cal
+                                  fede0fc4        30   data ,g         1
+  _BA_P4_f32_a12_Cal
+                                  fede0ff4        30   data ,g         1
+  _BA_P5_f32_a12_Cal
+                                  fede1024        30   data ,g         1
+  _BA_PD_f32_a12_Cal
+                                  fede1054        30   data ,g         1
+  _BA_StrVel_degps_BPK_f32_a4_Cal
+                                  fede1084        14   data ,g         1
+  _BA_Switch_HFG_NA_bl_Cal
+                                  fede1098         1   data ,g         2
+  _BA_Switch_LinearAsst_NA_bl_Cal
+                                  fede1099         1   data ,g         2
+  _BA_Switch_NFOut_NA_bl_Cal
+                                  fede109a         1   data ,g         2
+  _BA_Switch_StrLPF_bl_Cal
+                                  fede109b         1   data ,g         2
+FILE=DefaultBuild\SWC_TAS.obj
+                                  fede109c  fede10cb        30
+  _TAS_AngOffset_Switch_NA_u8_Cal
+                                  fede109c         1   data ,g         8
+  _TAS_AngOffset_deg_f32_Cal
+                                  fede10a0         4   data ,g         8
+  _TAS_CntUpLim_NA_f32_Cal
+                                  fede10a4         4   data ,g        1c
+  _TAS_FaultCntLim_NA_f32_Cal
+                                  fede10a8         4   data ,g        37
+  _TAS_Kalman_Q_NA_f32_Cal
+                                  fede10ac         4   data ,g         2
+  _TAS_Kalman_R_NA_f32_Cal
+                                  fede10b0         4   data ,g         2
+  _TAS_SC_AngLim_deg_f32_Cal
+                                  fede10b4         4   data ,g         7
+  _TAS_TorsionBarStiff_NA_f32_Cal
+                                  fede10b8         4   data ,g         2
+  _TAS_TrqFltTimeTh_Sec_f32_Cal
+                                  fede10bc         4   data ,g         2
+  _TAS_TrqOffset_Nm_f32_Cal
+                                  fede10c0         4   data ,g         2
+  _TAS_TrqOffset_Switch_NA_u8_Cal
+                                  fede10c4         1   data ,g         2
+  _TAS_TrqSynchrCheckTh_Deg_f32_Cal
+                                  fede10c8         4   data ,g         2
+FILE=DefaultBuild\CAN2.obj
+                                  fede10cc  fede10d8         d
+  _FlagCansend
+                                  fede10cc         4   data ,g         6
+  _CAN_temp
+                                  fede10d0         4   data ,g         3
+  _CAN_count
+                                  fede10d4         4   data ,g         3
+  _RecCANCount
+                                  fede10d8         1   data ,g         3
+FILE=DefaultBuild\RSENT_receive.obj
+                                  fede10dc  fede1141        66
+  _SENT_DATA
+                                  fede10dc        14   data ,g         1
+  _fast_buffer
+                                  fede10f0         4   data ,g         0
+  _timeout_cnt
+                                  fede10f4         c   data ,g         1
+  _com_err_flags
+                                  fede1100         4   data ,g         4
+  _out_range
+                                  fede1104         4   data ,g         0
+  _err_flag
+                                  fede1108        10   data ,g         7
+  _period_range_error
+                                  fede1118         4   data ,g         5
+  _duty_range_error
+                                  fede111c         4   data ,g        11
+  _Over_Time_TAS
+                                  fede1120         4   data ,g        17
+  _receive_flag
+                                  fede1124         4   data ,g         5
+  _Old_Angle
+                                  fede1128         4   data ,g         6
+  _old_difference
+                                  fede112c         4   data ,g         5
+  _current_difference
+                                  fede1130         4   data ,g         3
+  _TAS_Err_Count
+                                  fede1134         4   data ,g         6
+  _TAS_Err_Flag
+                                  fede1138         1   data ,g        11
+  _initial_time
+                                  fede113c         4   data ,g         5
+  _angle_index
+                                  fede1140         2   data ,g         0
+FILE=DefaultBuild\TAS_PWM_Angle.obj
+                                  fede1144  fede1169        26
+  _Vres
+                                  fede1144         4   data ,g         2
+  _Vres_FD
+                                  fede1148         1   data ,g         3
+  _angle_out
+                                  fede114c         4   data ,g        15
+  _ptrack_old.2
+                                  fede1150         4   data ,l         4
+  _wr_sort_old.3
+                                  fede1154         2   data ,l         4
+  _ptrack
+                                  fede1158         4   data ,g         3
+  _mean_OS2IS
+                                  fede115c         4   data ,g         4
+  _ch3
+                                  fede1160         4   data ,g         4
+  _wr_sort
+                                  fede1164         4   data ,g         3
+  _ptrack_err.4.ptrack_err_check
+                                  fede1168         2   data ,l         4
+FILE=DefaultBuild\UDS_FLASH.obj
+                                  fede116c  fede117b        10
+  _UFlash_fgCheckAppFinish_MP
+                                  fede116c         1   data ,g         4
+  _UFlash_fgCheckCRCForJump_MP
+                                  fede116d         1   data ,g         3
+  _r1
+                                  fede1170         4   data ,g         5
+  _crccheck_last
+                                  fede1174         4   data ,g         3
+  _crccheck
+                                  fede1178         4   data ,g         2
+FILE=DefaultBuild\can_loader.obj
+                                  fede117c  fede12ae       133
+  _Security_Level_Session
+                                  fede117c         2   data ,g         0
+  _CL_fgSendCF_MP
+                                  fede117e         1   data ,g         4
+  _CL_fgForbidWrite_MP
+                                  fede117f         1   data ,g         0
+  _CL_fgDTCFunAddrVaild_MP
+                                  fede1180         1   data ,g         e
+  _CL_fgCheckProgramFirst_MP
+                                  fede1181         1   data ,g         6
+  _CL_stDiagSeon_MP
+                                  fede1182         1   data ,g        12
+  _CL_stFrameControl_MP
+                                  fede1183         1   data ,g        10
+  _CL_stContinueFrameState_MP
+                                  fede1184         1   data ,g         d
+  _CL_valBS_MP
+                                  fede1185         1   data ,g         2
+  _CL_valSid_MP
+                                  fede1186         1   data ,g         8
+  _CL_valCFnum_MP
+                                  fede1187         1   data ,g         5
+  _CL_valSnLast_MP
+                                  fede1188         1   data ,g         4
+  _CL_valSecLev_MP
+                                  fede1189         1   data ,g        12
+  _CL_valSendFS_MP
+                                  fede118a         1   data ,g         2
+  _CL_valFrameType_MP
+                                  fede118b         1   data ,g         6
+  _CL_valSecLev_last_MP
+                                  fede118c         1   data ,g         8
+  _CL_valSecurityAcesseErrNumCount_MP
+                                  fede118d         1   data ,g         5
+  _CL_valContinueServiceValid_MP
+                                  fede118e         1   data ,g         5
+  _CL_fgCheckEraseErr_MP
+                                  fede118f         1   data ,g         2
+  _CL_valRandNumForSeed_MP
+                                  fede1190         4   data ,g         0
+  _OBDII_Service_demondLst
+                                  fede1194        4e   data ,g         b
+  _OBD_Veh_InfLst
+                                  fede11e4        a0   data ,g         3
+  _CL_vaRoutineDID_STR
+                                  fede1284        2a   data ,g         1
+  _TP_stSecurityState_LO.1.CL_SecurityAccess_Process
+                                  fede12ae         1   data ,l         4
+FILE=stdout
+                                  fede12b0  fede12bb         c
+  __REL_struct_stdout
+                                  fede12b0         0   none ,g         1
+
+SECTION=.bss
+FILE=DefaultBuild\main.obj
+                                  fede12bc  fede12bf         4
+  _BM_numSecurityAccessResetCount_MP
+                                  fede12bc         4   data ,g         2
+FILE=DefaultBuild\gtm.obj
+                                  fede12c0  fedf5bef     14930
+  _ref_pre
+                                  fede12c0         8   data ,g         4
+  _output_pre
+                                  fede12c8         8   data ,g         0
+  _rx_angle
+                                  fede12d0         8   data ,g         1
+  _flag_angle
+                                  fede12d8         2   data ,g         2
+  _angle
+                                  fede12dc         8   data ,g         9
+  _Alig_angle_e
+                                  fede12e4        30   data ,g         2
+  _Ali_angle
+                                  fede1314        30   data ,g         1
+  _lswpre
+                                  fede1344         4   data ,g         4
+  _currentABuffer
+                                  fede1348        10   data ,g         4
+  _currentBBuffer
+                                  fede1358        10   data ,g         4
+  _currentCBuffer
+                                  fede1368        10   data ,g         4
+  _voltageBuffer
+                                  fede1378        10   data ,g         4
+  _fwvoltageBuffer
+                                  fede1388        10   data ,g         4
+  _speedfbk
+                                  fede1398      2ee0   data ,g         0
+  _iqref
+                                  fede4278      2ee0   data ,g         0
+  _iqfbk
+                                  fede7158      2ee0   data ,g         0
+  _idref
+                                  fedea038      2ee0   data ,g         0
+  _idfbk
+                                  fedecf18      2ee0   data ,g         0
+  _posfbk
+                                  fedefdf8      2ee0   data ,g         0
+  _speedref
+                                  fedf2cd8      2ee0   data ,g         0
+  _beta
+                                  fedf5bb8         4   data ,g         0
+  _agl1
+                                  fedf5bbc         8   data ,g         2
+  _angle_pre
+                                  fedf5bc4         8   data ,g         4
+  _angle_delta
+                                  fedf5bcc         8   data ,g         4
+  _angle_fli
+                                  fedf5bd4         8   data ,g         0
+  _flag1
+                                  fedf5bdc         4   data ,g         2
+  _flag2
+                                  fedf5be0         4   data ,g         2
+  _VolLowCount.2.protection
+                                  fedf5be4         4   data ,l        2a
+  _VolHighCount.3.protection
+                                  fedf5be8         4   data ,l        2a
+  _err_5060_count.4.protection
+                                  fedf5bec         4   data ,l         f
+FILE=DefaultBuild\tmr.obj
+                                  fedf5bf0  fedf5c13        24
+  _g_csih1_tx_num
+                                  fedf5bf0         2   data ,g         0
+  _g_csih1_tx_num8
+                                  fedf5bf2         1   data ,g         0
+  _g_csih1_rx_num
+                                  fedf5bf4         2   data ,g         0
+  _gp_csih1_tx_address
+                                  fedf5bf8         4   data ,g         0
+  _g_cg_sync_read
+                                  fedf5bfc         4   data ,g         8
+  _gp_csih1_rx_address
+                                  fedf5c00         4   data ,g         0
+  _send_data
+                                  fedf5c04         8   data ,g         1
+  _rx_data
+                                  fedf5c0c         8   data ,g         2
+FILE=DefaultBuild\Config_CSIH0.obj
+                                  fedf5c14  fedf5c77        64
+  _g_csih0_tx_num
+                                  fedf5c14         2   data ,g         8
+  _g_csih0_rx_num
+                                  fedf5c16         2   data ,g         2
+  _g_csih0_rx_total_num
+                                  fedf5c18         2   data ,g         4
+  _gp_csih0_tx_address
+                                  fedf5c1c         4   data ,g         6
+  _gp_csih0_rx_address
+                                  fedf5c20         4   data ,g         6
+  _uint16_master
+                                  fedf5c24        2a   data ,g         5
+  _uint16_slave
+                                  fedf5c4e        2a   data ,g         3
+FILE=DefaultBuild\mttcan_a.obj
+                                  fedf5c78  fedf5cff        88
+  _MTTCAN_A_IRQ_REC_GW.3
+                                  fedf5c78         2   data ,l         1
+  _MTTCAN_A_IRQ_TRX_GW.4
+                                  fedf5c7a         2   data ,l         1
+  _flag_CAN
+                                  fedf5c7c         4   data ,g         5
+  _test_CAN
+                                  fedf5c80         4   data ,g         0
+  _canrx
+                                  fedf5c84        1c   data ,g         1
+  _canfdrx
+                                  fedf5ca0        60   data ,g         3
+FILE=DefaultBuild\can_command.obj
+                                  fedf5d00  fedf5d4f        50
+  _g_CANObject
+                                  fedf5d00        4c   data ,g         4
+  _flag_hyxx
+                                  fedf5d4c         4   data ,g         4
+FILE=DefaultBuild\PMIC.obj
+                                  fedf5d50  fedf5d5f        10
+  _g_csih2_tx_num
+                                  fedf5d50         2   data ,g         2
+  _g_csih2_rx_num
+                                  fedf5d52         2   data ,g         0
+  _g_csih2_rx_total_num
+                                  fedf5d54         2   data ,g         0
+  _gp_csih2_tx_address
+                                  fedf5d58         4   data ,g         2
+  _gp_csih2_rx_address
+                                  fedf5d5c         4   data ,g         3
+FILE=DefaultBuild\global_struct.obj
+                                  fedf5d60  fedf5f97       238
+  _g_Control
+                                  fedf5d60       11c   data ,g       174
+  _Speed1
+                                  fedf5e7c        14   data ,g         1
+  _Aligment
+                                  fedf5e90        20   data ,g         d
+  _alarm
+                                  fedf5eb0        28   data ,g       164
+  _alarm_recover
+                                  fedf5ed8        10   data ,g        22
+  _flag
+                                  fedf5ee8         4   data ,g         a
+  _g_CANflash
+                                  fedf5eec        64   data ,g        14
+  _exmsg
+                                  fedf5f50        1c   data ,g         3
+  _CAN2
+                                  fedf5f6c        2c   data ,g         8
+FILE=DefaultBuild\r_fad_common_api.obj
+                                  fedf5f98  fedf5f98         1
+  _suspend_mode
+                                  fedf5f98         1   data ,g         2
+FILE=DefaultBuild\r_fad_definition.obj
+                                  fedf5f9c  fedf5fb7        1c
+  _bu4_CommandArea
+                                  fedf5f9c         4   data ,g         d
+  _bu4_FaciBase
+                                  fedf5fa0         4   data ,g        28
+  _bu4_FCPSR
+                                  fedf5fa4         4   data ,g         4
+  _bu4_FRDY1Loop
+                                  fedf5fa8         4   data ,g         4
+  _bu4_DBFULL0Loop
+                                  fedf5fac         4   data ,g         0
+  _bu4_27uWaitLoop
+                                  fedf5fb0         4   data ,g         2
+  _bu4_IcacheLoop
+                                  fedf5fb4         4   data ,g         0
+FILE=DefaultBuild\SWC_BasAsst.obj
+                                  fedf5fb8  fedf5ff3        3c
+  _BA_StrTrq_Nm_f32_Read
+                                  fedf5fb8         4   data ,g         6
+  _BA_VehSpd_kph_f32_Read
+                                  fedf5fbc         4   data ,g         a
+  _BA_StrVel_degps_f32_Read
+                                  fedf5fc0         4   data ,g         4
+  _BA_HPFTrqFilter_Nm_f32_Irv
+                                  fedf5fc4         4   data ,g         6
+  _BA_LPFTrqFilter_Nm_f32_Irv
+                                  fedf5fc8         4   data ,g         a
+  _BA_HFGAsstTrq_Nm_f32_Irv
+                                  fedf5fcc         4   data ,g         8
+  _BA_Zn_warch
+                                  fedf5fd0         4   data ,g         5
+  _BA_BaTrq_Nm_f32_Write
+                                  fedf5fd4         4   data ,g         5
+  _BA_AsstTrqSum_Nm_f32_Irv
+                                  fedf5fd8         4   data ,g         6
+  _BA_BoostTrq_Nm_f32_Irv
+                                  fedf5fdc         4   data ,g         7
+  _SWC_BasAsst_DW
+                                  fedf5fe0        10   data ,g         c
+  _SWC_BasAsst_M_.1
+                                  fedf5ff0         4   data ,l         3
+FILE=DefaultBuild\SWC_TAS.obj
+                                  fedf5ff4  fedf60cf        dc
+  _TAS_SENT1A_NA_u16_Read
+                                  fedf5ff4         2   data ,g         d
+  _TAS_SENT2A_NA_u16_Read
+                                  fedf5ff6         2   data ,g        12
+  _TAS_SENT1B_NA_u16_Read
+                                  fedf5ff8         2   data ,g         4
+  _TAS_SENT2B_NA_u16_Read
+                                  fedf5ffa         2   data ,g         4
+  _TAS_SENT_ANG_NA_u16_Read
+                                  fedf5ffc         2   data ,g         f
+  _TAS_AngOffset_deg_f32_Read
+                                  fedf6000         4   data ,g         a
+  _TAS_AngCalbra_NA_bl_Read
+                                  fedf6004         1   data ,g         4
+  _TAS_SENT1_LossOfSignal_NA_bl_Read
+                                  fedf6005         1   data ,g         6
+  _TAS_SENT2_LossOfSignal_NA_bl_Read
+                                  fedf6006         1   data ,g         6
+  _TAS_SENT3_LossOfSignal_NA_bl_Read
+                                  fedf6007         1   data ,g         4
+  _TAS_TrqResolutionFlt_write
+                                  fedf6008         1   data ,g         5
+  _TAS_AngResolutionFlt_Write
+                                  fedf6009         2   data ,g         2
+  _TAS_T1_NA_f32_Watch
+                                  fedf600c         4   data ,g         5
+  _TAS_T2_NA_f32_Watch
+                                  fedf6010         4   data ,g         5
+  _TAS_TrqSC_Err_NA_f32_Watch
+                                  fedf6014         4   data ,g         4
+  _TAS_StrTrq_Nm_f32_Write
+                                  fedf6018         4   data ,g         6
+  _TAS_SENT1A_Follower_Deg_f32_Watch
+                                  fedf601c         4   data ,g         d
+  _TAS_SENT2A_Follower_Deg_f32_Watch
+                                  fedf6020         4   data ,g         d
+  _TAS_SENT_ANG_Follower_Deg_f32_Watch
+                                  fedf6024         4   data ,g         d
+  _TAS_Vernier_Angle_Deg_f32_Watch
+                                  fedf6028         4   data ,g         d
+  _TAS_ec_af_S1A_NA_f32_Watch
+                                  fedf602c         4   data ,g        11
+  _TAS_ec_af_S2A_NA_f32_Watch
+                                  fedf6030         4   data ,g         e
+  _TAS_ec_af_S3_NA_f32_Watch
+                                  fedf6034         4   data ,g         a
+  _TAS_ec_af_Vernier_NA_f32_Watch
+                                  fedf6038         4   data ,g         9
+  _TAS_ec_diag_S1A_NA_f32_Watch
+                                  fedf603c         4   data ,g         9
+  _TAS_ec_diag_S2A_NA_f32_Watch
+                                  fedf6040         4   data ,g         8
+  _TAS_ec_diag_S3_NA_f32_Watch
+                                  fedf6044         4   data ,g         9
+  _TAS_StrAng_deg_f32_Write
+                                  fedf6048         4   data ,g         5
+  _TAS_StrAngVel_degps_f32_Write
+                                  fedf604c         4   data ,g         4
+  _TAS_SafetySts_NA_u8_Watch
+                                  fedf6050         1   data ,g        10
+  _TAS_TrqLossOfSignal_NA_bl_Watch
+                                  fedf6051         1   data ,g         5
+  _TAS_TrqAbnormal_NA_bl_Watch
+                                  fedf6052         1   data ,g         8
+  _TAS_Vres_FD_NA_bl_Watch
+                                  fedf6053         1   data ,g         8
+  _TAS_LossOfSignal_NA_bl_Watch
+                                  fedf6054         1   data ,g         4
+  _TAS_AngCntOutLim_NA_bl_Watch
+                                  fedf6055         1   data ,g         4
+  _TAS_AngOutLim_NA_bl_Watch
+                                  fedf6056         1   data ,g         4
+  _SWC_TAS_B
+                                  fedf6058        18   data ,g        1c
+  _SWC_TAS_DW
+                                  fedf6070        5c   data ,g        65
+  _SWC_TAS_M_.1
+                                  fedf60cc         4   data ,l         3
+FILE=DefaultBuild\RSENT_receive.obj
+                                  fedf60d0  fedf6163        94
+  _RSENT_data_fast
+                                  fedf60d0        24   data ,g         2
+  _PWM_Duty_Period
+                                  fedf60f4        40   data ,g         5
+  _Period_Duty_Errcount
+                                  fedf6134        30   data ,g        11
+FILE=DefaultBuild\UDS_FLASH.obj
+                                  fedf6164  fedf921b      30b8
+  _UFlash_fgCRCFinish_MP
+                                  fedf6164         1   data ,g         7
+  _UFlash_fgCheckProgramSecond_MP
+                                  fedf6165         1   data ,g         4
+  _UFlash_fgCheckCRCWrong_MP
+                                  fedf6166         1   data ,g         4
+  _UFlash_fgProgramVerify_MP
+                                  fedf6167         1   data ,g         4
+  _UFlash_fgWriteType_MP
+                                  fedf6168         1   data ,g         0
+  _UFlash_fgWriteSize_MP
+                                  fedf6169         1   data ,g         0
+  _UFlash_fgFirstCRC_MP
+                                  fedf616a         1   data ,g         6
+  _UFlash_fgWriteSizeLast_MP
+                                  fedf616b         1   data ,g         0
+  _UFlash_valRecDataForCheck_MP
+                                  fedf616c       ffd   data ,g         1
+  _UFlash_valRecDataForCRC_MP
+                                  fedf7169       ffd   data ,g         2
+  _UFlash_valWriteflashData_MP
+                                  fedf8166      107d   data ,g         3
+  _UFlash_valLastCRC_MP
+                                  fedf91e4         4   data ,g         5
+  _UFlash_numRecDataCount_MP
+                                  fedf91e8         4   data ,g         5
+  _UFlash_valSizeRecord_MP
+                                  fedf91ec         4   data ,g         5
+  _UFlash_valSizeResponse_MP
+                                  fedf91f0         4   data ,g         0
+  _UFlash_valSquceNum_MP
+                                  fedf91f4         4   data ,g         5
+  _UFlash_valRecDataLength_MP
+                                  fedf91f8         4   data ,g         0
+  _UFlash_valRMBASize_Remainder_MP
+                                  fedf91fc         4   data ,g         0
+  _UFlash_valRMBASize_Last_MP
+                                  fedf9200         4   data ,g         0
+  _UFlash_valRMBAaddress_Record_MP
+                                  fedf9204         4   data ,g         2
+  _UFlash_valRMBAaddress_Last_MP
+                                  fedf9208         4   data ,g         0
+  _UFlash_valRMBAaddress_Remainder_MP
+                                  fedf920c         4   data ,g         0
+  _UFlash_valProgramStruct_TDSTR
+                                  fedf9210         c   data ,g         7
+FILE=DefaultBuild\can_loader.obj
+                                  fedf921c  fedfa3e3      11c8
+  _CL_valMaskKey_MP
+                                  fedf921c         4   data ,g         1
+  _CL_valMaskKeySecond_MP
+                                  fedf9220         4   data ,g         1
+  _CL_valRecDataLength_MP
+                                  fedf9224         1   data ,g         a
+  _CL_valBlockCheckSumRec_MP
+                                  fedf9225         4   data ,g         1
+  _CL_valBlockCheckSumSelf_MP
+                                  fedf9229         4   data ,g         1
+  _CL_valFingerBuffArray_MP
+                                  fedf922d        98   data ,g         b
+  _UFlash_valRMBASize_MP
+                                  fedf92c8         4   data ,g         2
+  _UFlash_valRMBAaddress_MP
+                                  fedf92cc         4   data ,g         8
+  _CL_valRecCF_STR
+                                  fedf92d0         5   data ,g         e
+  _CL_valEffService_STR
+                                  fedf92d6      10da   data ,g        99
+  _CL_valSeedAndKey_STR
+                                  fedfa3b0        22   data ,g         8
+  _CFlash_valWriteAddressStartLast_MP
+                                  fedfa3d4         4   data ,g         2
+  _UN_INTBYTE
+                                  fedfa3d8         4   data ,g         1
+  _genRand
+                                  fedfa3dc         4   data ,g         1
+  _App_au8CmacResult
+                                  fedfa3e0         4   data ,g         1
+FILE=com7d
+                                  fedfa3e4  fedfa3e7         4
+  __REL_errno_obj
+                                  fedfa3e4         0   none ,l         1
+
+SECTION=.stack.bss
+FILE=DefaultBuild\cstart.obj
+                                  fedfa3e8  fedfa5e7       200
+  _stacktop
+                                  fedfa5e8         0   none ,l         1
+
+Absolute value symbols
+FILE=rlink_generates_01
+  __gp_data
+                                  00000000         0   none ,g         1
+  __ep_data
+                                  00000000         0   none ,g         1
+FILE=rlink_generates_02
+  __s.text
+                                  00004bf4         0   none ,g         0
+  __e.text
+                                  0001950c         0   none ,g         0
+  __S_text
+                                  00004bf4         0   none ,g         0
+  __E_text
+                                  0001950c         0   none ,g         0
+  __sRESET
+                                  00000000         0   none ,g         0
+  __eRESET
+                                  000001f8         0   none ,g         0
+  __SRESET
+                                  00000000         0   none ,g         0
+  __ERESET
+                                  000001f8         0   none ,g         0
+  __sEIINTTBL
+                                  00000200         0   none ,g         1
+  __eEIINTTBL
+                                  00000448         0   none ,g         0
+  __SEIINTTBL
+                                  00000200         0   none ,g         0
+  __EEIINTTBL
+                                  00000448         0   none ,g         0
+  __s.data
+                                  0001950c         0   none ,g         1
+  __e.data
+                                  0001a7c8         0   none ,g         1
+  __s.data.R
+                                  fede0000         0   none ,g         1
+  __e.data.R
+                                  fede12bc         0   none ,g         0
+  __S_data
+                                  0001950c         0   none ,g         0
+  __E_data
+                                  0001a7c8         0   none ,g         0
+  __S_data_R
+                                  fede0000         0   none ,g         0
+  __E_data_R
+                                  fede12bc         0   none ,g         0
+  __s.bss
+                                  fede12bc         0   none ,g         1
+  __e.bss
+                                  fedfa3e8         0   none ,g         1
+  __S_bss
+                                  fede12bc         0   none ,g         0
+  __E_bss
+                                  fedfa3e8         0   none ,g         0
+  __s.const
+                                  00004000         0   none ,g         0
+  __e.const
+                                  00004be0         0   none ,g         0
+  __S_const
+                                  00004000         0   none ,g         0
+  __E_const
+                                  00004be0         0   none ,g         0
+  __s.stack.bss
+                                  fedfa3e8         0   none ,g         0
+  __e.stack.bss
+                                  fedfa5e8         0   none ,g         0
+  __S_stack_bss
+                                  fedfa3e8         0   none ,g         0
+  __E_stack_bss
+                                  fedfa5e8         0   none ,g         0
+  __s.INIT_DSEC.const
+                                  00004be0         0   none ,g         1
+  __e.INIT_DSEC.const
+                                  00004bec         0   none ,g         1
+  __S_INIT_DSEC_const
+                                  00004be0         0   none ,g         0
+  __E_INIT_DSEC_const
+                                  00004bec         0   none ,g         0
+  __s.INIT_BSEC.const
+                                  00004bec         0   none ,g         1
+  __e.INIT_BSEC.const
+                                  00004bf4         0   none ,g         1
+  __S_INIT_BSEC_const
+                                  00004bec         0   none ,g         0
+  __E_INIT_BSEC_const
+                                  00004bf4         0   none ,g         0
+  __sboot_flg.const
+                                  00002000         0   none ,g         0
+  __eboot_flg.const
+                                  00002012         0   none ,g         0
+  __Sboot_flg_const
+                                  00002000         0   none ,g         0
+  __Eboot_flg_const
+                                  00002012         0   none ,g         0
+
+*** Unfilled Areas ***
+
+AREA                                START    END
+
+*** Delete Symbols ***
+
+SYMBOL                                SIZE    INFO

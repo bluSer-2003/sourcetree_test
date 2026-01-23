@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<MicomToolCommonProjectFile Version="1.00">
+  <CreatorType Name="CubeSuite+" Version="V8.13.00  [05 Dec 2024]" />
+  <Placeholders>
+    <PlaceholderPrefix>%</PlaceholderPrefix>
+    <PlaceholderPostfix>%</PlaceholderPostfix>
+  </Placeholders>
+  <Project Name="UDS_LIB_Relese" Type="Library">
+    <Files />
+    <Device Series="RH850">R7F701374xAFP</Device>
+    <BuildOptions Name="CC-RH" Version="V2.07.00">
+      <BuildMode Name="DefaultBuild" Active="True">
+        <CommonOptions />
+        <GeneralOptions>
+          <SimultaneouslyBuild>False</SimultaneouslyBuild>
+        </GeneralOptions>
+        <CompileOptions>
+          <Option>-Xobj_path=%BuildModeName%</Option>
+          <Option>-Xcpu=g3m</Option>
+          <Option>-g</Option>
+          <Option>-g_line</Option>
+          <Option>-c</Option>
+        </CompileOptions>
+        <AssembleOptions>
+          <Option>-Xobj_path=%BuildModeName%</Option>
+          <Option>-Xcpu=g3m</Option>
+          <Option>-g</Option>
+          <Option>-c</Option>
+        </AssembleOptions>
+        <LinkOptions>
+          <Option>-form=library=u</Option>
+          <Option>-output=%BuildModeName%\%ProjectName%.lib</Option>
+          <Option>-memory=high</Option>
+          <Option>-nologo</Option>
+          <Option>-EXIt</Option>
+        </LinkOptions>
+        <IOHeaderGenerationOptions>
+          <Option>"-df=D:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RH850\Devicefile\DR7F701374.DVF"</Option>
+          <Option>-o=E:\UDS\UDS_LIB_Relese\UDS_LIB_Relese\iodefine.h</Option>
+          <Option>-def=off</Option>
+          <Option>-f</Option>
+          <UpdateIOMode>None</UpdateIOMode>
+        </IOHeaderGenerationOptions>
+      </BuildMode>
+    </BuildOptions>
+  </Project>
+</MicomToolCommonProjectFile>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<systemvariables version="4">
+  <namespace name="" comment="">
+    <namespace name="MotorControl" comment="Motor Control Parameter System Variables">
+      
+      <!-- PI Controller Parameters -->
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="CurrentKp" comment="Current loop Kp parameter" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="CurrentKi" comment="Current loop Ki parameter" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="SpeedKp" comment="Speed loop Kp parameter" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="SpeedKi" comment="Speed loop Ki parameter" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="PositionKp" comment="Position loop Kp parameter" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="PositionKi" comment="Position loop Ki parameter" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="FieldWeakeningKp" comment="Field weakening Kp parameter" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="FieldWeakeningKi" comment="Field weakening Ki parameter" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <!-- Reference Values -->
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="IqRef" comment="Iq reference current" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="IdRef" comment="Id reference current" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="rpm" name="SpeedRef" comment="Speed reference" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="rad" name="PositionRef" comment="Position reference" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <!-- Limit Values -->
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="rpm" name="SpeedLimit" comment="Speed limit" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="CurrentLimit" comment="Current limit" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="FWCurrentLimit" comment="Field weakening current limit" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <!-- Protection Values -->
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="V" name="VoltageProtection" comment="Over-voltage protection" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="CurrentProtection" comment="Over-current protection" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <!-- Status Variables -->
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ConnectionStatus" comment="Connection status (0=offline, 1=online)" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="QueryActive" comment="Query status indicator" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="LastParamUpdated" comment="Last parameter code updated" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DisplayEnabled" comment="Parameter display enable/disable" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>1</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ModifyPending" comment="Parameter modification pending status" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <!-- Button Trigger Variables for Panel Interface -->
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyCurrentKp" comment="Button trigger to modify Current Kp" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyCurrentKi" comment="Button trigger to modify Current Ki" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifySpeedKp" comment="Button trigger to modify Speed Kp" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifySpeedKi" comment="Button trigger to modify Speed Ki" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyPositionKp" comment="Button trigger to modify Position Kp" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyPositionKi" comment="Button trigger to modify Position Ki" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyFieldWeakeningKp" comment="Button trigger to modify Field Weakening Kp" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyFieldWeakeningKi" comment="Button trigger to modify Field Weakening Ki" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyIqRef" comment="Button trigger to modify Iq Reference" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifySpeedRef" comment="Button trigger to modify Speed Reference" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyPositionRef" comment="Button trigger to modify Position Reference" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyVoltageProtection" comment="Button trigger to modify Voltage Protection" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnModifyCurrentProtection" comment="Button trigger to modify Current Protection" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnFlashDo" comment="Button trigger to execute Flash DO (save parameters)" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnSleepWakeup" comment="Button trigger for Sleep/Wakeup command (CAN2)" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnQueryAll" comment="Button trigger to query all parameters" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="BtnLoadCurrentValues" comment="Button trigger to load current values to input fields" bitcount="32" isSigned="true" encoding="65001" type="int">
+        <value>0</value>
+      </variable>
+      
+      <!-- Input Variables for Panel Interface -->
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="InputCurrentKp" comment="Input Current Kp value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="InputCurrentKi" comment="Input Current Ki value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="InputSpeedKp" comment="Input Speed Kp value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="InputSpeedKi" comment="Input Speed Ki value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="InputPositionKp" comment="Input Position Kp value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="InputPositionKi" comment="Input Position Ki value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="InputFieldWeakeningKp" comment="Input Field Weakening Kp value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="InputFieldWeakeningKi" comment="Input Field Weakening Ki value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="InputIqRef" comment="Input Iq reference value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="InputIdRef" comment="Input Id reference value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="rpm" name="InputSpeedRef" comment="Input Speed reference value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="rad" name="InputPositionRef" comment="Input Position reference value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="rpm" name="InputSpeedLimit" comment="Input Speed limit value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="InputCurrentLimit" comment="Input Current limit value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="InputFWCurrentLimit" comment="Input FW Current limit value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="V" name="InputVoltageProtection" comment="Input Voltage protection value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="A" name="InputCurrentProtection" comment="Input Current protection value" bitcount="32" isSigned="true" encoding="65001" type="float">
+        <value>0.0</value>
+      </variable>
+      
+    </namespace>
+  </namespace>
+</systemvariables>

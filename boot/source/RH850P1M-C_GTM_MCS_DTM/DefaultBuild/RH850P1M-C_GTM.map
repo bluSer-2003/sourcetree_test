@@ -1,0 +1,49 @@
+Renesas Optimizing Linker (V3.03.00 )             19-Dec-2022 20:39:33
+
+*** Options ***
+
+-MAKEUD=DefaultBuild\RH850P1M-C_GTM.lk.ud
+-subcommand=DefaultBuild\RH850P1M-C_GTM.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-debug
+-nocompress
+-NOOPtimize
+-output=DefaultBuild\RH850P1M-C_GTM.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\RH850P1M-C_GTM.map
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00000000  000001f7       1f8   200
+EIINTTBL
+                                  00000200  00000c73       a74   200
+.const
+                                  00008000  00008423       424   4
+.INIT_DSEC.const
+                                  00008424  0000842f         c   4
+.INIT_BSEC.const
+                                  00008430  00008437         8   4
+.text
+                                  00008438  0000b44b      3014   2
+.data
+                                  0000b44c  0000b70f       2c4   4
+.data.R
+                                  fede0000  fede02c3       2c4   4
+.bss
+                                  fede02c4  fede02df        1c   4
+.stack.bss
+                                  fede02e0  fede04df       200   4

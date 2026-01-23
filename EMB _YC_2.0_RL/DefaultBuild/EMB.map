@@ -1,0 +1,58 @@
+Renesas Optimizing Linker (W3.06.00 )             01-Nov-2024 20:25:45
+
+*** Options ***
+
+-MAKEUD=DefaultBuild\EMB.lk.ud
+-subcommand=DefaultBuild\EMB.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-debug
+-nocompress
+-NOOPtimize
+-output=DefaultBuild\EMB.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\EMB.map
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00000000  000001f7       1f8   200
+EIINTTBL
+                                  00000200  00000447       248   200
+.const
+                                  00008000  00008397       398   4
+.INIT_DSEC.const
+                                  00008398  000083a3         c   4
+.INIT_BSEC.const
+                                  000083a4  000083ab         8   4
+.text
+                                  000083ac  000188b1     10506   2
+.data
+                                  000188b4  00018beb       338   4
+.data.R
+                                  fede0000  fede0337       338   4
+.bss
+                                  fede0338  fedffc0f     1f8d8   4
+.stack.bss
+                                  fedffc10  fedffe0f       200   4

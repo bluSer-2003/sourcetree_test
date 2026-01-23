@@ -1,0 +1,415 @@
+QualityReport
+2026年1月20日 17:29:45
+
+------ Start build(EMB YC_2.0_FR, DefaultBuild) ------
+D:\CSPLus\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe source\main.c source\port.c source\gtm.c source\r_adc.c tmr.c Config_CSIH0\Config_CSIH0.c mttcan_a.c mttcan_p.c can_command.c standardports_p.c CAN_SPI.c PMIC.c canfd.c pi_controller.c flash\source\fad_sample_df.c flash\source\library\r_fad_common_api.c flash\source\library\r_fad_definition.c flash\source\library\r_fad_df_api.c flash\source\library\r_fad_local.c flash\source\library\r_fad_local_clock.c flash\fad_flash.c SENT\RSENT_receive.c global_struct.c source\temperature.c para_update.c source\Loop_Control.c source\Protection.c source\Gap_Control.c flash\Flash_ParaSet.c source\Brake.c source\Alignment.c UDS_APP\OBDII_APP_IO.c UDS_APP\OBDII_Diag_CallBack.c UDS_APP\OBDII_Diag_Snapshot.c UDS_APP\OBDII_DiagData_Detect.c UDS_APP\UDS_APP.c UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC.c UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c UDS_APP\UDS_LIB_Relese\UDS_LIB\UDS_Version.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -IUDS_APP\UDS_LIB_Relese\h -IUDS_APP\UDS_LIB_Relese\UDS_LIB -IUDS_APP -Iflash -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(40):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(41):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(42):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(43):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(44):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(45):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(46):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(47):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(49):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+source\r_compiler.h(119):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(120):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(121):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(122):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(123):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(124):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(125):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(126):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(134):W0520301:Typedef name has already been declared (with same type)
+source\r_adc.c(96):W0520177:Function "R_ADC_ScanGroupInit_Hardwaretrigger" was declared but never referenced
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\rtwtypes.h(30):W0520009:Nested comment is not allowed
+mttcan_a.c(238):W0520177:Variable "SendStatus_u08" was declared but never referenced
+mttcan_a.c(552):W0520177:Variable "FilterEntry0" was declared but never referenced
+mttcan_a.c(554):W0520177:Variable "FilterEntry1" was declared but never referenced
+mttcan_a.c(556):W0520177:Variable "FilterEntry2" was declared but never referenced
+mttcan_a.c(558):W0520177:Variable "FilterEntry3" was declared but never referenced
+mttcan_a.c(560):W0520177:Variable "FilterEntry4" was declared but never referenced
+mttcan_a.c(562):W0520177:Variable "FilterEntry5" was declared but never referenced
+mttcan_a.c(564):W0520177:Variable "FilterEntry6" was declared but never referenced
+mttcan_a.c(566):W0520177:Variable "FilterEntry7" was declared but never referenced
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\rtwtypes.h(30):W0520009:Nested comment is not allowed
+mttcan_p.c(493):W0520111:Statement is unreachable
+mttcan_p.c(517):W0520111:Statement is unreachable
+mttcan_p.c(1102):W0520069:Integer conversion resulted in truncation
+can_command.c(283):W0520167:Argument of type "u16 *" is incompatible with parameter of type "const Uint16 *"
+can_command.c(79):W0520550:Variable "NodeID" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+canfd.c(34):W0520147:Declaration is incompatible with "uint16_T CANfd_Password" (declared at line 160 of "canfd.h")
+canfd.c(228):W0520167:Argument of type "CAN_FD_MESSAGE_BUS *" is incompatible with parameter of type "uint8 *"
+canfd.c(245):W0520147:Declaration is incompatible with "void Recive_Signal_0x6E0(uint8 *)" (declared at line 124)
+canfd.c(394):W0520147:Declaration is incompatible with "void Recive_Signal_0x6EF(uint8 *)" (declared at line 125)
+canfd.c(878):W0520068:Integer conversion resulted in a change of sign
+canfd.c(929):W0520167:Argument of type "uint8_T *" is incompatible with parameter of type "rx_type *"
+canfd.c(935):W0520167:Argument of type "uint8_T *" is incompatible with parameter of type "rx_type *"
+canfd.c(1092):W0520186:Pointless comparison of unsigned integer with zero
+canfd.c(1099):W0520186:Pointless comparison of unsigned integer with zero
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+flash\fad_flash.c(132):W0520167:Argument of type "unsigned char *" is incompatible with parameter of type "T_u4 *"
+flash\fad_flash.c(136):W0520167:Argument of type "unsigned char *" is incompatible with parameter of type "T_u4 *"
+flash\fad_flash.c(101):W0520550:Variable "Bootloader_FLG" was set but never used
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(40):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(41):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(42):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(43):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(44):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(45):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(46):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(47):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\UDS_APP\UDS_LIB_Relese\h\struct.h(49):W0520301:Typedef name has already been declared (with same type)
+hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+rtwtypes.h(30):W0520009:Nested comment is not allowed
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\source\r_compiler.h(119):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\source\r_compiler.h(120):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\source\r_compiler.h(121):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\source\r_compiler.h(122):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\source\r_compiler.h(123):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\source\r_compiler.h(124):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\source\r_compiler.h(125):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\source\r_compiler.h(126):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\source\r_compiler.h(134):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+source\r_compiler.h(119):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(120):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(121):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(122):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(123):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(124):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(125):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(126):W0520301:Typedef name has already been declared (with same type)
+source\r_compiler.h(134):W0520301:Typedef name has already been declared (with same type)
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+UDS_APP\OBDII_APP_IO.c(17):W0520513:A value of type "int" cannot be assigned to an entity of type "uint8 *"
+UDS_APP\OBDII_APP_IO.c(17):W0520152:Conversion of nonzero integer to pointer
+UDS_APP\OBDII_APP_IO.c(19):W0520513:A value of type "int" cannot be assigned to an entity of type "uint8 *"
+UDS_APP\OBDII_APP_IO.c(19):W0520152:Conversion of nonzero integer to pointer
+UDS_APP\OBDII_APP_IO.c(21):W0520513:A value of type "int" cannot be assigned to an entity of type "uint8 *"
+UDS_APP\OBDII_APP_IO.c(21):W0520152:Conversion of nonzero integer to pointer
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+UDS_APP\OBDII_Diag_CallBack.c(244):W0520550:Variable "OBDII_paraInOut_LO" was set but never used
+UDS_APP\OBDII_Diag_CallBack.c(287):W0520111:Statement is unreachable
+UDS_APP\OBDII_Diag_CallBack.c(316):W0520111:Statement is unreachable
+UDS_APP\OBDII_Diag_CallBack.c(320):W0520111:Statement is unreachable
+UDS_APP\OBDII_Diag_CallBack.c(358):W0520177:Variable "CDI_i" was declared but never referenced
+UDS_APP\OBDII_Diag_CallBack.c(414):W0520513:A value of type "unsigned int" cannot be assigned to an entity of type "uint32 *"
+UDS_APP\OBDII_Diag_CallBack.c(414):W0520152:Conversion of nonzero integer to pointer
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+UDS_APP\OBDII_Diag_Snapshot.c(272):W0520177:Variable "cnt" was declared but never referenced
+UDS_APP\OBDII_Diag_Snapshot.c(285):W0520177:Variable "val_did" was declared but never referenced
+UDS_APP\OBDII_Diag_Snapshot.c(387):W0520127:Expected a statement
+UDS_APP\OBDII_Diag_Snapshot.c(303):W0520177:Variable "EE_fgWriteFinish_LO" was declared but never referenced
+UDS_APP\OBDII_Diag_Snapshot.c(304):W0520177:Variable "i" was declared but never referenced
+UDS_APP\OBDII_Diag_Snapshot.c(304):W0520177:Variable "j" was declared but never referenced
+UDS_APP\OBDII_Diag_Snapshot.c(304):W0520177:Variable "k" was declared but never referenced
+UDS_APP\OBDII_Diag_Snapshot.c(304):W0520177:Variable "m" was declared but never referenced
+UDS_APP\OBDII_Diag_Snapshot.c(305):W0520177:Variable "DTC_CurrentNum" was declared but never referenced
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC.c(2210):W0520042:Operand types are incompatible ("ubyte *" and "Snapshot_ofDTC *")
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC.c(2292):W0520042:Operand types are incompatible ("ubyte *" and "Snapshot_ofDTC *")
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC.c(3268):W0520513:A value of type "const uds_InOut_Ctrl *" cannot be assigned to an entity of type "uds_InOut_Ctrl *"
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC.c(3303):W0520042:Operand types are incompatible ("const OBD_DiagData_Inf *" and "DiagData_CSTR *")
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC.c(3313):W0520042:Operand types are incompatible ("const OBD_VehData_Inf *" and "DiagData_CSTR *")
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(273):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "void *"
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(273):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "const void *"
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(284):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "void *"
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(284):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "const void *"
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(294):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "void *"
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(294):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "const void *"
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(305):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "void *"
+UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(305):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "const void *"
+D:\CSPLus\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe source\boot.asm source\cstart.asm -Xobj_path=DefaultBuild -Xcpu=g3m -g -c -Xmsg_lang=english
+D:\CSPLus\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB YC_2.0_FR.clnk"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+W0561322:Section alignment mismatch : ".text"
+W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR>APP_PostBuild.bat
+填充中
+填充完成
+------ Build ended(Error:0, Warning:128)(EMB YC_2.0_FR, DefaultBuild) ------
+
+--- CommandFile 1 ---
+DefaultBuild\EMB YC_2.0_FR.clnk :
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\CAN_SPI.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\canfd.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\Loop_Control.obj
+-input=DefaultBuild\Protection.obj
+-input=DefaultBuild\Gap_Control.obj
+-input=DefaultBuild\Flash_ParaSet.obj
+-input=DefaultBuild\Brake.obj
+-input=DefaultBuild\Alignment.obj
+-input=DefaultBuild\OBDII_APP_IO.obj
+-input=DefaultBuild\OBDII_Diag_CallBack.obj
+-input=DefaultBuild\OBDII_Diag_Snapshot.obj
+-input=DefaultBuild\OBDII_DiagData_Detect.obj
+-input=DefaultBuild\UDS_APP.obj
+-input=DefaultBuild\OBDII_DTC.obj
+-input=DefaultBuild\OBDII_DTC_Trans_Protocol.obj
+-input=DefaultBuild\UDS_Version.obj
+-library=UDS_APP\UDS_LIB.lib
+-debug
+-nocompress
+-NOOPtimize
+-output="DefaultBuild\EMB YC_2.0_FR.abs"
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list="DefaultBuild\EMB YC_2.0_FR.map"
+-start=RESET,EIINTTBL/00020000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00024000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+-input="DefaultBuild\EMB YC_2.0_FR.abs"
+-output="DefaultBuild\EMB YC_2.0_FR.hex"
+-form=hexadecimal
+-exit
+
+
+--- SHA1 hash value of output files ---
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\DefaultBuild\EMB YC_2.0_FR.abs: ba7fdc425e90caac8789bf596037e009caa23c52
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\DefaultBuild\EMB YC_2.0_FR.hex: 8711bb3ee767ea0039270b9f5054618fab11240b
+
+
+--- System Information ---
+*OS Version
+ Microsoft Windows 11 家庭中文版 (-, 10.0.26100, WOW64)
+*Language
+ 中文(中国)
+*.NET Framework Version
+ Microsoft .NET Framework 4 [.NET 4.8 or later] (533320)
+
+--- Application Information ---
+*Product Name
+ CS+ for CC
+*Package Version
+ V8.11.00  [30 Nov 2023]
+*Version
+ V9.11.00.04 [30 Oct 2023]
+*Assembly Version
+ 3.12.10.1
+*Sales Area
+ Global
+*Product License
+ 
+*Execution Place
+ D:\CSPLus\CS+\CC
+*Memory Usage
+ *Private Working Set
+  360 MB
+ *Number of GDI Objects
+  2213
+ *Number of USER Objects
+  1053
+ *Opened Files
+  7 editors, 7 files, 96 KB
+
+--- Build Tool Plug-in Information ---
+RH850 Build tool CC-RH Plug-in
+ *Version
+  V8.09.00.00 [07 Oct 2022]
+ *Assembly Version
+  1.1.10.12
+ *DLL File Name
+  BuildToolCCRH.dll
+RL78 Build tool CC-RL Plug-in
+ *Version
+  V8.11.00.00 [29 Sep 2023]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  BuildToolCCRL.dll
+RX Build tool CC-RX Plug-in
+ *Version
+  V8.09.00.00 [07 Oct 2022]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  BuildToolCCRX.dll
+RH850 Build tool GHS CCRH850 Plug-in
+ *Version
+  V1.08.00.00 [03 Apr 2023]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  BuildToolGHSCCRH850.dll
+
+--- Debug Tool Plug-in Information ---
+Debugger Collection Plug-in
+ *Version
+  V8.11.00.03 [21 Nov 2023]
+ *Assembly Version
+  2.12.10.1
+ *DLL File Name
+  DebugToolCollection.dll
+
+--- Other Plug-in Information ---
+Code Generator Plug-in for RH850
+ *Version
+  V1.02.02.05 [25 May 2018]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  CodeGeneratorRH850.dll
+Code Generator Plug-in
+ *Version
+  V4.08.06.01 [28 Oct 2022]
+ *Assembly Version
+  3.0.0.0
+ *DLL File Name
+  CodePart.dll
+Code Generator/PinView Plug-in
+ *Version
+  V2.10.07.02 [08 Nov 2021]
+ *Assembly Version
+  1.0.0.0
+ *DLL File Name
+  CodePart2.dll
+Debug Console Plug-in
+ *Version
+  V8.09.00.03 [24 Nov 2022]
+ *Assembly Version
+  8.9.0.0
+ *DLL File Name
+  DebugConsole.dll
+Quick and Effective tool solution - QE
+ *Version
+  V9.11.00.03 [13 Oct 2023]
+ *Assembly Version
+  1.15.10.16
+ *DLL File Name
+  InCarTools.dll
+Pin Configurator Plug-in
+ *Version
+  V1.54.01.01 [31 Jul 2014]
+ *Assembly Version
+  1.6.10.23
+ *DLL File Name
+  PinConfig.dll
+Program Analyzer Plug-in
+ *Version
+  V4.13.00.03 [24 May 2023]
+ *Assembly Version
+  3.12.11.9
+ *DLL File Name
+  ProgramAnalyzer.dll
+IronPython Console Plug-in
+ *Version
+  V1.47.00.02 [01 Nov 2023]
+ *Assembly Version
+  1.6.10.23
+ *DLL File Name
+  PythonConsole.dll
+Editor plug-in DLL
+ *Version
+  V1.19.00.01 [24 Oct 2022]
+ *Assembly Version
+  1.1.0.0
+ *DLL File Name
+  SEditor.dll
+Stack Usage Tracer
+ *Version
+  V1.05.00.02 [30 Jul 2014]
+ *Assembly Version
+  1.30.11.15
+ *DLL File Name
+  Stk.dll
+Update Manager Plug-in
+ *Version
+  V2.03.00.02 [29 Oct 2018]
+ *Assembly Version
+  1.13.6.20
+ *DLL File Name
+  Update.dll
+
+Debug Tool Common Interface
+ *Version
+  V8.11.00.03 [21 Nov 2023]
+ *Assembly Version
+  3.12.10.1
+ *DLL File Name
+  CommonDebuggerInterface.dll
+Device Information Common Interface
+ *Version
+  V9.11.00.03 [13 Oct 2023]
+ *Assembly Version
+  3.0.0.0
+ *DLL File Name
+  DeviceInformation.dll
+
+--- Main Project Information ---
+D:\EMB\1_20YCcode\11111\EMB_YC2.0_FR\EMB _YC_2.0_FR\EMB YC_2.0_FR.mtpj
+Microcontroller Information
+ *R7F701374xAFP
+  *File Name: Version
+   RH850_Productlist.xml: V8.100000
+   R7F701374xAFP_common.xml: V1.30.00.XX.XX
+   DR7F701374.DVF: V1.30
+   -: -
+   -: -
+  
+
+Build Tool Information
+ *CC-RH
+   * Version of plug-in(*.dll)
+     V8.11.00.02 [27 Oct 2023]
+   * The Version of the Compiler Package
+     V2.06.00
+  
+
+Debug Tool Information
+ *RH850 E2
+  Debugger Library V8.11.00.03 [21 Nov 2023]
+  
+
+Other Tool Information
+ *None
+
+ *None
+
+ *None
+
+ *None
+
+ *Program Analyzer
+  *Version
+   V4.13.00.03 [24 May 2023]
+
+ *None
+
+

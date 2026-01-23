@@ -1,0 +1,311 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: Rx Tx
+
+
+BO_ 801 EPS_StreeingWheelAngle: 8 Tx
+ SG_ SummationCheck : 63|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ SbwStateFlow : 42|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ RollingCounter : 51|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ EPS_Tx_SteeringAngleSpeed : 23|8@0+ (4,0) [0|500] "" Vector__XXX
+ SG_ EPS_Tx_AngFailure : 24|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ EPS_Tx_AngCalsts : 25|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ EPS_StreeingWheelAngle : 7|16@0+ (0.0625,-2048) [-500|500] "" Vector__XXX
+ SG_ EPS_Fault_Rank : 35|4@0+ (1,0) [0|5] "" Vector__XXX
+
+BO_ 775 EPS_Request: 8 Tx
+ SG_ SummationCheck : 63|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ RollingCounter : 51|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ EPS_Rx_SteeringAngleSpeed : 7|4@0+ (20,0) [0|300] "" Vector__XXX
+ SG_ EPS_Rx_SteeringAngle : 15|16@0+ (0.0625,-2048) [-500|500] "" Vector__XXX
+ SG_ EPS_Rx_ReqControlEPS : 3|4@0+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 32 FLASH_DO_CMD: 1 Tx
+ SG_ FlashCommand : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 64 PARAM_ADJUST_CMD: 8 Tx
+ SG_ ParamCode   : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ ReadWrite   : 8|8@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ ParamValue1 : 16|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ ParamValue2 : 32|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ ParamValue3 : 48|16@1+ (1,0) [0|65535] "" Vector__XXX
+
+BO_ 96 FEEDBACK_CONTROL_CMD: 2 Tx
+ SG_ OpCode      : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ SelectCode  : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 128 ERROR_QUERY_CMD: 1 Tx
+ SG_ QueryCode   : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 160 VERSION_QUERY_CMD: 1 Tx
+ SG_ QueryCode   : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 416 VEHICLE_SPEED_CMD: 4 Tx
+ SG_ VehSpeedData : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+
+BO_ 480 CONTROL_MODE_CMD: 1 Tx
+ SG_ ModeCode    : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 832 MOTOR_CURRENT_FEEDBACK: 8 Rx
+ SG_ Iq_Set      : 0|16@1- (0.01,0) [-327.67|327.67] "A" Vector__XXX
+ SG_ Iq_Fb       : 16|16@1- (0.01,0) [-327.67|327.67] "A" Vector__XXX
+ SG_ Id_Set      : 32|16@1- (0.01,0) [-327.67|327.67] "A" Vector__XXX
+ SG_ Id_Fb       : 48|16@1- (0.01,0) [-327.67|327.67] "A" Vector__XXX
+
+BO_ 864 MOTOR_SPEED_FEEDBACK: 8 Rx
+ SG_ Speed_Set   : 0|32@1- (0.1,0) [-214748364.7|214748364.7] "rpm" Vector__XXX
+ SG_ Speed_Fb    : 32|32@1- (0.1,0) [-214748364.7|214748364.7] "rpm" Vector__XXX
+
+BO_ 896 MOTOR_POSITION_FEEDBACK: 8 Rx
+ SG_ Pos_Set     : 0|32@1- (0.1,0) [-214748364.7|214748364.7] "Deg" Vector__XXX
+ SG_ Pos_Fb      : 32|32@1- (0.1,0) [-214748364.7|214748364.7] "Deg" Vector__XXX
+
+BO_ 928 BUS_VOLTAGE_FEEDBACK: 8 Rx
+ SG_ VDC_Main    : 0|16@1- (0.1,0) [-3276.8|3276.7] "V" Vector__XXX
+ SG_ VDC_Max     : 16|16@1- (0.1,0) [-3276.8|3276.7] "V" Vector__XXX
+ SG_ VDC_Min     : 32|16@1- (0.1,0) [-3276.8|3276.7] "V" Vector__XXX
+ SG_ VDC_Board   : 48|16@1- (0.1,0) [-3276.8|3276.7] "V" Vector__XXX
+
+BO_ 960 THREE_PHASE_CURRENT_FEEDBACK: 8 Rx
+ SG_ IA_Current  : 0|16@1- (0.01,0) [-327.68|327.67] "A" Vector__XXX
+ SG_ IB_Current  : 16|16@1- (0.01,0) [-327.68|327.67] "A" Vector__XXX
+ SG_ IC_Current  : 32|16@1- (0.01,0) [-327.68|327.67] "A" Vector__XXX
+ SG_ IMax_Current : 48|16@1- (0.01,0) [-327.68|327.67] "A" Vector__XXX
+
+BO_ 1008 TEMPERATURE_FEEDBACK: 8 Rx
+ SG_ Temperature : 0|16@1- (0.1,0) [-3276.8|3276.7] "°C" Vector__XXX
+ SG_ Temp_Status : 16|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ Reserved_1  : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved_2  : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved_3  : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved_4  : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 576 PARAM_ADJUST_RESPONSE: 8 Rx
+ SG_ ParamCode   : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ ReadWrite   : 8|8@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ ParamValue1 : 16|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ ParamValue2 : 32|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ ParamValue3 : 48|16@1+ (1,0) [0|65535] "" Vector__XXX
+
+BO_ 546 FEEDBACK_CONFIRM: 8 Rx
+ SG_ ConfirmCode1 : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ ConfirmCode2 : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved1    : 16|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved2    : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved3    : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved4    : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved5    : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved6    : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 640 ERROR_STATUS: 8 Rx
+ SG_ Fault_Bit0_PosError : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit1_OverCurrent : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit2_Fault5060 : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit3_SteerLock : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit4_UnderVoltage : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit5_OverVoltage : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit6_No_Alignment_data : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit7_OverTemp : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit8_CtrlUnderVolt : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit9_CtrlOverVolt : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit10_OverSpeed : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit11_OverRange : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit12_TAS_Timeout : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit13_TAS_Angle_Error : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit14_Tempsenser_Error : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Fault_Bit15_Angle_control_outrange : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 672 VERSION_INFO: 8 Rx
+ SG_ Version_Major : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Version_Minor : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Version_Patch : 23|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved_Byte3 : 31|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Build_Year : 39|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Build_Month : 47|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Build_Day : 55|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved_Byte7 : 63|8@0+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 992 CONTROL_MODE_RESPONSE: 8 Rx
+ SG_ ModeCode    : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved1   : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved2   : 16|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved3   : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved4   : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved5   : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved6   : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ Reserved7   : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_TX_BU_ 801 : Rx,Tx;
+BO_TX_BU_ 775 : Rx,Tx;
+BO_TX_BU_ 32 : Rx,Tx;
+BO_TX_BU_ 64 : Rx,Tx;
+BO_TX_BU_ 96 : Rx,Tx;
+BO_TX_BU_ 128 : Rx,Tx;
+BO_TX_BU_ 160 : Rx,Tx;
+BO_TX_BU_ 416 : Rx,Tx;
+BO_TX_BU_ 480 : Rx,Tx;
+BO_TX_BU_ 832 : Rx,Tx;
+BO_TX_BU_ 864 : Rx,Tx;
+BO_TX_BU_ 896 : Rx,Tx;
+BO_TX_BU_ 928 : Rx,Tx;
+BO_TX_BU_ 960 : Rx,Tx;
+BO_TX_BU_ 1008 : Rx,Tx;
+BO_TX_BU_ 576 : Rx,Tx;
+BO_TX_BU_ 546 : Rx,Tx;
+BO_TX_BU_ 640 : Rx,Tx;
+BO_TX_BU_ 672 : Rx,Tx;
+BO_TX_BU_ 992 : Rx,Tx;
+
+CM_ SG_ 801 SummationCheck "校验和";
+CM_ SG_ 801 SbwStateFlow "EPS控制模式";
+CM_ SG_ 801 RollingCounter "循环计数校验";
+CM_ SG_ 801 EPS_Tx_SteeringAngleSpeed "EPS转向角速度";
+CM_ SG_ 801 EPS_Tx_AngFailure "EPS转角传感器故障状态";
+CM_ SG_ 801 EPS_Tx_AngCalsts "EPS转角传感器状态";
+CM_ SG_ 801 EPS_StreeingWheelAngle "EPS指示方向盘角度";
+CM_ SG_ 801 EPS_Fault_Rank "EPS故障等级";
+CM_ SG_ 775 SummationCheck "校验和";
+CM_ SG_ 775 RollingCounter "循环计数校验";
+CM_ SG_ 775 EPS_Rx_SteeringAngleSpeed "EPS转向角速度请求";
+CM_ SG_ 775 EPS_Rx_SteeringAngle "EPS转向角度";
+CM_ SG_ 775 EPS_Rx_ReqControlEPS "EPS控制请求";
+
+CM_ BO_ 32 "Flash执行命令帧（0x020），上位机->下位机，1字节";
+CM_ SG_ 32 FlashCommand "Flash命令：0x01=执行Flash操作";
+
+CM_ BO_ 64 "参数调整命令帧（0x040），上位机->下位机，8字节";
+CM_ SG_ 64 ParamCode "参数代码: 0xA1=电流Kp, 0xA2=电流Ki, 0xA3=电流Iq/Id设定, 0xB1=速度Kp, 0xB2=速度Ki, 0xB3=速度设定/限幅, 0xC1=位置Kp, 0xC2=位置Ki, 0xC3=位置设定/限幅, 0xD1=弱磁Kp, 0xD2=弱磁Ki, 0xD3=弱磁限幅";
+CM_ SG_ 64 ReadWrite "读写标志：0=读取，1=写入";
+CM_ SG_ 64 ParamValue1 "参数值1: 对于Kp/Ki类型=系数×1000或×10000，对于A3/B3/C3类型=保留或符号位";
+CM_ SG_ 64 ParamValue2 "参数值2: 对于A3=Iq设定值×100，对于B3=速度设定值，对于C3=位置设定值×1000，对于其他=保留";
+CM_ SG_ 64 ParamValue3 "参数值3: 对于A3=Id设定值×100，对于B3/C3=电流限幅×100，对于其他=保留";
+
+CM_ BO_ 96 "反馈控制命令帧（0x060），上位机->下位机，2字节";
+CM_ SG_ 96 OpCode "操作码: 0x01=开始高频反馈(1ms发送所有数据), 0x00=停止反馈";
+CM_ SG_ 96 SelectCode "选择码: 任意值(系统会发送所有反馈类型: 电流+转速+位置+母线电压+三相电流+温度)";
+
+CM_ BO_ 128 "故障码查询命令帧（0x080），上位机->下位机，1字节";
+CM_ SG_ 128 QueryCode "查询码: 0x04=查询故障状态";
+
+CM_ BO_ 160 "版本信息查询命令帧（0x0A0），上位机->下位机，1字节";
+CM_ SG_ 160 QueryCode "查询码: 0x05=查询版本信息";
+
+CM_ BO_ 416 "车速命令帧（0x1A0），上位机->下位机，4字节";
+CM_ SG_ 416 VehSpeedData "车速数据，原始CAN数据";
+
+CM_ BO_ 480 "控制模式命令帧（0x1E0），上位机->下位机，1字节";
+CM_ SG_ 480 ModeCode "模式代码: 0x00=对齐, 0x01=开环, 0x0A=电流环, 0x0B=速度环, 0x0C=位置环, 0x0D=JWD环, 0x0F=停止";
+
+CM_ BO_ 832 "电流反馈数据帧（0x340），下位机->上位机，8字节";
+CM_ SG_ 832 Iq_Set "Q轴电流设定值";
+CM_ SG_ 832 Iq_Fb "Q轴电流反馈值";
+CM_ SG_ 832 Id_Set "D轴电流设定值";
+CM_ SG_ 832 Id_Fb "D轴电流反馈值";
+
+CM_ BO_ 864 "转速反馈数据帧（0x360），下位机->上位机，8字节";
+CM_ SG_ 864 Speed_Set "转速设定值";
+CM_ SG_ 864 Speed_Fb "转速反馈值";
+
+CM_ BO_ 896 "位置反馈数据帧（0x380），下位机->上位机，8字节";
+CM_ SG_ 896 Pos_Set "位置设定值";
+CM_ SG_ 896 Pos_Fb "位置反馈值";
+
+CM_ BO_ 928 "母线电压反馈数据帧（0x3A0），下位机->上位机，8字节";
+CM_ SG_ 928 VDC_Main "主母线电压";
+CM_ SG_ 928 VDC_Max "最大母线电压";
+CM_ SG_ 928 VDC_Min "最小母线电压";
+CM_ SG_ 928 VDC_Board "控制板电源电压";
+
+CM_ BO_ 960 "三相电流反馈数据帧（0x3C0），下位机->上位机，8字节";
+CM_ SG_ 960 IA_Current "A相电流";
+CM_ SG_ 960 IB_Current "B相电流";
+CM_ SG_ 960 IC_Current "C相电流";
+CM_ SG_ 960 IMax_Current "最大电流";
+
+CM_ BO_ 1008 "温度反馈数据帧（0x3F0），下位机->上位机，8字节";
+CM_ SG_ 1008 Temperature "系统温度";
+CM_ SG_ 1008 Temp_Status "温度状态: bit0=高温报警(>=95℃), bit1=温度传感器故障, bit2-15=保留";
+CM_ SG_ 1008 Reserved_1 "保留字节1";
+CM_ SG_ 1008 Reserved_2 "保留字节2";
+CM_ SG_ 1008 Reserved_3 "保留字节3";
+CM_ SG_ 1008 Reserved_4 "保留字节4";
+
+CM_ BO_ 576 "参数调整响应帧（0x240），下位机->上位机，8字节";
+CM_ SG_ 576 ParamCode "参数代码: 与命令帧相同";
+CM_ SG_ 576 ReadWrite "读写标志: 0=读取响应";
+CM_ SG_ 576 ParamValue1 "参数值1: 实际参数值，换算规则与命令帧相同";
+CM_ SG_ 576 ParamValue2 "参数值2: 实际参数值，换算规则与命令帧相同";
+CM_ SG_ 576 ParamValue3 "参数值3: 实际参数值，换算规则与命令帧相同";
+
+CM_ BO_ 546 "反馈确认帧（0x222），下位机->上位机，8字节";
+CM_ SG_ 546 ConfirmCode1 "确认码1";
+CM_ SG_ 546 ConfirmCode2 "确认码2";
+
+CM_ BO_ 640 "错误状态帧（0x280），下位机->上位机，8字节";
+CM_ SG_ 640 Fault_Bit0_PosError "定位错误";
+CM_ SG_ 640 Fault_Bit1_OverCurrent "三相电流过流";
+CM_ SG_ 640 Fault_Bit2_Fault5060 "5060报警";
+CM_ SG_ 640 Fault_Bit3_SteerLock "转向卡滞";
+CM_ SG_ 640 Fault_Bit4_UnderVoltage "母线欠压（未进弱磁大于2s）";
+CM_ SG_ 640 Fault_Bit5_OverVoltage "母线过压";
+CM_ SG_ 640 Fault_Bit6_No_Alignment_data "电机角度零位未标定";
+CM_ SG_ 640 Fault_Bit7_OverTemp "过温保护";
+CM_ SG_ 640 Fault_Bit8_CtrlUnderVolt "控制器欠压持续5s小于8.5V";
+CM_ SG_ 640 Fault_Bit9_CtrlOverVolt "控制器过压持续5s大于18V";
+CM_ SG_ 640 Fault_Bit10_OverSpeed "超速保护持续10ms超过4000";
+CM_ SG_ 640 Fault_Bit11_OverRange "超差保护";
+CM_ SG_ 640 Fault_Bit12_TAS_Timeout "TAS传感器超时断线5ms";
+CM_ SG_ 640 Fault_Bit13_TAS_Angle_Error "TAS角度数据异常";
+CM_ SG_ 640 Fault_Bit14_Tempsenser_Error "温度检测信号无效";
+CM_ SG_ 640 Fault_Bit15_Angle_control_outrange "角度控制信号越界";
+
+CM_ BO_ 672 "版本信息帧（0x290），下位机->上位机，8字节";
+CM_ SG_ 672 Version_Major "主版本号 (例如: 1)";
+CM_ SG_ 672 Version_Minor "次版本号 (例如: 2)";
+CM_ SG_ 672 Version_Patch "修订版本号 (例如: 2)";
+CM_ SG_ 672 Reserved_Byte3 "保留字节3";
+CM_ SG_ 672 Build_Year "烧录年份 (例如: 25表示2025年)";
+CM_ SG_ 672 Build_Month "烧录月份 (例如: 7表示7月)";
+CM_ SG_ 672 Build_Day "烧录日期 (例如: 7表示7日)";
+CM_ SG_ 672 Reserved_Byte7 "保留字节7";
+
+CM_ BO_ 992 "控制模式响应帧（0x3E0），下位机->上位机，8字节";
+CM_ SG_ 992 ModeCode "模式代码: 0x00=对齐模式, 0x01=开环模式, 0x0A=电流环模式, 0x0B=速度环模式, 0x0C=位置环模式, 0x0D=JWD环模式, 0x0F=停止模式";
+
+BA_DEF_  "MultiplexExtEnabled" ENUM  "No","Yes";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "MultiplexExtEnabled" "No";
+BA_DEF_DEF_  "BusType" "CAN";

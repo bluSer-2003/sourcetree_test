@@ -1,0 +1,52 @@
+Renesas Optimizing Linker (W3.05.00 )             19-Jan-2024 10:24:41
+
+*** Options ***
+
+-MAKEUD=DefaultBuild\booster_4911_0118.lk.ud
+-subcommand=DefaultBuild\booster_4911_0118.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-debug
+-nocompress
+-NOOPtimize
+-output=DefaultBuild\booster_4911_0118.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\booster_4911_0118.map
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00000000  000001f7       1f8   200
+EIINTTBL
+                                  00000200  00000447       248   200
+.const
+                                  00008000  000082cb       2cc   4
+.INIT_DSEC.const
+                                  000082cc  000082d7         c   4
+.INIT_BSEC.const
+                                  000082d8  000082df         8   4
+.text
+                                  000082e0  0000d375      5096   2
+.data
+                                  0000d378  0000d52b       1b4   4
+.data.R
+                                  fede0000  fede01b3       1b4   4
+.bss
+                                  fede01b4  fede04ef       33c   4
+.stack.bss
+                                  fede04f0  fede06ef       200   4

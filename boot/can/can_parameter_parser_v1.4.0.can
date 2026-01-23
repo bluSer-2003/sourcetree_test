@@ -1,0 +1,1300 @@
+/*@!Encoding:936*/
+/*
+ * CAPL Script: Motor Control Parameter Parser with Panel Support
+ * Function: Parse PI controller parameters from CAN communication
+ * Author: Generated for JWD Motor Controller
+ * Date: 2025-07-11
+ * 
+ * DBC Compatibility:
+ * - Parameter Commands: CAN1, ID 0x40 (64) �?Response ID 0x240 (576)
+ * - Flash DO Command: CAN1, ID 0x20 (32), 1 byte, value 0x01
+ * - Sleep/Wakeup: CAN2, ID 0x1E0 (control mode command per DBC)
+ * 
+ * CAN Channel Usage:
+ * - CAN1: Parameter control, Flash commands (private)
+ * - CAN2: Public communication, sleep/wakeup (public)
+ */
+
+variables
+{
+    // Local control variables
+    msTimer query_timer;
+    msTimer modify_timer;
+    msTimer button_monitor_timer;
+    int query_state = 0;
+    
+    // Local variables for parameter processing
+    float current_kp = 0.0;
+    float current_ki = 0.0;
+    float speed_kp = 0.0;
+    float speed_ki = 0.0;
+    float position_kp = 0.0;
+    float position_ki = 0.0;
+    float fieldweakening_kp = 0.0;
+    float fieldweakening_ki = 0.0;
+    
+    float iq_ref = 0.0;
+    float id_ref = 0.0;
+    float speed_ref = 0.0;
+    float position_ref = 0.0;
+    
+    float speed_limit = 0.0;
+    float current_limit = 0.0;
+    float fw_current_limit = 0.0;
+    
+    float voltage_protection = 0.0;
+    float current_protection = 0.0;
+    
+    int connection_status = 0;
+    int query_active = 0;
+    int last_param_updated = 0;
+    int display_enabled = 1;
+    
+    // Parameter modification variables
+    int modify_mode = 0;  // 0=query, 1=modify
+    float modify_value = 0.0;
+    int modify_param_code = 0;
+    int modify_pending = 0;
+    int auto_query_enabled = 1;  // Control automatic querying
+    int modify_send_count = 0;    // Track how many times modification was sent
+    
+    // Store modification message data (since CAPL doesn't support message variables)
+    int stored_param_code = 0;
+    int stored_byte2 = 0;
+    int stored_byte3 = 0;
+    int stored_byte4 = 0;
+    int stored_byte5 = 0;
+    
+    // Input dialog values for Panel
+    float input_current_kp = 0.0;
+    float input_current_ki = 0.0;
+    float input_speed_kp = 0.0;
+    float input_speed_ki = 0.0;
+    float input_position_kp = 0.0;
+    float input_position_ki = 0.0;
+    float input_fieldweakening_kp = 0.0;
+    float input_fieldweakening_ki = 0.0;
+    float input_iq_ref = 0.0;
+    float input_id_ref = 0.0;
+    float input_speed_ref = 0.0;
+    float input_position_ref = 0.0;  // Range: -500 to 500
+    float input_speed_limit = 0.0;
+    float input_current_limit = 0.0;
+    float input_voltage_protection = 0.0;  // Voltage protection setting
+    float input_current_protection = 0.0;  // Current protection setting
+    
+    // New function control variables
+    msTimer error_query_timer;  // Timer for fault code query
+    int feedback_enabled = 0;   // Parameter feedback control (0=off, 1=on)
+    int error_query_enabled = 0; // Fault code query control (0=off, 1=on)
+    
+    // Version information variables
+    int version_major = 0;
+    int version_minor = 0;
+    int version_patch = 0;
+    int build_year = 0;
+    int build_month = 0;
+    int build_day = 0;
+    
+    // Fault status variables (16 bits total)
+    int fault_status = 0;
+
+
+}
+
+on start
+{
+    write("========================================");
+    write("Motor Control Parameter Parser v2.1");
+    write("Supports: PI Controller, Limits, References");
+    write("Panel Integration: Enabled");
+    write("Auto-Query: Enabled (5s per cycle, 357ms interval)");
+    write("Modification: Fast mode (3x sends, 30ms interval)");
+    write("CAN Channels: CAN1=Parameters/Flash, CAN2=Public");
+    write("DBC Compatible: ID 0x40�?x240, Flash 0x20");
+    write("========================================");
+    
+    // Initialize status variables for Panel
+    connection_status = 0;
+    query_active = 0;
+    last_param_updated = 0;
+    display_enabled = 1;
+    
+    // Initialize system variables
+    @MotorControl::ConnectionStatus = connection_status;
+    @MotorControl::QueryActive = query_active;
+    @MotorControl::LastParamUpdated = last_param_updated;
+    @MotorControl::DisplayEnabled = display_enabled;
+    @MotorControl::ModifyPending = 0;
+    
+    setTimer(query_timer, 2000);
+    
+    // Start button monitoring timer (check every 100ms for quick response)
+    setTimer(button_monitor_timer, 100);
+    
+    // Initialize error query timer (but don't start it yet)
+    // Will be started when error query is enabled
+}
+
+on timer query_timer
+{
+    message 0x40 query_msg;
+    
+    // Skip automatic querying if disabled
+    if(auto_query_enabled == 0) {
+        setTimer(query_timer, 1000);  // Check again in 1 second
+        return;
+    }
+    
+    // During parameter modification, continue querying but with slower intervals
+    // This allows verification of modified parameters
+    
+    // Reset query state to ensure proper restart when auto-query is re-enabled
+    if(query_state > 13) {
+        query_state = 0;
+    }
+    
+    query_msg.dlc = 8;
+    query_msg.byte(1) = 0x00;
+    query_msg.byte(2) = 0x00;
+    query_msg.byte(3) = 0x00;
+    query_msg.byte(4) = 0x00;
+    query_msg.byte(5) = 0x00;
+    query_msg.byte(6) = 0x00;
+    query_msg.byte(7) = 0x00;
+    
+    query_msg.id = 0x40;
+    
+    // Set query active status for Panel
+    query_active = 1;
+    @MotorControl::QueryActive = query_active;
+    
+    switch(query_state)
+    {
+        case 0:
+            query_msg.byte(0) = 0xA1;
+            output(query_msg);  // Send on CAN1 for parameter commands
+            break;
+            
+        case 1:
+            query_msg.byte(0) = 0xA2;
+            output(query_msg);
+            break;
+            
+        case 2:
+            query_msg.byte(0) = 0xA3;
+            output(query_msg);
+            break;
+            
+        case 3:
+            query_msg.byte(0) = 0xB1;
+            output(query_msg);
+            break;
+            
+        case 4:
+            query_msg.byte(0) = 0xB2;
+            output(query_msg);
+            break;
+            
+        case 5:
+            query_msg.byte(0) = 0xB3;
+            output(query_msg);
+            break;
+            
+        case 6:
+            query_msg.byte(0) = 0xC1;
+            output(query_msg);
+            break;
+            
+        case 7:
+            query_msg.byte(0) = 0xC2;
+            output(query_msg);
+            break;
+            
+        case 8:
+            query_msg.byte(0) = 0xC3;
+            output(query_msg);
+            break;
+            
+        case 9:
+            query_msg.byte(0) = 0xD1;
+            output(query_msg);
+            break;
+            
+        case 10:
+            query_msg.byte(0) = 0xD2;
+            output(query_msg);
+            break;
+            
+        case 11:
+            query_msg.byte(0) = 0xD3;
+            output(query_msg);
+            break;
+            
+        case 12:
+            query_msg.byte(0) = 0x01;
+            output(query_msg);
+            break;
+            
+        case 13:
+            query_msg.byte(0) = 0x02;
+            output(query_msg);
+            break;
+    }
+    
+    query_state++;
+    if(query_state > 13) {
+        query_state = 0;
+        query_active = 0;  // Clear query status for Panel
+        @MotorControl::QueryActive = query_active;
+        write("----------------------------------------");
+        displayAllParameters();
+        write("----------------------------------------");
+        // Immediately start next cycle (5s total cycle time, evenly distributed)
+        setTimer(query_timer, 10);  // Start next cycle immediately
+    } else {
+        // 5000ms / 14 parameters = ~357ms per parameter for 5s total cycle
+        setTimer(query_timer, 357);   // 357ms between individual queries
+    }
+}
+
+on message 0x240
+{
+    int param_code, read_write;
+    int raw_value;
+    int iq_raw, id_raw, spd_raw, cur_limit_raw;
+    int pos_raw, spd_limit_raw, cur_limit_raw2;
+    
+    if(display_enabled == 0) return;
+    
+    param_code = this.byte(0);
+    read_write = this.byte(1);
+    
+    // Update connection status and last parameter for Panel
+    connection_status = 1;
+    last_param_updated = param_code;
+    @MotorControl::ConnectionStatus = connection_status;
+    @MotorControl::LastParamUpdated = last_param_updated;
+    
+    if(read_write == 0x01) {
+        // This is a modification confirmation - just log it, don't wait for it
+        write("[CONFIRM] Parameter 0x%02X modification acknowledged", param_code);
+        // Don't change modify_pending or set timers - we're not using confirmation logic anymore
+        return;
+    }
+    
+    if(read_write != 0x00) {
+        write("[WARNING] Unknown read_write flag: 0x%02X", read_write);
+        return;
+    }
+    
+    switch(param_code)
+    {
+        case 0xA1:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            current_kp = raw_value / 1000.0;
+            @MotorControl::CurrentKp = current_kp;
+            write("[PARAM] Current Kp = %.3f", current_kp);
+            break;
+            
+        case 0xA2:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            current_ki = raw_value / 10000.0;
+            @MotorControl::CurrentKi = current_ki;
+            write("[PARAM] Current Ki = %.4f", current_ki);
+            break;
+            
+        case 0xA3:
+            iq_raw = (this.byte(5) << 8) | this.byte(4);
+            id_raw = (this.byte(7) << 8) | this.byte(6);
+            
+            if((this.byte(5) & 0x80) != 0) {
+                iq_raw = (iq_raw & 0x7FFF);
+                iq_ref = -iq_raw * 0.01;
+            } else {
+                iq_ref = iq_raw * 0.01;
+            }
+            
+            id_ref = id_raw * 0.01;
+            @MotorControl::IqRef = iq_ref;
+            @MotorControl::IdRef = id_ref;
+            
+            write("[REF] Iq=%.2f A, Id=%.2f A", iq_ref, id_ref);
+            break;
+            
+        case 0xB1:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            speed_kp = raw_value / 1000.0;
+            @MotorControl::SpeedKp = speed_kp;
+            write("[PARAM] Speed Kp = %.3f", speed_kp);
+            break;
+            
+        case 0xB2:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            speed_ki = raw_value / 10000.0;
+            @MotorControl::SpeedKi = speed_ki;
+            write("[PARAM] Speed Ki = %.4f", speed_ki);
+            break;
+            
+        case 0xB3:
+            spd_raw = (this.byte(5) << 8) | this.byte(4);
+            cur_limit_raw = (this.byte(7) << 8) | this.byte(6);
+            
+            if((this.byte(5) & 0x80) != 0) {
+                spd_raw = (spd_raw & 0x7FFF);
+                speed_ref = -spd_raw * 1.0;
+            } else {
+                speed_ref = spd_raw * 1.0;
+            }
+            
+            current_limit = cur_limit_raw * 0.01;
+            @MotorControl::SpeedRef = speed_ref;
+            @MotorControl::CurrentLimit = current_limit;
+            
+            write("[REF] Speed=%.1f rpm, I_Limit=%.2f A", speed_ref, current_limit);
+            break;
+            
+        case 0xC1:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            position_kp = raw_value / 1000.0;
+            @MotorControl::PositionKp = position_kp;
+            write("[PARAM] Position Kp = %.3f", position_kp);
+            break;
+            
+        case 0xC2:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            position_ki = raw_value / 10000.0;
+            @MotorControl::PositionKi = position_ki;
+            write("[PARAM] Position Ki = %.4f", position_ki);
+            break;
+            
+        case 0xC3:
+            pos_raw = (this.byte(3) << 8) | this.byte(2);
+            spd_limit_raw = (this.byte(5) << 8) | this.byte(4);
+            cur_limit_raw2 = (this.byte(7) << 8) | this.byte(6);
+            
+            if((this.byte(3) & 0x80) != 0) {
+                pos_raw = (pos_raw & 0x7FFF);
+                position_ref = -pos_raw * 0.001;
+            } else {
+                position_ref = pos_raw * 0.001;
+            }
+            
+            speed_limit = spd_limit_raw * 1.0;
+            current_limit = cur_limit_raw2 * 0.01;
+            @MotorControl::PositionRef = position_ref;
+            @MotorControl::SpeedLimit = speed_limit;
+            @MotorControl::CurrentLimit = current_limit;
+            
+            write("[REF] Pos=%.3f rad, SPD_Lim=%.1f rpm", position_ref, speed_limit);
+            break;
+            
+        case 0xD1:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            fieldweakening_kp = raw_value / 1000.0;
+            @MotorControl::FieldWeakeningKp = fieldweakening_kp;
+            write("[PARAM] Field Weakening Kp = %.3f", fieldweakening_kp);
+            break;
+            
+        case 0xD2:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            fieldweakening_ki = raw_value / 10000.0;
+            @MotorControl::FieldWeakeningKi = fieldweakening_ki;
+            write("[PARAM] Field Weakening Ki = %.4f", fieldweakening_ki);
+            break;
+            
+        case 0xD3:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            fw_current_limit = raw_value * 0.01;
+            @MotorControl::FWCurrentLimit = fw_current_limit;
+            write("[LIMIT] FW Current = %.2f A", fw_current_limit);
+            break;
+            
+        case 0x01:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            voltage_protection = raw_value * 0.1;
+            @MotorControl::VoltageProtection = voltage_protection;
+            write("[PROTECT] Over-voltage = %.1f V", voltage_protection);
+            break;
+            
+        case 0x02:
+            raw_value = (this.byte(3) << 8) | this.byte(2);
+            current_protection = raw_value * 0.1;
+            @MotorControl::CurrentProtection = current_protection;
+            write("[PROTECT] Over-current = %.1f A", current_protection);
+            break;
+            
+        default:
+            write("[ERROR] Unknown parameter code: 0x%02X", param_code);
+            break;
+    }
+}
+
+// Handle Version Info Response - DBC: VERSION_INFO (ID 0x290/672)
+on message 0x290
+{
+    if(display_enabled == 0) return;
+    
+    version_major = this.byte(0);
+    version_minor = this.byte(1);
+    version_patch = this.byte(2);
+    build_year = this.byte(4);
+    build_month = this.byte(5);
+    build_day = this.byte(6);
+    
+    // Update system variables
+    @MotorControl::VersionMajor = version_major;
+    @MotorControl::VersionMinor = version_minor;
+    @MotorControl::VersionPatch = version_patch;
+    @MotorControl::BuildYear = build_year;
+    @MotorControl::BuildMonth = build_month;
+    @MotorControl::BuildDay = build_day;
+    
+    write("[VERSION] version: v%d.%d.%d, flashdata: 20%02d-%02d-%02d", 
+          version_major, version_minor, version_patch, build_year, build_month, build_day);
+}
+
+// Handle Error Status Response - DBC: ERROR_STATUS (ID 0x280/640)
+on message 0x280
+{
+    int fault_status;
+    if(display_enabled == 0) return;
+    fault_status = (this.byte(1) << 8) | this.byte(0);  // 16-bit fault status
+    @MotorControl::FaultStatus = fault_status;
+    write("[FAULT_STATUS]0x%04X", fault_status);
+    // Decode individual fault bits (only show active faults)
+    
+}
+
+// Handle Feedback Confirm Response - DBC: FEEDBACK_CONFIRM (ID 0x222/546)
+on message 0x222
+{
+    int confirm_code1, confirm_code2;
+    if(display_enabled == 0) return;
+    confirm_code1 = this.byte(0);
+    confirm_code2 = this.byte(1);
+    write("[FEEDBACK_CONFIRM]  Code1=0x%02X, Code2=0x%02X", confirm_code1, confirm_code2);
+}
+
+void displayAllParameters()
+{
+    write("Motor Control Parameter Summary:");
+    write("+----------------------------------------+");
+    write("|            PI Controller Parameters    |");
+    write("+----------------------------------------+");
+    write("| Current:  Kp=%.3f  Ki=%.4f         |", current_kp, current_ki);
+    write("| Speed:    Kp=%.3f  Ki=%.4f         |", speed_kp, speed_ki);
+    write("| Position: Kp=%.3f  Ki=%.4f         |", position_kp, position_ki);
+    write("| Field WK: Kp=%.3f  Ki=%.4f         |", fieldweakening_kp, fieldweakening_ki);
+    write("+----------------------------------------+");
+    write("|              Reference Values          |");
+    write("+----------------------------------------+");
+    write("| Current Ref: Iq=%.2f A  Id=%.2f A    |", iq_ref, id_ref);
+    write("| Speed Ref:   %.1f rpm               |", speed_ref);
+    write("| Position Ref: %.3f rad              |", position_ref);
+    write("+----------------------------------------+");
+    write("|               Limit Values             |");
+    write("+----------------------------------------+");
+    write("| Speed Limit:   %.1f rpm               |", speed_limit);
+    write("| Current Limit: %.2f A                |", current_limit);
+    write("| FW Cur Limit:  %.2f A                |", fw_current_limit);
+    write("+----------------------------------------+");
+    write("|             Protection Values          |");
+    write("+----------------------------------------+");
+    write("| Over-voltage:  %.1f V                |", voltage_protection);
+    write("| Over-current:  %.1f A                |", current_protection);
+    write("+----------------------------------------+");
+}
+
+on key 'q'
+{
+    query_state = 0;
+    query_active = 1;  // Set query status for Panel
+    setTimer(query_timer, 10);
+}
+
+on key 'd'
+{
+    display_enabled = 1 - display_enabled;
+    if(display_enabled != 0) {
+        write("Display: ON");
+    } else {
+        write("Display: OFF");
+    }
+}
+
+on key 's'
+{
+    displayAllParameters();
+}
+
+on key 'a'
+{
+    auto_query_enabled = 1 - auto_query_enabled;
+    if(auto_query_enabled != 0) {
+        write("Auto-query: ON");
+        // Reset query state and restart query timer immediately when re-enabled
+        query_state = 0;
+        setTimer(query_timer, 100);
+    } else {
+        write("Auto-query: OFF");
+    }
+}
+
+on key 'h'
+{
+    write("========================================");
+    write("Keyboard shortcuts:");
+    write("Q - Manual query all parameters");
+    write("D - Toggle parameter display");
+    write("S - Show parameter summary");
+    write("A - Toggle automatic query");
+    write("T - Test parameter modification (Current Kp = 2.5)");
+    write("V - Test voltage protection (500V)");
+    write("C - Test current protection (200A)");
+    write("F - Flash DO (save parameters to EEPROM)");
+    write("W - Sleep/Wakeup command");
+    write("B - Toggle parameter feedback");
+    write("E - Toggle error query ");
+    write("M - Query version info ");
+    write("I - Show system info and status");
+    write("R - Reset modification status");
+    write("H - Show help");
+    write("========================================");
+}
+
+on key 'i'
+{
+    write("========================================");
+    write("System Status:");
+    if(auto_query_enabled != 0) {
+        write("Auto-query: ENABLED");
+    } else {
+        write("Auto-query: DISABLED");
+    }
+    if(display_enabled != 0) {
+        write("Display: ENABLED");
+    } else {
+        write("Display: DISABLED");
+    }
+    if(query_active != 0) {
+        write("Query active: YES");
+    } else {
+        write("Query active: NO");
+    }
+    if(modify_pending != 0) {
+        write("Modify pending: YES");
+    } else {
+        write("Modify pending: NO");
+    }
+    write("Query state: %d/13", query_state);
+    if(connection_status != 0) {
+        write("Connection status: CONNECTED");
+    } else {
+        write("Connection status: DISCONNECTED");
+    }
+    if(feedback_enabled != 0) {
+        write("Parameter Feedback: ENABLED");
+    } else {
+        write("Parameter Feedback: DISABLED");
+    }
+    if(error_query_enabled != 0) {
+        write("Error Query: ENABLED (200ms)");
+    } else {
+        write("Error Query: DISABLED");
+    }
+    write("Fault Status: 0x%04X", fault_status);
+    write("Version: v%d.%d.%d (20%02d-%02d-%02d)", 
+          version_major, version_minor, version_patch, build_year, build_month, build_day);
+    write("========================================");
+}
+
+on key 'r'
+{
+    write("[RESET] Resetting modification status");
+    modify_pending = 0;
+    modify_param_code = 0;
+    modify_send_count = 0;
+    stored_param_code = 0;
+    stored_byte2 = 0;
+    stored_byte3 = 0;
+    stored_byte4 = 0;
+    stored_byte5 = 0;
+    @MotorControl::ModifyPending = modify_pending;
+    cancelTimer(modify_timer);
+    write("[RESET] Modification status cleared");
+}
+
+on key 't'
+{
+    write("[TEST] Setting Current Kp to 2.500");
+    modifyParameter(0xA1, 2.5);
+}
+
+on key 'v'
+{
+    write("[TEST] Setting Voltage Protection to 500.0V");
+    modifyParameter(0x01, 500.0);
+}
+
+on key 'c'
+{
+    write("[TEST] Setting Current Protection to 200.0A");
+    modifyParameter(0x02, 200.0);
+}
+
+on key 'f'
+{
+    write("[TEST] Executing Flash DO - Save parameters to EEPROM");
+    OnFlashDo();
+}
+
+on key 'w'
+{
+    write("[TEST] Sending Sleep/Wakeup command (Control Mode) on CAN2");
+    OnSleepWakeup();
+}
+
+on key 'b'
+{
+    feedback_enabled = 1 - feedback_enabled;
+    if(feedback_enabled != 0) {
+        write("Parameter Feedback: ON");
+    } else {
+        write("Parameter Feedback: OFF");
+    }
+    OnParameterFeedback();
+}
+
+on key 'e'
+{
+    error_query_enabled = 1 - error_query_enabled;
+    if(error_query_enabled != 0) {
+        write("Error Query: ON (200ms interval)");
+        setTimer(error_query_timer, 200);  // Start immediately
+    } else {
+        write("Error Query: OFF");
+        cancelTimer(error_query_timer);
+    }
+}
+
+on key 'm'
+{
+    write("[TEST] Querying version information");
+    OnVersionQuery();
+}
+
+on stopMeasurement
+{
+    write("Parameter parser stopped");
+    // Reset status variables for Panel
+    connection_status = 0;
+    query_active = 0;
+    last_param_updated = 0;
+}
+
+// Panel Control Functions
+void OnQueryAll()
+{
+    query_state = 0;
+    query_active = 1;
+    setTimer(query_timer, 10);
+}
+
+void OnToggleDisplay()
+{
+    display_enabled = 1 - display_enabled;
+}
+
+// Parameter modification function
+void modifyParameter(int param_code, float value)
+{
+    message 0x40 modify_msg;
+    int scaled_value;
+    
+    modify_msg.dlc = 8;
+    modify_msg.id = 0x40;
+    modify_msg.byte(0) = param_code;
+    modify_msg.byte(1) = 0x01;  // Write flag
+    
+    // Clear all bytes first
+    modify_msg.byte(2) = 0x00;
+    modify_msg.byte(3) = 0x00;
+    modify_msg.byte(4) = 0x00;
+    modify_msg.byte(5) = 0x00;
+    modify_msg.byte(6) = 0x00;
+    modify_msg.byte(7) = 0x00;
+    
+    switch(param_code)
+    {
+        case 0xA1:  // Current Kp
+        case 0xB1:  // Speed Kp
+        case 0xC1:  // Position Kp
+        case 0xD1:  // Field Weakening Kp
+            scaled_value = (int)(value * 1000);
+            // Handle negative values properly
+            if(scaled_value < 0) {
+                scaled_value = (-scaled_value) | 0x8000;
+            }
+            modify_msg.byte(2) = scaled_value & 0xFF;
+            modify_msg.byte(3) = (scaled_value >> 8) & 0xFF;
+            write("[MODIFY] Setting Kp = %.3f", value);
+            break;
+            
+        case 0xA2:  // Current Ki
+        case 0xB2:  // Speed Ki
+        case 0xC2:  // Position Ki
+        case 0xD2:  // Field Weakening Ki
+            scaled_value = (int)(value * 10000);
+            // Handle negative values properly
+            if(scaled_value < 0) {
+                scaled_value = (-scaled_value) | 0x8000;
+            }
+            modify_msg.byte(2) = scaled_value & 0xFF;
+            modify_msg.byte(3) = (scaled_value >> 8) & 0xFF;
+            write("[MODIFY] Setting Ki = %.4f", value);
+            break;
+            
+        case 0xA3:  // Current References (Iq only for now)
+            scaled_value = (int)(value * 100);
+            if(value < 0) {
+                scaled_value = (-scaled_value) | 0x8000;
+            }
+            modify_msg.byte(4) = scaled_value & 0xFF;
+            modify_msg.byte(5) = (scaled_value >> 8) & 0xFF;
+            write("[MODIFY] Setting Iq Ref = %.2f A", value);
+            break;
+            
+        case 0xB3:  // Speed Reference
+            scaled_value = (int)(value * 1.0);
+            if(value < 0) {
+                scaled_value = (-scaled_value) | 0x8000;
+            }
+            modify_msg.byte(4) = scaled_value & 0xFF;
+            modify_msg.byte(5) = (scaled_value >> 8) & 0xFF;
+            write("[MODIFY] Setting Speed Ref = %.1f rpm", value);
+            break;
+            
+        case 0xC3:  // Position Reference (Range: -500 to 500)
+            scaled_value = (int)(value * 1000);
+            if(value < 0) {
+                scaled_value = (-scaled_value) | 0x8000;
+            }
+            modify_msg.byte(2) = scaled_value & 0xFF;
+            modify_msg.byte(3) = (scaled_value >> 8) & 0xFF;
+            write("[MODIFY] Setting Position Ref = %.3f", value);
+            break;
+            
+        case 0x01:  // Voltage Protection
+            scaled_value = (int)(value * 10);  // Scale by 10 (0.1V resolution)
+            modify_msg.byte(2) = scaled_value & 0xFF;
+            modify_msg.byte(3) = (scaled_value >> 8) & 0xFF;
+            write("[MODIFY] Setting Voltage Protection = %.1f V", value);
+            break;
+            
+        case 0x02:  // Current Protection
+            scaled_value = (int)(value * 10);  // Scale by 10 (0.1A resolution)
+            modify_msg.byte(2) = scaled_value & 0xFF;
+            modify_msg.byte(3) = (scaled_value >> 8) & 0xFF;
+            write("[MODIFY] Setting Current Protection = %.1f A", value);
+            break;
+            
+        default:
+            write("[ERROR] Parameter 0x%02X not supported for modification", param_code);
+            return;
+    }
+    
+    // Store the message data for repeated sending
+    stored_param_code = param_code;
+    stored_byte2 = modify_msg.byte(2);
+    stored_byte3 = modify_msg.byte(3);
+    stored_byte4 = modify_msg.byte(4);
+    stored_byte5 = modify_msg.byte(5);
+    modify_send_count = 0;
+    
+    // Send first modification command immediately
+    output(modify_msg);  // Send on CAN1 for parameter modifications
+    modify_send_count++;
+    write("[MODIFY] Parameter 0x%02X sent (1/3) on CAN1", param_code);
+    
+    // Start timer to send remaining 2 commands
+    setTimer(modify_timer, 30);  // 30ms interval between sends
+    
+    // Don't set modify_pending or timeout - we're not waiting for confirmation
+    // Auto query continues normally
+}
+
+// Panel Interface Functions for Parameter Modification
+void OnModifyCurrentKp()
+{
+    input_current_kp = @MotorControl::InputCurrentKp;  // Sync from system variable
+    if(input_current_kp >= 0.0 && input_current_kp <= 10.0) {
+        modifyParameter(0xA1, input_current_kp);
+    } else {
+        write("[ERROR] Current Kp must be between 0.0 and 10.0");
+    }
+}
+
+void OnModifyCurrentKi()
+{
+    input_current_ki = @MotorControl::InputCurrentKi;  // Sync from system variable
+    if(input_current_ki >= 0.0 && input_current_ki <= 1.0) {
+        modifyParameter(0xA2, input_current_ki);
+    } else {
+        write("[ERROR] Current Ki must be between 0.0 and 1.0");
+    }
+}
+
+void OnModifySpeedKp()
+{
+    input_speed_kp = @MotorControl::InputSpeedKp;  // Sync from system variable
+    if(input_speed_kp >= 0.0 && input_speed_kp <= 10.0) {
+        modifyParameter(0xB1, input_speed_kp);
+    } else {
+        write("[ERROR] Speed Kp must be between 0.0 and 10.0");
+    }
+}
+
+void OnModifySpeedKi()
+{
+    input_speed_ki = @MotorControl::InputSpeedKi;  // Sync from system variable
+    if(input_speed_ki >= 0.0 && input_speed_ki <= 1.0) {
+        modifyParameter(0xB2, input_speed_ki);
+    } else {
+        write("[ERROR] Speed Ki must be between 0.0 and 1.0");
+    }
+}
+
+void OnModifyPositionKp()
+{
+    input_position_kp = @MotorControl::InputPositionKp;  // Sync from system variable
+    if(input_position_kp >= 0.0 && input_position_kp <= 10.0) {
+        modifyParameter(0xC1, input_position_kp);
+    } else {
+        write("[ERROR] Position Kp must be between 0.0 and 10.0");
+    }
+}
+
+void OnModifyPositionKi()
+{
+    input_position_ki = @MotorControl::InputPositionKi;  // Sync from system variable
+    if(input_position_ki >= 0.0 && input_position_ki <= 1.0) {
+        modifyParameter(0xC2, input_position_ki);
+    } else {
+        write("[ERROR] Position Ki must be between 0.0 and 1.0");
+    }
+}
+
+void OnModifyFieldWeakeningKp()
+{
+    input_fieldweakening_kp = @MotorControl::InputFieldWeakeningKp;  // Sync from system variable
+    if(input_fieldweakening_kp >= 0.0 && input_fieldweakening_kp <= 10.0) {
+        modifyParameter(0xD1, input_fieldweakening_kp);
+    } else {
+        write("[ERROR] Field Weakening Kp must be between 0.0 and 10.0");
+    }
+}
+
+void OnModifyFieldWeakeningKi()
+{
+    input_fieldweakening_ki = @MotorControl::InputFieldWeakeningKi;  // Sync from system variable
+    if(input_fieldweakening_ki >= 0.0 && input_fieldweakening_ki <= 1.0) {
+        modifyParameter(0xD2, input_fieldweakening_ki);
+    } else {
+        write("[ERROR] Field Weakening Ki must be between 0.0 and 1.0");
+    }
+}
+
+void OnModifyIqRef()
+{
+    input_iq_ref = @MotorControl::InputIqRef;  // Sync from system variable
+    if(input_iq_ref >= -100.0 && input_iq_ref <= 100.0) {
+        modifyParameter(0xA3, input_iq_ref);
+    } else {
+        write("[ERROR] Iq Reference must be between -100.0 and 100.0 A");
+    }
+}
+
+void OnModifySpeedRef()
+{
+    input_speed_ref = @MotorControl::InputSpeedRef;  // Sync from system variable
+    if(input_speed_ref >= -5000.0 && input_speed_ref <= 5000.0) {
+        modifyParameter(0xB3, input_speed_ref);
+    } else {
+        write("[ERROR] Speed Reference must be between -5000.0 and 5000.0 rpm");
+    }
+}
+
+void OnModifyPositionRef()
+{
+    input_position_ref = @MotorControl::InputPositionRef;  // Sync from system variable
+    if(input_position_ref >= -500.0 && input_position_ref <= 500.0) {
+        modifyParameter(0xC3, input_position_ref);
+    } else {
+        write("[ERROR] Position Reference must be between -500.0 and 500.0");
+    }
+}
+
+void OnModifyVoltageProtection()
+{
+    input_voltage_protection = @MotorControl::InputVoltageProtection;  // Sync from system variable
+    if(input_voltage_protection >= 0.0 && input_voltage_protection <= 1000.0) {
+        modifyParameter(0x01, input_voltage_protection);
+    } else {
+        write("[ERROR] Voltage Protection must be between 0.0 and 1000.0 V");
+    }
+}
+
+void OnModifyCurrentProtection()
+{
+    input_current_protection = @MotorControl::InputCurrentProtection;  // Sync from system variable
+    if(input_current_protection >= 0.0 && input_current_protection <= 500.0) {
+        modifyParameter(0x02, input_current_protection);
+    } else {
+        write("[ERROR] Current Protection must be between 0.0 and 500.0 A");
+    }
+}
+
+// Flash DO function - Save running parameters to EEPROM
+void OnFlashDo()
+{
+    message 0x20 flash_msg;  // ID 32 (0x20) according to DBC
+    
+    flash_msg.dlc = 1;  // DBC shows 1 byte length
+    flash_msg.id = 0x20;
+    flash_msg.byte(0) = 0x01;  // Flash command according to DBC: 0x01=执行Flash保存
+    
+    output(flash_msg);  // Send Flash DO on CAN1 (parameter control channel)
+    write("[FLASH] Flash DO command sent (ID=0x20) on CAN1 - Saving parameters to EEPROM");
+}
+
+// Sleep/Wakeup function - Send control mode command on CAN2 (public CAN)
+void OnSleepWakeup()
+{
+    message 0x1E0 control_msg;  // Control mode command frame (DBC: CONTROL_MODE_CMD)
+    
+    control_msg.dlc = 1;
+    
+    if (@MotorControl::BtnSleepWakeup == 1) {
+        // Send sleep command (Stop mode)
+        control_msg.byte(0) = 0x0F;  // 0x0F = Stop mode (Sleep)
+        output(control_msg);
+        write("[SLEEP](0x0F) via CAN2 (ID=0x1E0)");
+    } else {
+        // Send wakeup command (JWD loop mode)
+        control_msg.byte(0) = 0x0D;  // 0x0D = JWD loop mode (Wakeup)
+        output(control_msg);
+        write("[WAKEUP]via CAN2 (ID=0x1E0)");
+    }
+}
+
+// Parameter Feedback Control function - DBC: FEEDBACK_CONTROL_CMD (ID 0x60)
+void OnParameterFeedback()
+{
+    message 0x60 feedback_msg;  // Feedback control command frame
+    
+    feedback_msg.dlc = 2;  // DBC shows 2 bytes length
+    feedback_msg.id = 0x60;
+    
+    if (feedback_enabled == 1) {
+        // Start high frequency feedback (1ms interval)
+        feedback_msg.byte(0) = 0x01;  // OpCode: 0x01 = start feedback
+        feedback_msg.byte(1) = 0xFF;  // SelectCode: any value (system sends all types)
+        output(feedback_msg);
+        write("[FEEDBACK]ID=0x60");
+    } else {
+        // Stop feedback
+        feedback_msg.byte(0) = 0x00;  // OpCode: 0x00 = stop feedback
+        feedback_msg.byte(1) = 0x00;  // SelectCode: any value
+        output(feedback_msg);
+        write("[FEEDBACK] 关闭参数反馈 ID=0x60");
+    }
+}
+
+// Version Query function - DBC: VERSION_QUERY_CMD (ID 0xA0)
+void OnVersionQuery()
+{
+    message 0xA0 version_msg;  // Version query command frame
+    
+    version_msg.dlc = 1;  // DBC shows 1 byte length
+    version_msg.id = 0xA0;
+    version_msg.byte(0) = 0x05;  // QueryCode: 0x05 = query version info
+    
+    output(version_msg);
+    write("[VERSION] ID=0xA0, QueryCode=0x05");
+}
+
+// Error Query Timer function - DBC: ERROR_QUERY_CMD (ID 0x80)
+void sendErrorQuery()
+{
+    message 0x80 error_msg;  // Error query command frame
+    
+    error_msg.dlc = 1;  // DBC shows 1 byte length
+    error_msg.id = 0x80;
+    error_msg.byte(0) = 0x04;  // QueryCode: 0x04 = query fault status
+    
+    output(error_msg);
+    write("[ERROR_QUERY] ID=0x80, QueryCode=0x04");
+}
+
+// Load current values into input variables (for Panel initialization)
+void OnLoadCurrentValues()
+{
+    input_current_kp = current_kp;
+    input_current_ki = current_ki;
+    input_speed_kp = speed_kp;
+    input_speed_ki = speed_ki;
+    input_position_kp = position_kp;
+    input_position_ki = position_ki;
+    input_fieldweakening_kp = fieldweakening_kp;
+    input_fieldweakening_ki = fieldweakening_ki;
+    input_iq_ref = iq_ref;
+    input_speed_ref = speed_ref;
+    input_position_ref = position_ref;
+    input_voltage_protection = voltage_protection;
+    input_current_protection = current_protection;
+    
+    // Update system variables for Panel
+    @MotorControl::InputCurrentKp = input_current_kp;
+    @MotorControl::InputCurrentKi = input_current_ki;
+    @MotorControl::InputSpeedKp = input_speed_kp;
+    @MotorControl::InputSpeedKi = input_speed_ki;
+    @MotorControl::InputPositionKp = input_position_kp;
+    @MotorControl::InputPositionKi = input_position_ki;
+    @MotorControl::InputFieldWeakeningKp = input_fieldweakening_kp;
+    @MotorControl::InputFieldWeakeningKi = input_fieldweakening_ki;
+    @MotorControl::InputIqRef = input_iq_ref;
+    @MotorControl::InputSpeedRef = input_speed_ref;
+    @MotorControl::InputPositionRef = input_position_ref;
+    @MotorControl::InputVoltageProtection = input_voltage_protection;
+    @MotorControl::InputCurrentProtection = input_current_protection;
+    
+    write("[PANEL] Values loaded");
+}
+
+// Batch parameter modification functions
+void OnModifyAllCurrentParams()
+{
+    if(input_current_kp >= 0.0 && input_current_kp <= 10.0 && 
+       input_current_ki >= 0.0 && input_current_ki <= 1.0) {
+        write("[BATCH] Current parameters");
+        modifyParameter(0xA1, input_current_kp);
+        setTimer(modify_timer, 100);
+        modify_param_code = 0xA2;
+        modify_value = input_current_ki;
+    } else {
+        write("[ERROR] Current parameters out of range");
+    }
+}
+
+void OnModifyAllSpeedParams()
+{
+    if(input_speed_kp >= 0.0 && input_speed_kp <= 10.0 && 
+       input_speed_ki >= 0.0 && input_speed_ki <= 1.0) {
+        write("[BATCH] Speed parameters");
+        modifyParameter(0xB1, input_speed_kp);
+        setTimer(modify_timer, 100);
+        modify_param_code = 0xB2;
+        modify_value = input_speed_ki;
+    } else {
+        write("[ERROR] Speed parameters out of range");
+    }
+}
+
+void OnModifyAllPositionParams()
+{
+    if(input_position_kp >= 0.0 && input_position_kp <= 10.0 && 
+       input_position_ki >= 0.0 && input_position_ki <= 1.0) {
+        write("[BATCH] Position parameters");
+        modifyParameter(0xC1, input_position_kp);
+        setTimer(modify_timer, 100);
+        modify_param_code = 0xC2;
+        modify_value = input_position_ki;
+    } else {
+        write("[ERROR] Position parameters out of range");
+    }
+}
+
+// Timers for parameter modification
+on timer modify_timer
+{
+    // Send remaining modification commands (2nd and 3rd)
+    if(modify_send_count < 3) {
+        message 0x40 repeat_msg;
+        
+        // Reconstruct the stored message
+        repeat_msg.dlc = 8;
+        repeat_msg.id = 0x40;
+        repeat_msg.byte(0) = stored_param_code;
+        repeat_msg.byte(1) = 0x01;  // Write flag
+        repeat_msg.byte(2) = stored_byte2;
+        repeat_msg.byte(3) = stored_byte3;
+        repeat_msg.byte(4) = stored_byte4;
+        repeat_msg.byte(5) = stored_byte5;
+        repeat_msg.byte(6) = 0x00;
+        repeat_msg.byte(7) = 0x00;
+        
+        output(repeat_msg);  // Send on CAN1 for parameter modifications
+        modify_send_count++;
+        write("[MODIFY] Parameter 0x%02X sent (%d/3) on CAN1", stored_param_code, modify_send_count);
+        
+        if(modify_send_count < 3) {
+            // Schedule next send
+            setTimer(modify_timer, 30);  // 30ms interval
+        } else {
+            // All 3 commands sent
+            write("[MODIFY] Parameter 0x%02X - all commands sent", stored_param_code);
+        }
+    }
+    
+    // Handle batch modification (legacy code for Panel interface)
+    if(modify_param_code != 0) {
+        modifyParameter(modify_param_code, modify_value);
+        modify_param_code = 0;
+        modify_value = 0.0;
+    }
+}
+
+// Error query timer - sends fault code query every 200ms when enabled
+on timer error_query_timer
+{
+    if(error_query_enabled == 1) {
+        sendErrorQuery();
+        setTimer(error_query_timer, 200);  // Query every 200ms
+    }
+}
+
+// Button monitoring timer - checks for Panel button presses
+on timer button_monitor_timer
+{
+    // Check for button presses and reset them after triggering
+    if(@MotorControl::BtnModifyCurrentKp == 1) {
+        @MotorControl::BtnModifyCurrentKp = 0;  // Reset button
+        OnModifyCurrentKp();
+    }
+    
+    if(@MotorControl::BtnModifyCurrentKi == 1) {
+        @MotorControl::BtnModifyCurrentKi = 0;  // Reset button
+        OnModifyCurrentKi();
+    }
+    
+    if(@MotorControl::BtnModifySpeedKp == 1) {
+        @MotorControl::BtnModifySpeedKp = 0;  // Reset button
+        OnModifySpeedKp();
+    }
+    
+    if(@MotorControl::BtnModifySpeedKi == 1) {
+        @MotorControl::BtnModifySpeedKi = 0;  // Reset button
+        OnModifySpeedKi();
+    }
+    
+    if(@MotorControl::BtnModifyPositionKp == 1) {
+        @MotorControl::BtnModifyPositionKp = 0;  // Reset button
+        OnModifyPositionKp();
+    }
+    
+    if(@MotorControl::BtnModifyPositionKi == 1) {
+        @MotorControl::BtnModifyPositionKi = 0;  // Reset button
+        OnModifyPositionKi();
+    }
+    
+    if(@MotorControl::BtnModifyFieldWeakeningKp == 1) {
+        @MotorControl::BtnModifyFieldWeakeningKp = 0;  // Reset button
+        OnModifyFieldWeakeningKp();
+    }
+    
+    if(@MotorControl::BtnModifyFieldWeakeningKi == 1) {
+        @MotorControl::BtnModifyFieldWeakeningKi = 0;  // Reset button
+        OnModifyFieldWeakeningKi();
+    }
+    
+    if(@MotorControl::BtnModifyIqRef == 1) {
+        @MotorControl::BtnModifyIqRef = 0;  // Reset button
+        OnModifyIqRef();
+    }
+    
+    if(@MotorControl::BtnModifySpeedRef == 1) {
+        @MotorControl::BtnModifySpeedRef = 0;  // Reset button
+        OnModifySpeedRef();
+    }
+    
+    if(@MotorControl::BtnModifyPositionRef == 1) {
+        @MotorControl::BtnModifyPositionRef = 0;  // Reset button
+        OnModifyPositionRef();
+    }
+    
+    if(@MotorControl::BtnModifyVoltageProtection == 1) {
+        @MotorControl::BtnModifyVoltageProtection = 0;  // Reset button
+        OnModifyVoltageProtection();
+    }
+    
+    if(@MotorControl::BtnModifyCurrentProtection == 1) {
+        @MotorControl::BtnModifyCurrentProtection = 0;  // Reset button
+        OnModifyCurrentProtection();
+    }
+    
+    if(@MotorControl::BtnFlashDo == 1) {
+        @MotorControl::BtnFlashDo = 0;  // Reset button
+        OnFlashDo();
+    }
+    
+    if(@MotorControl::BtnSleepWakeup == 1) {
+        @MotorControl::BtnSleepWakeup = 0;  // Reset button
+        OnSleepWakeup();
+    }
+    
+    if(@MotorControl::BtnQueryAll == 1) {
+        @MotorControl::BtnQueryAll = 0;  // Reset button
+        OnQueryAll();
+    }
+    
+    if(@MotorControl::BtnLoadCurrentValues == 1) {
+        @MotorControl::BtnLoadCurrentValues = 0;  // Reset button
+        OnLoadCurrentValues();
+    }
+    
+    if(@MotorControl::BtnParameterFeedback == 1) {
+        @MotorControl::BtnParameterFeedback = 0;  // Reset button
+        feedback_enabled = 1 - feedback_enabled;
+        @MotorControl::FeedbackEnabled = feedback_enabled;
+        OnParameterFeedback();
+    }
+    
+    if(@MotorControl::BtnErrorQuery == 1) {
+        @MotorControl::BtnErrorQuery = 0;  // Reset button
+        error_query_enabled = 1 - error_query_enabled;
+        @MotorControl::ErrorQueryEnabled = error_query_enabled;
+        if(error_query_enabled != 0) {
+            setTimer(error_query_timer, 200);
+        } else {
+            cancelTimer(error_query_timer);
+        }
+    }
+    
+    if(@MotorControl::BtnVersionQuery == 1) {
+        @MotorControl::BtnVersionQuery = 0;  // Reset button
+        OnVersionQuery();
+    }
+    
+    setTimer(button_monitor_timer, 100);  // Check again in 100ms
+}
+
+// Function to sync input variables from system variables (for Panel integration)
+void OnSyncInputVariables()
+{
+    input_current_kp = @MotorControl::InputCurrentKp;
+    input_current_ki = @MotorControl::InputCurrentKi;
+    input_speed_kp = @MotorControl::InputSpeedKp;
+    input_speed_ki = @MotorControl::InputSpeedKi;
+    input_position_kp = @MotorControl::InputPositionKp;
+    input_position_ki = @MotorControl::InputPositionKi;
+    input_fieldweakening_kp = @MotorControl::InputFieldWeakeningKp;
+    input_fieldweakening_ki = @MotorControl::InputFieldWeakeningKi;
+    input_iq_ref = @MotorControl::InputIqRef;
+    input_speed_ref = @MotorControl::InputSpeedRef;
+    input_position_ref = @MotorControl::InputPositionRef;
+    input_voltage_protection = @MotorControl::InputVoltageProtection;
+    input_current_protection = @MotorControl::InputCurrentProtection;
+    
+    write("[PANEL] Variables synced");
+}

@@ -1,0 +1,72 @@
+Renesas Optimizing Linker (W3.06.00 )             12-Jul-2025 16:50:28
+
+*** Options ***
+
+-subcommand=DefaultBuild\JWD_1.3.3.2.3.clnk
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-input=DefaultBuild\r_adc.obj
+-input=DefaultBuild\tmr.obj
+-input=DefaultBuild\Config_CSIH0.obj
+-input=DefaultBuild\mttcan_a.obj
+-input=DefaultBuild\mttcan_p.obj
+-input=DefaultBuild\can_command.obj
+-input=DefaultBuild\standardports_p.obj
+-input=DefaultBuild\pi_controller.obj
+-input=DefaultBuild\PMIC.obj
+-input=DefaultBuild\global_struct.obj
+-input=DefaultBuild\fad_sample_df.obj
+-input=DefaultBuild\r_fad_common_api.obj
+-input=DefaultBuild\r_fad_definition.obj
+-input=DefaultBuild\r_fad_df_api.obj
+-input=DefaultBuild\r_fad_local.obj
+-input=DefaultBuild\r_fad_local_clock.obj
+-input=DefaultBuild\fad_flash.obj
+-input=DefaultBuild\temperature.obj
+-input=DefaultBuild\SWC_BasAsst.obj
+-input=DefaultBuild\SWC_TAS.obj
+-input=DefaultBuild\CAN2.obj
+-input=DefaultBuild\para_update.obj
+-input=DefaultBuild\RSENT_receive.obj
+-input=DefaultBuild\TAS_PWM_Angle.obj
+-debug
+-nocompress
+-NOOPtimize
+-output=DefaultBuild\JWD_1.3.3.2.3.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\JWD_1.3.3.2.3.map
+-start=RESET,EIINTTBL/00000000,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R
+-memory=high
+-nologo
+-end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+RESET
+                                  00000000  000001f7       1f8   200
+EIINTTBL
+                                  00000200  00000447       248   200
+.const
+                                  00008000  0000874b       74c   4
+.INIT_DSEC.const
+                                  0000874c  00008757         c   4
+.INIT_BSEC.const
+                                  00008758  0000875f         8   4
+.text
+                                  00008760  00025117     1c9b8   2
+.data
+                                  00025118  00025e73       d5c   4
+.data.R
+                                  fede0000  fede0d5b       d5c   4
+.bss
+                                  fede0d5c  fedfb9ab     1ac50   4
+.stack.bss
+                                  fedfb9ac  fedfbbab       200   4

@@ -1,0 +1,9 @@
+-input=DefaultBuild\OBDII_DTC.obj
+-input=DefaultBuild\OBDII_DTC_Trans_Protocol.obj
+-input=DefaultBuild\UDS_Version.obj
+-form=library=u
+-output=DefaultBuild\UDS_LIB_Relese.lib
+-memory=high
+-nologo
+-exit
+

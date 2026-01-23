@@ -1,0 +1,19 @@
+SENT压力传感器部分说明：
+文件包括：
+RSENT_receive.c
+RSENT_receive.h
+SENT_reg.h
+
+压力数据：
+在RSENT_receive.c文件中以RSENT1_data_fast结构体数组形式存在，在gtm.c文件中以force_data数组形式存
+在，数组大小为8，随着主中断接收数据。
+
+标志位：
+在RSENT_receive.c文件中no_com_flag为数据接收监测的标志位，如果为1，则传感器没有在传输数据；
+
+对数据的波动范围进行判断：在RSENT_receive.c文件中有一个Err_data_detect函数，对相邻两次压力数据差值
+进行计算，如果波动大于正常范围（范围可根据实际情况调整，即difference_value_threshold形参）超过指定
+次数（次数也可调整，即参数total_error_num），可进行错误判断：SENT_err_flag = 0x00;       
+                                                     			 //1:data error（波动超过指定范围指定次数）   
+                                                      			//2:sensor break（压力数据低于正常范围）
+

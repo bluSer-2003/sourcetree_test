@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "mcs_defs.h": "c",
+        "mcs_ram.h": "c",
+        "obdii_app_io.h": "c"
+    }
+}

@@ -1,0 +1,22 @@
+-input=DefaultBuild\boot.obj
+-input=DefaultBuild\cstart.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\port.obj
+-input=DefaultBuild\gtm.obj
+-debug
+-nocompress
+-NOOPtimize
+-output=DefaultBuild\RH850P1M-C_GTM_MCS_DTM.abs
+-library=v850e3v5\rhf8n.lib
+-library=v850e3v5\libmalloc.lib
+-list=DefaultBuild\RH850P1M-C_GTM_MCS_DTM.map
+-start=RESET,EIINTTBL/00000000,fst.text,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data/00008000,fst.R,.data.R,.bss,.stack.bss/FEDE0000
+-rom=.data=.data.R,fst.text = fst.R
+-memory=high
+-nologo
+-end
+-input=DefaultBuild\RH850P1M-C_GTM_MCS_DTM.abs
+-output=DefaultBuild\RH850P1M-C_GTM_MCS_DTM.mot
+-form=stype
+-exit
+
