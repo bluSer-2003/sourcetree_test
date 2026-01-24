@@ -24,7 +24,7 @@
 #define FREMB 1
 #define RLEMB 2
 #define RREMB 3
-#define EMBActuator FLEMB
+#define EMBActuator RREMB
 
 #define TESTFLAG   1      //0:test    1:can
 #define ALIG_LOOP  0       //Aligment open

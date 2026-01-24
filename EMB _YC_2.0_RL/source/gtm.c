@@ -27,6 +27,7 @@
 #include "Protection.h"
 
 int canTimer = 0;
+int canmissTimer = 0;
 
 //热敏电阻
 extern uint16_t High_temperature;
@@ -349,6 +350,14 @@ inline void SaveData(void){
     else{
     	canTimer = 0;
 
+    }
+    if(canmissTimer < 40000)
+    {
+	canmissTimer++;
+    }
+    else
+    {
+	canmissTimer = 40000;
     }
     
     //断线标志位no_com_flag,数据异常标志位data_err_flag

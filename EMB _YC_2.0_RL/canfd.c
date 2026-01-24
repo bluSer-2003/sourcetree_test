@@ -4,6 +4,7 @@
 #include "mttcan_a.h"
 //#include "canfd.h"
 #include "parameter.h"
+#include "global_struct.h"
 
 #define INVALID_CAN_ID 0
 
@@ -119,6 +120,7 @@ const uint8 crc_table[256] =
 
 
 extern int canTimer;
+extern int canmissTimer;
 
 void Send_Tx_0x6Ex(TX_PDU_0x6Ex Tx_PDU , uint16 PDU_ID);
 void Recive_Signal_0x6E0(uint8 *Rx_data);
@@ -133,29 +135,45 @@ void CAN_Tx_Fun(void)
         rollcnt = 0;
     }  
     
-    FB_reply();
 #if(EMBActuator == FLEMB)
-    if (canTimer % 40 == 0)
+    if (canTimer % 100 == 0)
     {
         Send_Tx_0x6Ex(BWC_FL_CAN1_FrP1, 0x6E1);
+	
+    }
+    if (canTimer % 100 == 20)
+    {
+        FB_reply();
     }
 #endif
 #if(EMBActuator == FREMB)
-    if (canTimer % 40 == 10)
+    if (canTimer % 100 == 0)
     {
         Send_Tx_0x6Ex(BWC_FR_CAN1_FrP1, 0x6E2);
     }
+    if (canTimer % 100 == 20)
+    {
+        FB_reply();
+    }
 #endif
 #if(EMBActuator == RLEMB)
-    if (canTimer % 40 == 20)
+    if (canTimer % 100 == 0)
     {
         Send_Tx_0x6Ex(BWC_RL_CAN1_FrP1, 0x6E3);
     }
+    if (canTimer % 100 == 20)
+    {
+        FB_reply();
+    }
 #endif
 #if(EMBActuator == RREMB)
-    if (canTimer % 40 == 30)
+    if (canTimer % 100 == 0)
     {
         Send_Tx_0x6Ex(BWC_RR_CAN1_FrP1, 0x6E4);
+    }
+    if (canTimer % 100 == 20)
+    {
+        FB_reply();
     }
 #endif
 }
@@ -182,7 +200,7 @@ void Send_Tx_0x6Ex(TX_PDU_0x6Ex Tx_PDU , uint16 PDU_ID)
 	Tx_Data.Data[1] += Tx_PDU.BrkForceActive << 1;
 	
 	Tx_Data.Data[0] +=  Tx_PDU.BrkForceActual >> 6;
-	Tx_Data.Data[1] += (Tx_PDU.BrkForceActual && 0x3F)<< 2;
+	Tx_Data.Data[1] += (Tx_PDU.BrkForceActual & 0x3F)<< 2;
 	
 	Tx_Data.Data[2] += Tx_PDU.BrkForceLmt;
 	
@@ -205,19 +223,19 @@ void Send_Tx_0x6Ex(TX_PDU_0x6Ex Tx_PDU , uint16 PDU_ID)
 	Tx_Data.Data[6] += Tx_PDU.ParkValveControlState;
 	
 	Tx_Data.Data[7] += Tx_PDU.WheelSpeed >> 7;
-	Tx_Data.Data[8] += (Tx_PDU.WheelSpeed && 0x7F) << 1;
+	Tx_Data.Data[8] += (Tx_PDU.WheelSpeed & 0x7F) << 1;
 	
 	Tx_Data.Data[10] += Tx_PDU.WheelSpeedDir << 3;
 	
 	Tx_Data.Data[8] += Tx_PDU.WheelSpeedVld;
 	
 	Tx_Data.Data[9] += Tx_PDU.WheelPulseCounter >> 2;
-	Tx_Data.Data[10] += (Tx_PDU.WheelPulseCounter && 0x3) << 6;
+	Tx_Data.Data[10] += (Tx_PDU.WheelPulseCounter & 0x3) << 6;
 	
 	Tx_Data.Data[10] += Tx_PDU.WheelPulseReset << 5;
 	
 	Tx_Data.Data[11] += Tx_PDU.WheelTimestamp >> 8;
-	Tx_Data.Data[12] += Tx_PDU.WheelTimestamp && 0xFF;
+	Tx_Data.Data[12] += Tx_PDU.WheelTimestamp & 0xFF;
 	
 	Tx_Data.Data[10] += Tx_PDU.WheelTimestampRC << 1;
 	
@@ -230,7 +248,7 @@ void Send_Tx_0x6Ex(TX_PDU_0x6Ex Tx_PDU , uint16 PDU_ID)
 	Tx_PDU.Checksum = crc_8find(&Tx_Data , 14);
 	
 	Tx_Data.Data[14] += Tx_PDU.Checksum >>8;
-	Tx_Data.Data[15] += Tx_PDU.Checksum && 0xFF;
+	Tx_Data.Data[15] += Tx_PDU.Checksum & 0xFF;
 	
 	Tx_Data.ID = PDU_ID;
 	Tx_Data.Length = 16U;
@@ -246,150 +264,152 @@ void Send_Tx_0x6Ex(TX_PDU_0x6Ex Tx_PDU , uint16 PDU_ID)
 
 void Recive_Signal_0x6E0(rx_type *signal)
 {
-	BCU_M_CAN1_FrP1.BrkForceCmdActive_FL = (signal->Rx_data[1] >> 1) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdActive_FL = (signal->Rx_data[1] >> 1) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkForceCmd_FL = signal->Rx_data[0];
 	BCU_M_CAN1_FrP1.BrkForceCmd_FL = BCU_M_CAN1_FrP1.BrkForceCmd_FL << 6;
 	BCU_M_CAN1_FrP1.BrkForceCmd_FL += signal->Rx_data[1] >> 2;
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_FL = (signal->Rx_data[3] >> 4) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_FL = (signal->Rx_data[3] >> 4) & 0x1;
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_FL = (signal->Rx_data[3] >> 3) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_FL = (signal->Rx_data[3] >> 3) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FL = signal->Rx_data[2];
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FL = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FL << 3;
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FL += signal->Rx_data[3] >> 5;
 	
-	BCU_M_CAN1_FrP1.BrkForceRelPosReq_FL = signal->Rx_data[3] && 0x3;
+	BCU_M_CAN1_FrP1.BrkForceRelPosReq_FL = signal->Rx_data[3] & 0x3;
 	
-	BCU_M_CAN1_FrP1.BrkForceDiffAllow_FL = signal->Rx_data[1] && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceDiffAllow_FL = signal->Rx_data[1] & 0x1;
 	
-	BCU_M_CAN1_FrP1.ABSActive_FL = (signal->Rx_data[3] >> 2) && 0x1;
+	BCU_M_CAN1_FrP1.ABSActive_FL = (signal->Rx_data[3] >> 2) & 0x1;
 	
-	BCU_M_CAN1_FrP1.ParkRequest_FL = (signal->Rx_data[4] >> 4) && 0xF;
+	BCU_M_CAN1_FrP1.ParkRequest_FL = (signal->Rx_data[4] >> 4) & 0xF;
 	
 	
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdActive_FR = (signal->Rx_data[6] >> 1) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdActive_FR = (signal->Rx_data[6] >> 1) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkForceCmd_FR = signal->Rx_data[5];
 	BCU_M_CAN1_FrP1.BrkForceCmd_FR = BCU_M_CAN1_FrP1.BrkForceCmd_FR << 6;
 	BCU_M_CAN1_FrP1.BrkForceCmd_FR += signal->Rx_data[6] >> 2;
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_FR = (signal->Rx_data[8] >> 4) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_FR = (signal->Rx_data[8] >> 4) & 0x1;
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_FR = (signal->Rx_data[8] >> 3) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_FR = (signal->Rx_data[8] >> 3) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FR = signal->Rx_data[7];
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FR = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FR << 3;
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FR += signal->Rx_data[8] >> 5;
 	
-	BCU_M_CAN1_FrP1.BrkForceRelPosReq_FR = signal->Rx_data[8] && 0x3;
+	BCU_M_CAN1_FrP1.BrkForceRelPosReq_FR = signal->Rx_data[8] & 0x3;
 	
-	BCU_M_CAN1_FrP1.BrkForceDiffAllow_FR = signal->Rx_data[6] && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceDiffAllow_FR = signal->Rx_data[6] & 0x1;
 	
-	BCU_M_CAN1_FrP1.ABSActive_FR = (signal->Rx_data[8] >> 2) && 0x1;
+	BCU_M_CAN1_FrP1.ABSActive_FR = (signal->Rx_data[8] >> 2) & 0x1;
 	
-	BCU_M_CAN1_FrP1.ParkRequest_FR = (signal->Rx_data[9] >> 4) && 0xF;
+	BCU_M_CAN1_FrP1.ParkRequest_FR = (signal->Rx_data[9] >> 4) & 0xF;
 	
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdActive_RL = (signal->Rx_data[11] >> 1) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdActive_RL = (signal->Rx_data[11] >> 1) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkForceCmd_RL = signal->Rx_data[10];
 	BCU_M_CAN1_FrP1.BrkForceCmd_RL = BCU_M_CAN1_FrP1.BrkForceCmd_RL << 6;
 	BCU_M_CAN1_FrP1.BrkForceCmd_RL += signal->Rx_data[11] >> 2;
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_RL = (signal->Rx_data[13] >> 4) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_RL = (signal->Rx_data[13] >> 4) & 0x1;
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_RL = (signal->Rx_data[13] >> 3) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_RL = (signal->Rx_data[13] >> 3) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RL = signal->Rx_data[12];
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RL = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RL << 3;
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RL += signal->Rx_data[13] >> 5;
 	
-	BCU_M_CAN1_FrP1.BrkForceRelPosReq_RL = signal->Rx_data[13] && 0x3;
+	BCU_M_CAN1_FrP1.BrkForceRelPosReq_RL = signal->Rx_data[13] & 0x3;
 	
-	BCU_M_CAN1_FrP1.BrkForceDiffAllow_RL = signal->Rx_data[11] && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceDiffAllow_RL = signal->Rx_data[11] & 0x1;
 	
-	BCU_M_CAN1_FrP1.ABSActive_RL = (signal->Rx_data[13] >> 2) && 0x1;
+	BCU_M_CAN1_FrP1.ABSActive_RL = (signal->Rx_data[13] >> 2) & 0x1;
 	
-	BCU_M_CAN1_FrP1.ParkRequest_RL = (signal->Rx_data[14] >> 4) && 0xF;
+	BCU_M_CAN1_FrP1.ParkRequest_RL = (signal->Rx_data[14] >> 4) & 0xF;
 	
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdActive_RR = (signal->Rx_data[16] >> 1) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdActive_RR = (signal->Rx_data[16] >> 1) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkForceCmd_RR = signal->Rx_data[15];
 	BCU_M_CAN1_FrP1.BrkForceCmd_RR = BCU_M_CAN1_FrP1.BrkForceCmd_RR << 6;
 	BCU_M_CAN1_FrP1.BrkForceCmd_RR += signal->Rx_data[16] >> 2;
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_RR = (signal->Rx_data[18] >> 4) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_RR = (signal->Rx_data[18] >> 4) & 0x1;
 	
-	BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_RR = (signal->Rx_data[18] >> 3) && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_RR = (signal->Rx_data[18] >> 3) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RR = signal->Rx_data[17];
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RR = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RR << 3;
 	BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RR += signal->Rx_data[18] >> 5;
 	
-	BCU_M_CAN1_FrP1.BrkForceRelPosReq_RR = signal->Rx_data[18] && 0x3;
+	BCU_M_CAN1_FrP1.BrkForceRelPosReq_RR = signal->Rx_data[18] & 0x3;
 	
-	BCU_M_CAN1_FrP1.BrkForceDiffAllow_RR = signal->Rx_data[16] && 0x1;
+	BCU_M_CAN1_FrP1.BrkForceDiffAllow_RR = signal->Rx_data[16] & 0x1;
 	
-	BCU_M_CAN1_FrP1.ABSActive_RR = (signal->Rx_data[18] >> 2) && 0x1;
+	BCU_M_CAN1_FrP1.ABSActive_RR = (signal->Rx_data[18] >> 2) & 0x1;
 	
-	BCU_M_CAN1_FrP1.ParkRequest_RR = (signal->Rx_data[19] >> 4) && 0xF;
+	BCU_M_CAN1_FrP1.ParkRequest_RR = (signal->Rx_data[19] >> 4) & 0xF;
 	
 	
-	BCU_M_CAN1_FrP1.R_Comm_Avaliable = (signal->Rx_data[22] >> 1) && 0x1;
+	BCU_M_CAN1_FrP1.R_Comm_Avaliable = (signal->Rx_data[22] >> 1) & 0x1;
 	
-	BCU_M_CAN1_FrP1.Control_Enable = (signal->Rx_data[22] >> 2) && 0x1;
+	BCU_M_CAN1_FrP1.Control_Enable = (signal->Rx_data[22] >> 2) & 0x1;
 	
-	BCU_M_CAN1_FrP1.AvailableState = (signal->Rx_data[22] >> 3) && 0x1;
+	BCU_M_CAN1_FrP1.AvailableState = (signal->Rx_data[22] >> 3) & 0x1;
 	
-	BCU_M_CAN1_FrP1.BrkTakeoverRequest = (signal->Rx_data[22] >> 4) && 0x1;
+	BCU_M_CAN1_FrP1.BrkTakeoverRequest = (signal->Rx_data[22] >> 4) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkPedalInputRodPosn = signal->Rx_data[20];
 	
-	BCU_M_CAN1_FrP1.BrkPedalInputRodPosnVld = (signal->Rx_data[22] >> 7) && 0x1;
+	BCU_M_CAN1_FrP1.BrkPedalInputRodPosnVld = (signal->Rx_data[22] >> 7) & 0x1;
 	
 	BCU_M_CAN1_FrP1.BrkPedalInputRodPosn = signal->Rx_data[21];
 	
-	BCU_M_CAN1_FrP1.BrkPedalInputRodForceVld = (signal->Rx_data[22] >> 6) && 0x1;
+	BCU_M_CAN1_FrP1.BrkPedalInputRodForceVld = (signal->Rx_data[22] >> 6) & 0x1;
 	
 	BCU_M_CAN1_FrP1.LongAccel = signal->Rx_data[23];
 	
-	BCU_M_CAN1_FrP1.LongAccelVld = signal->Rx_data[22] && 0x1;
+	BCU_M_CAN1_FrP1.LongAccelVld = signal->Rx_data[22] & 0x1;
 	
-	BCU_M_CAN1_FrP1.RollerbenchActive = (signal->Rx_data[22] >> 5) && 0x1;
+	BCU_M_CAN1_FrP1.RollerbenchActive = (signal->Rx_data[22] >> 5) & 0x1;
 	
 	BCU_M_CAN1_FrP1.WheelSpeed_FL = signal->Rx_data[24];
 	BCU_M_CAN1_FrP1.WheelSpeed_FL = BCU_M_CAN1_FrP1.WheelSpeed_FL << 2;
 	BCU_M_CAN1_FrP1.WheelSpeed_FL += signal->Rx_data[25] >> 6;
 	
-	BCU_M_CAN1_FrP1.WheelSpeedVld_FL = (signal->Rx_data[29] >> 7) && 0x1;
+	BCU_M_CAN1_FrP1.WheelSpeedVld_FL = (signal->Rx_data[29] >> 7) & 0x1;
 	
-	BCU_M_CAN1_FrP1.WheelSpeed_FR = signal->Rx_data[25] && 0x3F;
+	BCU_M_CAN1_FrP1.WheelSpeed_FR = signal->Rx_data[25] & 0x3F;
 	BCU_M_CAN1_FrP1.WheelSpeed_FR = BCU_M_CAN1_FrP1.WheelSpeed_FR << 4;
 	BCU_M_CAN1_FrP1.WheelSpeed_FR += signal->Rx_data[26] >> 4;
 	
-	BCU_M_CAN1_FrP1.WheelSpeedVld_FR = (signal->Rx_data[29] >> 6) && 0x1;
+	BCU_M_CAN1_FrP1.WheelSpeedVld_FR = (signal->Rx_data[29] >> 6) & 0x1;
 	
-	BCU_M_CAN1_FrP1.WheelSpeed_RL = signal->Rx_data[26] && 0xF;
+	BCU_M_CAN1_FrP1.WheelSpeed_RL = signal->Rx_data[26] & 0xF;
 	BCU_M_CAN1_FrP1.WheelSpeed_RL = BCU_M_CAN1_FrP1.WheelSpeed_RL << 6;
 	BCU_M_CAN1_FrP1.WheelSpeed_RL += signal->Rx_data[27] >> 2;
 	
-	BCU_M_CAN1_FrP1.WheelSpeedVld_RL = (signal->Rx_data[29] >> 5) && 0x1;
+	BCU_M_CAN1_FrP1.WheelSpeedVld_RL = (signal->Rx_data[29] >> 5) & 0x1;
 	
-	BCU_M_CAN1_FrP1.WheelSpeed_RR = signal->Rx_data[27] && 0x3;
+	BCU_M_CAN1_FrP1.WheelSpeed_RR = signal->Rx_data[27] & 0x3;
 	BCU_M_CAN1_FrP1.WheelSpeed_RR = BCU_M_CAN1_FrP1.WheelSpeed_RR << 8;
 	BCU_M_CAN1_FrP1.WheelSpeed_RR += signal->Rx_data[28] ;
 	
-	BCU_M_CAN1_FrP1.WheelSpeedVld_RR = (signal->Rx_data[29] >> 4) && 0x1;
+	BCU_M_CAN1_FrP1.WheelSpeedVld_RR = (signal->Rx_data[29] >> 4) & 0x1;
 	
-	BCU_M_CAN1_FrP1.AliveRollingCount = signal->Rx_data[29] && 0xF;
+	BCU_M_CAN1_FrP1.AliveRollingCount = signal->Rx_data[29] & 0xF;
 	
 	BCU_M_CAN1_FrP1.Checksum = signal->Rx_data[30];
 	BCU_M_CAN1_FrP1.Checksum = BCU_M_CAN1_FrP1.Checksum << 8;
 	BCU_M_CAN1_FrP1.Checksum += signal->Rx_data[31];
+	
+	canmissTimer = 0;
 }
 
 
@@ -958,7 +978,19 @@ void FB_reply(void)
     FB_Order_Flag = 0;
     FB_Complete_Flag = 0;
     memset(&ReplyMSG_Global, 0, sizeof(CAN_FD_MESSAGE_BUS));
+#if(EMBActuator == FLEMB)
     ReplyMSG_Global.ID = 0x220;
+#endif
+#if(EMBActuator == FREMB)
+    ReplyMSG_Global.ID = 0x221;
+#endif
+#if(EMBActuator == RLEMB)
+    ReplyMSG_Global.ID = 0x222;
+#endif
+#if(EMBActuator == RREMB)
+    ReplyMSG_Global.ID = 0x223;
+#endif
+    
     ReplyMSG_Global.Length = 48U;
     ReplyMSG_Global.Extended = 0U;
     ReplyMSG_Global.Remote = 0;
@@ -1060,7 +1092,9 @@ void FB_reply(void)
     ReplyMSG_Global.Data[24] |= (uint16_T)(((uint16_T)Temp_real32 & 0xFF00U) >> 8);
 
     // preRef
-    Temp_real32 = roundf(FB_Inqury.preRef * 1000);
+    Temp_real32 = roundf(fromBCU_YC_FL.BrkForceCmd);
+    
+    //Temp_real32 = roundf(FB_Inqury.preRef * 1000);
     if (Temp_real32 > 65535.0) Temp_real32 = 65535;
     else if (Temp_real32 < 0.0) Temp_real32 = 0;
     ReplyMSG_Global.Data[27] |= (uint16_T)(Temp_real32);

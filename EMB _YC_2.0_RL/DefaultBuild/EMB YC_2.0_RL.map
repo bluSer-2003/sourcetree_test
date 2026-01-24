@@ -1,8 +1,7 @@
-Renesas Optimizing Linker (W3.07.00 )             23-Jan-2026 17:39:05
+Renesas Optimizing Linker (W3.07.00 )             24-Jan-2026 14:42:51
 
 *** Options ***
 
--MAKEUD=DefaultBuild\EMB YC_2.0_RL.lk.ud
 -subcommand=DefaultBuild\EMB YC_2.0_RL.clnk
 -input=DefaultBuild\boot.obj
 -input=DefaultBuild\cstart.obj
@@ -77,12 +76,12 @@ EIINTTBL
 .INIT_BSEC.const
                                   00024868  0002486f         8   4
 .text
-                                  00024870  00051fab     2d73c   4
+                                  00024870  000520f3     2d884   4
 .data
-                                  00051fac  00052edf       f34   4
+                                  000520f4  0005302b       f38   4
 .data.R
-                                  fede0000  fede0f33       f34   4
+                                  fede0000  fede0f37       f38   4
 .bss
-                                  fede0f34  fedf9c1b     18ce8   4
+                                  fede0f38  fedf9c1f     18ce8   4
 .stack.bss
-                                  fedf9c1c  fedf9e1b       200   4
+                                  fedf9c20  fedf9e1f       200   4

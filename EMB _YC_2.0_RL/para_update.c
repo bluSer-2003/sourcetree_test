@@ -9,6 +9,7 @@ extern unsigned int error_state_code_0101;
 extern uint32_t force_data;
 extern float temperature ;
 extern uint8 rollcnt;
+extern int canmissTimer;
 
 //反馈参数更新
 void UpdateFbkPara()
@@ -131,7 +132,7 @@ void UpdateGivenParam(void){
     if(Given_Order_Flag == 1){
 	
 	if(Given_Order.givenFlag&0x0001)
-            g_Control.target_pressure = Given_Order.pre;	//夹紧力给定
+            //g_Control.target_pressure = Given_Order.pre;	//夹紧力给定
 	    
 	if(Given_Order.givenFlag&0x0002)
             g_Control.PosRefStep = Given_Order.pos;		//位置圈数给定
@@ -179,11 +180,12 @@ void UpdateGivenParam(void){
 void UpdateParam_fromBCU(void) 
 {
     #if(EMBActuator == FLEMB)
-    if (BCU_M_CAN1_FrP1.BrkForceCmdActive_FL == 1) 
-    {
+        if(canmissTimer > 10000)
+	{
+		fromBCU_YC_FL.BrkForceCmd = 0;
+	}
         fromBCU_YC_FL.BrkForceCmd = BCU_M_CAN1_FrP1.BrkForceCmd_FL * 10;    //N
-        
-    }
+	g_Control.target_pressure = (float)fromBCU_YC_FL.BrkForceCmd*0.001; 
     fromBCU_YC_FL.BrkForceCmdGrdMaxLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_FL;
     fromBCU_YC_FL.BrkForceCmdGrdMinLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_FL;
     fromBCU_YC_FL.BrkForceCmdGrdLmt = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FL;
@@ -194,55 +196,60 @@ void UpdateParam_fromBCU(void)
     BCU_M_CAN1_FrP1.BrkForceCmdActive_FL = 0;
     #endif
     #if(EMBActuator == FREMB)
-    if (BCU_M_CAN1_FrP1.BrkForceCmdActive_FR == 1)
-    {
-	fromBCU_YC_FL.BrkForceCmd = BCU_M_CAN1_FrP1.BrkForceCmd_FR * 10;
-        //g_Control.target_pressure = BCU_M_CAN1_FrP1.BrkForceCmd_FR * 10;
-    }
-    fromBCU_YC_FL.BrkForceCmdGrdMaxLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_FR;
-    fromBCU_YC_FL.BrkForceCmdGrdMinLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_FR;
-    fromBCU_YC_FL.BrkForceCmdGrdLmt = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FR;
-    fromBCU_YC_FL.BrkForceRelPosReq = BCU_M_CAN1_FrP1.BrkForceRelPosReq_FR;
-    fromBCU_YC_FL.BrkForceDiffAllow = BCU_M_CAN1_FrP1.BrkForceDiffAllow_FR;
-    fromBCU_YC_FL.ABSActive = BCU_M_CAN1_FrP1.ABSActive_FR;
-    fromBCU_YC_FL.ParkRequest = BCU_M_CAN1_FrP1.ParkRequest_FR;
+        if(canmissTimer > 10000)
+	{
+		fromBCU_YC_FR.BrkForceCmd = 0;
+	}
+        fromBCU_YC_FR.BrkForceCmd = BCU_M_CAN1_FrP1.BrkForceCmd_FR * 10;    //N
+	g_Control.target_pressure = (float)fromBCU_YC_FR.BrkForceCmd*0.001; 
+    fromBCU_YC_FR.BrkForceCmdGrdMaxLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_FR;
+    fromBCU_YC_FR.BrkForceCmdGrdMinLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_FR;
+    fromBCU_YC_FR.BrkForceCmdGrdLmt = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_FR;
+    fromBCU_YC_FR.BrkForceRelPosReq = BCU_M_CAN1_FrP1.BrkForceRelPosReq_FR;
+    fromBCU_YC_FR.BrkForceDiffAllow = BCU_M_CAN1_FrP1.BrkForceDiffAllow_FR;
+    fromBCU_YC_FR.ABSActive = BCU_M_CAN1_FrP1.ABSActive_FR;
+    fromBCU_YC_FR.ParkRequest = BCU_M_CAN1_FrP1.ParkRequest_FR;
     BCU_M_CAN1_FrP1.BrkForceCmdActive_FR = 0;
     #endif
     #if(EMBActuator == RLEMB)
-    if (BCU_M_CAN1_FrP1.BrkForceCmdActive_RL == 1)
-    {
-	fromBCU_YC_FL.BrkForceCmd = BCU_M_CAN1_FrP1.BrkForceCmd_RL * 10;
-        //g_Control.target_pressure = BCU_M_CAN1_FrP1.BrkForceCmd_RL * 10;
-    }
-    fromBCU_YC_FL.BrkForceCmdGrdMaxLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_RL;
-    fromBCU_YC_FL.BrkForceCmdGrdMinLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_RL;
-    fromBCU_YC_FL.BrkForceCmdGrdLmt = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RL;
-    fromBCU_YC_FL.BrkForceRelPosReq = BCU_M_CAN1_FrP1.BrkForceRelPosReq_RL;
-    fromBCU_YC_FL.BrkForceDiffAllow = BCU_M_CAN1_FrP1.BrkForceDiffAllow_RL;
-    fromBCU_YC_FL.ABSActive = BCU_M_CAN1_FrP1.ABSActive_RL;
-    fromBCU_YC_FL.ParkRequest = BCU_M_CAN1_FrP1.ParkRequest_RL;
+        if(canmissTimer > 10000)
+	{
+		fromBCU_YC_RL.BrkForceCmd = 0;
+	}
+        fromBCU_YC_RL.BrkForceCmd = BCU_M_CAN1_FrP1.BrkForceCmd_RL * 10;    //N
+	g_Control.target_pressure = (float)fromBCU_YC_RL.BrkForceCmd*0.001; 
+    fromBCU_YC_RL.BrkForceCmdGrdMaxLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_RL;
+    fromBCU_YC_RL.BrkForceCmdGrdMinLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_RL;
+    fromBCU_YC_RL.BrkForceCmdGrdLmt = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RL;
+    fromBCU_YC_RL.BrkForceRelPosReq = BCU_M_CAN1_FrP1.BrkForceRelPosReq_RL;
+    fromBCU_YC_RL.BrkForceDiffAllow = BCU_M_CAN1_FrP1.BrkForceDiffAllow_RL;
+    fromBCU_YC_RL.ABSActive = BCU_M_CAN1_FrP1.ABSActive_RL;
+    fromBCU_YC_RL.ParkRequest = BCU_M_CAN1_FrP1.ParkRequest_RL;
     BCU_M_CAN1_FrP1.BrkForceCmdActive_RL = 0;
     #endif
     #if(EMBActuator == RREMB)
-    if (BCU_M_CAN1_FrP1.BrkForceCmdActive_RR == 1)
-    {
-	fromBCU_YC_FL.BrkForceCmd = BCU_M_CAN1_FrP1.BrkForceCmd_RR * 10;
-        //g_Control.target_pressure = BCU_M_CAN1_FrP1.BrkForceCmd_RR * 10;
-    }
-    fromBCU_YC_FL.BrkForceCmdGrdMaxLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_RR;
-    fromBCU_YC_FL.BrkForceCmdGrdMinLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_RR;
-    fromBCU_YC_FL.BrkForceCmdGrdLmt = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RR;
-    fromBCU_YC_FL.BrkForceRelPosReq = BCU_M_CAN1_FrP1.BrkForceRelPosReq_RR;
-    fromBCU_YC_FL.BrkForceDiffAllow = BCU_M_CAN1_FrP1.BrkForceDiffAllow_RR;
-    fromBCU_YC_FL.ABSActive = BCU_M_CAN1_FrP1.ABSActive_RR;
-    fromBCU_YC_FL.ParkRequest = BCU_M_CAN1_FrP1.ParkRequest_RR;
+        if(canmissTimer > 10000)
+	{
+		fromBCU_YC_RR.BrkForceCmd = 0;
+	}
+        fromBCU_YC_RR.BrkForceCmd = BCU_M_CAN1_FrP1.BrkForceCmd_RR * 10;    //N
+	g_Control.target_pressure = (float)fromBCU_YC_RR.BrkForceCmd*0.001; 
+    fromBCU_YC_RR.BrkForceCmdGrdMaxLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMaxLmtA_RR;
+    fromBCU_YC_RR.BrkForceCmdGrdMinLmtA = BCU_M_CAN1_FrP1.BrkForceCmdGrdMinLmtA_RR;
+    fromBCU_YC_RR.BrkForceCmdGrdLmt = BCU_M_CAN1_FrP1.BrkForceCmdGrdLmt_RR;
+    fromBCU_YC_RR.BrkForceRelPosReq = BCU_M_CAN1_FrP1.BrkForceRelPosReq_RR;
+    fromBCU_YC_RR.BrkForceDiffAllow = BCU_M_CAN1_FrP1.BrkForceDiffAllow_RR;
+    fromBCU_YC_RR.ABSActive = BCU_M_CAN1_FrP1.ABSActive_RR;
+    fromBCU_YC_RR.ParkRequest = BCU_M_CAN1_FrP1.ParkRequest_RR;
     BCU_M_CAN1_FrP1.BrkForceCmdActive_RR = 0;
     #endif
     
-    if(fromBCU_YC_FL.BrkForceCmd > g_Control.target_pressure || fromBCU_YC_FL.BrkForceCmd == 0)
-    {
-	    g_Control.target_pressure = (float)fromBCU_YC_FL.BrkForceCmd*0.001;    
-    }
+//    if(fromBCU_YC_FL.BrkForceCmd > g_Control.target_pressure || fromBCU_YC_FL.BrkForceCmd == 0)
+//    {
+//	    g_Control.target_pressure = (float)fromBCU_YC_FL.BrkForceCmd*0.001;    
+//    }
+
+
 }
 
 //英创项目外发给整车参数更新
