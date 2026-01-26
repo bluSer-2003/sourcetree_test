@@ -8,6 +8,11 @@
 
 #define INVALID_CAN_ID 0
 
+uint8 DEBUG1 = 0;
+uint8 DEBUG2 = 0;
+uint8 DEBUG3 = 0;
+uint8 DEBUG4 = 0;
+
 typedef enum {
     MSG_ID_Manuf_INQRY      = 0X0000,   // ?????? ID
     MSG_ID_Manuf_STATE      = 0X0200,   // ?????? ID
@@ -136,46 +141,61 @@ void CAN_Tx_Fun(void)
     }  
     
 #if(EMBActuator == FLEMB)
-    if (canTimer % 100 == 0)
+    if (canTimer % 100 > 10 && DEBUG1 == 0)
     {
         Send_Tx_0x6Ex(BWC_FL_CAN1_FrP1, 0x6E1);
-	
+	DEBUG1 = 1;
     }
-    if (canTimer % 100 == 20)
+    if (canTimer % 100 > 30 && DEBUG2 == 0)
     {
         FB_reply();
+	DEBUG2 = 1;
     }
 #endif
 #if(EMBActuator == FREMB)
-    if (canTimer % 100 == 0)
+    if (canTimer % 100 > 10 && DEBUG1 == 0)
     {
         Send_Tx_0x6Ex(BWC_FR_CAN1_FrP1, 0x6E2);
+	DEBUG1 = 1;
     }
-    if (canTimer % 100 == 20)
+    if (canTimer % 100 > 30 && DEBUG2 == 0)
     {
         FB_reply();
+	DEBUG2 = 1;
     }
 #endif
 #if(EMBActuator == RLEMB)
-    if (canTimer % 100 == 0)
+    if (canTimer % 100 > 10 && DEBUG1 == 0)
     {
         Send_Tx_0x6Ex(BWC_RL_CAN1_FrP1, 0x6E3);
+	DEBUG1 = 1;
     }
-    if (canTimer % 100 == 20)
+    if (canTimer % 100 > 30 && DEBUG2 == 0)
     {
         FB_reply();
+	DEBUG2 = 1;
     }
 #endif
 #if(EMBActuator == RREMB)
-    if (canTimer % 100 == 0)
+    if (canTimer % 100 > 10 && DEBUG1 == 0)
     {
         Send_Tx_0x6Ex(BWC_RR_CAN1_FrP1, 0x6E4);
+	DEBUG1 = 1;
     }
-    if (canTimer % 100 == 20)
+    if (canTimer % 100 > 30 && DEBUG2 == 0)
     {
         FB_reply();
+	DEBUG2 = 1;
     }
 #endif
+
+    if (canTimer % 100 < 10)
+    {
+        DEBUG1 = 0;
+	DEBUG2 = 0;
+	DEBUG3 = 0;
+	DEBUG4 = 0;
+    }
 }
 
 uint8 crc_8find(uint8 *data, uint16 len)
