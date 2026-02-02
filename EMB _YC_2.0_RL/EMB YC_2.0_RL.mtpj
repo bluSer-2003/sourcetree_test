@@ -1,9 +1,9 @@
-﻿<CubeSuiteProject PackageVersion="V8.13.00  [05 Dec 2024]">
-  <ProductVersion>9.13.00.00</ProductVersion>
+﻿<CubeSuiteProject>
+  <ProductVersion>9.11.00.00</ProductVersion>
   <Class Guid="68f4a651-b9cd-473b-a595-b00447132ffa">
     <Instance Guid="00000000-0000-0000-0000-000000000000">
       <FormatVersion>2.0</FormatVersion>
-      <FileVersion>9.13</FileVersion>
+      <FileVersion>9.11</FileVersion>
       <ProjectGuid>1355b608-3743-4981-8b65-10f2866aa6ce</ProjectGuid>
       <ProjectItemGuid>6f57d4a9-974d-4f65-86dd-4d9ebec09aa0</ProjectItemGuid>
       <FileCategoryGuid>b0477ed1-fccb-40db-860b-ed8a10ed7994</FileCategoryGuid>
@@ -1254,9 +1254,9 @@
       <SetAllBuildModeValue-DefaultValue>False</SetAllBuildModeValue-DefaultValue>
       <AsmOptionD-DefaultValue />
       <COptionISystem-DefaultValue />
+      <DependencyFileExistCheckingType-DefaultValue>Rebuild</DependencyFileExistCheckingType-DefaultValue>
       <GeneralOptionCoreCPU-DefaultValue>G3M</GeneralOptionCoreCPU-DefaultValue>
       <GeneralOptionCurrentDevice-DefaultValue>DR7F701374.DVF, V1.30</GeneralOptionCurrentDevice-DefaultValue>
-      <GeneralOptionGroupMessages-DefaultValue>False</GeneralOptionGroupMessages-DefaultValue>
       <GeneralOptionR4-DefaultValue>None</GeneralOptionR4-DefaultValue>
       <GeneralOptionResetVectorAddressPE2-DefaultValue />
       <GeneralOptionXep-DefaultValue>None</GeneralOptionXep-DefaultValue>
@@ -1265,7 +1265,6 @@
       <LibOptionOutputFileName-DefaultValue>%ProjectName%.lib</LibOptionOutputFileName-DefaultValue>
       <LinkOptionOutputFileName-DefaultValue>%ProjectName%.abs</LinkOptionOutputFileName-DefaultValue>
       <COptionD-DefaultValue />
-      <DependencyFileExistCheckingType-DefaultValue>Rebuild</DependencyFileExistCheckingType-DefaultValue>
       <GeneralOptionOutputBitIOR-DefaultValue>False</GeneralOptionOutputBitIOR-DefaultValue>
       <GeneralOptionResetVectorAddressPE3-DefaultValue />
       <GeneralOptionXcref-DefaultValue>False</GeneralOptionXcref-DefaultValue>
@@ -1304,7 +1303,7 @@
       <GeneralOptionResetVectorAddressPE14-DefaultValue />
       <GeneralOptionResetVectorAddressPE15-DefaultValue />
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8584324681942651078</TimeTagModified--0>
+      <TimeTagModified--0>-8584316045777249661</TimeTagModified--0>
       <BuildMode-0>DefaultBuild</BuildMode-0>
       <Memo-0 />
       <SetAllBuildModeValue-0>True</SetAllBuildModeValue-0>
@@ -1330,13 +1329,12 @@
       <GeneralOptionXerrorFolder-0>%BuildModeName%</GeneralOptionXerrorFolder-0>
       <GeneralOptionXnoWarning-0 />
       <GeneralOptionXreserveR2-0>False</GeneralOptionXreserveR2-0>
+      <DependencyFileExistCheckingType-0>Rebuild</DependencyFileExistCheckingType-0>
       <GeneralOptionCoreCPU-0>G3M</GeneralOptionCoreCPU-0>
-      <GeneralOptionGroupMessages-0>False</GeneralOptionGroupMessages-0>
       <GeneralOptionR4-0>None</GeneralOptionR4-0>
       <GeneralOptionResetVectorAddressPE2-0 />
       <GeneralOptionXep-0>None</GeneralOptionXep-0>
       <GeneralOptionXerrorFileName-0>%ProjectName%.err</GeneralOptionXerrorFileName-0>
-      <DependencyFileExistCheckingType-0>Rebuild</DependencyFileExistCheckingType-0>
       <GeneralOptionOutputBitIOR-0>False</GeneralOptionOutputBitIOR-0>
       <GeneralOptionResetVectorAddressPE3-0 />
       <GeneralOptionXcref-0>False</GeneralOptionXcref-0>
@@ -1346,7 +1344,7 @@
       <GeneralOptionOtherAdditionalOptions-0 />
       <GeneralOptionResetVectorAddressPE6-0 />
       <GeneralOptionResetVectorAddressPE7-0 />
-      <LastCompilerVersion-0>V2.07.00</LastCompilerVersion-0>
+      <LastCompilerVersion-0>V2.06.00</LastCompilerVersion-0>
       <GeneralOptionResetVectorAddressD-0>0</GeneralOptionResetVectorAddressD-0>
     </Instance>
     <Instance Guid="24e7db6c-6f3c-483e-b3af-c4be92050d3b">

@@ -191,10 +191,19 @@ typedef struct
     int current_level1;
     int current_level2;
     int current_level3;
+    int current_errcount;
     int ADC12_outrange;
+    int ADC12_recovery;
     int voltage_low;
     int spd_outrange;
-    int temp_High;
+    int temp_High_recovery;
+    int temp_low_recovery;
+    int force_outrange;
+    int voltlow_recovery;
+    int voltlow_recovery2;
+    int boardvolt_high_recovery;
+    int boardvolt_high_recovery2;
+
 } alarmcount;
 
 typedef struct

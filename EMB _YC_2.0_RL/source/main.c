@@ -272,7 +272,7 @@ void para_Init(void)
     
     g_Control.iRunState = 0;
     g_Control.FW.Flag   = 0;                 
-    Aligment.Flag  =1;  
+    Aligment.Flag       = 1;  
     g_Control.count.SpeedLoopCount = 1;      
     g_Control.count.PosLoopCount   = 1;   
     g_Control.count.ForceLoopCount = 1; 
@@ -282,6 +282,10 @@ void para_Init(void)
     g_Control.Aligmenta.Ali_angle = ANGLE_COMP;  
     g_Control.Aligmenta.Ali_count = 0;
 
+    g_PosInterp.current_pos = g_Control.PosRef;
+    g_PosInterp.target_pos = g_Control.PosRef;
+    g_PosInterp.start_pos = g_Control.PosRef;
+    g_PosInterp.interpolation_count = POS_INTERP_STEPS;
     
     if(TestFlag==0){
 	    g_Control.Aligmenta.Ali_angle = ANGLE_COMP;

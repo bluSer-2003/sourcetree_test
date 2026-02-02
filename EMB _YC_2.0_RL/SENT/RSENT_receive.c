@@ -86,7 +86,7 @@ struct r_sentData_fast {           // Define structure for SENT fast channel dat
     
  uint32_t RX0;                  // Entry 1 RX0 for message data(RSENTnFRXD)
  uint32_t RX0_calc_value;       // Entry 3 RX0 for calculated message data
- uint32_t RX0_pressure_signal;  // Entry 4 RX0 for unnormal pressure signal
+ uint32_t RX0_pressure_data;  // Entry 4 RX0 for unnormal pressure signal
 
 };
 
@@ -113,7 +113,7 @@ int 		Low_data_detect         (uint32_t low_threshold,uint32_t total_num);
  
  volatile uint32_t fast_buffer = 0x00;           // Variable "fast_buffer" for incrementation
  volatile uint32_t timeout_count = 0x00;         // Variable for timeout counter
- volatile uint32_t no_com_flag = 0x00;           // Flag variable for "No Communication" detection
+ volatile uint32_t SENT_nocom_flag = 0x00;           // Flag variable for "No Communication" detection
  volatile uint32_t data_err_flag = 0x00;         //Flag for data error:1:data error 2:sensor break
  volatile uint32_t initial_time = 0;             //                                       
  static uint32_t data_err_count = 0x00;          //Variable for continuous data exception
@@ -199,16 +199,15 @@ void com_end(void){
 
 void no_com_detect(void){	
   if( (RSENT0CS & 0x01) == 0){
-    if ( timeout_count >= 10000){ // Check if the timeout condition is true(0.5s)
-        no_com_flag = 0x01;       // Set the "No Communication" flag
+    if ( timeout_count >= 10000){     // Check if the timeout condition is true(0.5s)
+        SENT_nocom_flag = 0x01;       // Set the "No Communication" flag
         timeout_count = 0;
     }
-    else {                        // Increment timeout counter
+    else                              // Increment timeout counter
         timeout_count++;
-    }
   }
   else{
-      no_com_flag = 0;              // Reset error flag
+      SENT_nocom_flag = 0;            // Reset error flag
       timeout_count = 0;
   }
 }
@@ -217,7 +216,8 @@ void no_com_detect(void){
 // deal with data from fast channel
 //============================================================================
 void fast_data_receive(void){
-if (( RSENT0CS & 0x01 ) == 1 ){                              // Fast Channel Receive Interrupt detected
+  uint32_t temp = 0;
+  if (( RSENT0CS & 0x01 ) == 1 ){                              // Fast Channel Receive Interrupt detected
           
         // -> FAST CHANNEL MESSAGE HANDLING <-
         // Perform sensor value calculation from fast message content
@@ -225,15 +225,13 @@ if (( RSENT0CS & 0x01 ) == 1 ){                              // Fast Channel Rec
         RSENT0_data_fast[fast_buffer].RX0  = RSENT0FRXD;                // Write value of RSENT1.FRXD into "RX0"
         RSENT0_data_fast[fast_buffer].RX0_calc_value = 
         (( RSENT0_data_fast[fast_buffer].RX0 << 8)  >> 20 );            // Get 6 data nibbles
-        if(RSENT0_data_fast[fast_buffer].RX0_calc_value < 410 && RSENT0_data_fast[fast_buffer].RX0_calc_value > 370){        //pressure < 410
-            RSENT0_data_fast[fast_buffer].RX0_calc_value = 410;
-        }
-        else if(RSENT0_data_fast[fast_buffer].RX0_calc_value > 3700 && RSENT0_data_fast[fast_buffer].RX0_calc_value > 3686){  // pressure > 3686
-            RSENT0_data_fast[fast_buffer].RX0_calc_value = 3686;
-        }
-        RSENT0_data_fast[fast_buffer].RX0_calc_value =  (RSENT0_data_fast[fast_buffer].RX0_calc_value - 410)*45000/3276; //Get force data
-        pressure_data = RSENT0_data_fast[fast_buffer].RX0_calc_value;
-         
+        temp = RSENT0_data_fast[fast_buffer].RX0_calc_value;
+        if(temp < 410 && temp > 370)                                    //零漂补偿
+            temp = 410;
+        else if(temp > 3700 && temp > 3686)                             // pressure > 3686
+            temp = 3686;
+        RSENT0_data_fast[fast_buffer].RX0_pressure_data =  (temp - 410)*45000/3276; //Get force data
+        pressure_data = RSENT0_data_fast[fast_buffer].RX0_pressure_data;
         fast_buffer++ ;                                       // Incrementation of "fast_buffer" with 1
     }	
 
@@ -255,14 +253,14 @@ int Err_data_detect(uint32_t diff_threshold,uint32_t total_error_num)
   uint32_t difference_value;
 
   //Determine whether an exception occurs based on the data difference
-  force_1 = RSENT0_data_fast[(fast_buffer + 6) % 8].RX0_calc_value;
-  force_2 = RSENT0_data_fast[(fast_buffer + 7) % 8].RX0_calc_value;
+  force_1 = RSENT0_data_fast[(fast_buffer + 6) % 8].RX0_pressure_data;
+  force_2 = RSENT0_data_fast[(fast_buffer + 7) % 8].RX0_pressure_data;
   difference_value = abs(force_2 - force_1);
 
   //disturbed data
   //Deal with disturbed data,replace with last data
-  if((difference_value > diff_threshold) && (data_err_flag == 0) && (no_com_flag == 0)){
-    RSENT0_data_fast[(fast_buffer + 7) % 8].RX0_calc_value = RSENT0_data_fast[(fast_buffer + 6) % 8].RX0_calc_value;
+  if((difference_value > diff_threshold) && (data_err_flag == 0) && (SENT_nocom_flag == 0)){
+    RSENT0_data_fast[(fast_buffer + 7) % 8].RX0_pressure_data = RSENT0_data_fast[(fast_buffer + 6) % 8].RX0_pressure_data;
     data_err_count = data_err_count + 1;
   }
   else if(difference_value <= diff_threshold){
@@ -279,9 +277,9 @@ int Err_data_detect(uint32_t diff_threshold,uint32_t total_error_num)
 int Low_data_detect(uint32_t low_threshold,uint32_t total_num)
 {
     uint32_t force = 0;
-    force = RSENT0_data_fast[(fast_buffer + 7) % 8].RX0_calc_value;
+    force = RSENT0_data_fast[(fast_buffer + 7) % 8].RX0_pressure_data;
 
-    if( no_com_flag == 0){
+    if( SENT_nocom_flag == 0){
       //Low data detect
       if((force <= low_threshold) && (low_data_count > total_num)){
         data_err_flag = 2;
@@ -314,7 +312,7 @@ void SENT_receive_init( void ) {
 
 uint32_t SENT_receive_start( void ){	
 
-  //initial configuration(在main函数中已经初始化�?
+  //initial configuration(在main函数中已经初始化)
   //SENT_receive_init();
 
   //start communication and deal with data from fast and slow channel
@@ -327,7 +325,7 @@ uint32_t SENT_receive_start( void ){
   //detect status of communication
   no_com_detect();
 
-  if(no_com_flag == 0){
+  if(SENT_nocom_flag == 0){
     //先检测是否存在数据不合理的情况
     data_err_flag = Low_data_detect(80,1000);
     //检测数据是否有突变,至少检测到两个数据

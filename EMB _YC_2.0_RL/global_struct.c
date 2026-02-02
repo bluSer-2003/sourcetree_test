@@ -145,6 +145,11 @@ void initGlobalVariables() {
     alarm.voltage_low = 0;
     alarm.ADC12_outrange = 0;
     alarm.spd_outrange = 0;
+    alarm.current_errcount = 0;
+    alarm.force_outrange = 0;
+    alarm.voltage_low = 0;
+    alarm.boardvolt_high_recovery = 0;
+    alarm.temp_High_recovery = 0;
     
     flag.AliCheck = 0;
 }

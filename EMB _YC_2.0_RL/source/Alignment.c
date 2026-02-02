@@ -585,9 +585,13 @@ void Aligment_close(void)
 int AliCheck(double angle,double Aliangle)
 {
     double error = Aliangle - angle;
+    
     if(error<0)
-        error +=2*PI;
-    if(error>=0.3)
+        error = -error;
+    if(error>PI)
+        error = 2*PI - error;
+	
+    if(error>=0.5)
         return 0;  //偏差过大，定位有问题
     else
         return 1;  //定位正常

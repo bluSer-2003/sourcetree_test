@@ -491,7 +491,7 @@ inline void AngleProcess(void){
 //主中断初始化
 void MainISRInit(void){
     if(IsrTicker<10000)
-	IsrTicker++;                                    //0S~0.5S  上电稳定
+	    IsrTicker++;                                    //0S~0.5S  上电稳定
     else if(IsrTicker<30000){                           //0.5s~1.5S计算直流偏置
         offsetA = K1*offsetA+K2*Gu1ReadAdcValue[2]; 	//Phase A offset
         offsetB = K1*offsetB+K2*Gu1ReadAdcValue[3]; 	//Phase B offset
@@ -502,43 +502,71 @@ void MainISRInit(void){
         IsrTicker++;
         g_Control.pos.PosOld = angle;                   //位置初始化
         g_Control.pos.PosSum = 0;
-    }else if(IsrTicker<30001){
-        if(lsw != 3){                                     //非位置环
-            if(TestFlag == 0)
-                g_Control.iRunState  = 100;
-            else
-                g_Control.iRunState  = 4444;
+    }else if(IsrTicker<30001){                          //测试模式跳过验证环节
+    	SampleAndProtect();                             //电流采样与保护
+        if(TestFlag==0)
+	        IsrTicker = 100000;                         //下次跳到最后，测试模式
+        else 
+	        IsrTicker++;    
+    }else if(IsrTicker<50001){                          //1.5s~2.5S定位到某一极
+        g_Control.Dutycycle_A= -0.7; 
+        g_Control.Dutycycle_B= -1;
+        g_Control.Dutycycle_C= -1;
+    	SampleAndProtect();    
+        IsrTicker++;    
+    }else if(IsrTicker<70001){                          //2.5s~3.5S定位到某一极
+        g_Control.Dutycycle_A= -0.6; 
+        g_Control.Dutycycle_B= -1;
+        g_Control.Dutycycle_C= -1;
+    	SampleAndProtect();    
+        IsrTicker++;      
+    }else if(IsrTicker<70002){                          //初始角度验证
+    	SampleAndProtect();    
+        //1:初始定位角度正常 0：初始定位角度异常
+        flag.AliCheck = AliCheck(g_Control.angle_e,g_Control.Aligmenta.Ali_angle); 
+        if(flag.AliCheck == 0 && lsw != 0){             //定位角度异常且当前不处于定位模式时
+            lswpre = lsw;                               //储存环路信息
+            lsw = 0;                                    //初始角度异常，进入定位模式，重新定位
+            error_state_code_0101 |= _PORT_SET_BIT0;             //错误标志位:定位故障
         }
-        IsrTicker++;
-        clarke1.As = -(float)(Gu1ReadAdcValue[2]-offsetA)*660/4095;       // Phase A curr.
-        clarke1.Bs = -(float)(Gu1ReadAdcValue[3]-offsetB)*660/4095;       // Phase B curr.
-        clarke1.Cs = -(float)(Gu1ReadAdcValue[0]-offsetC)*660/4095;       // Phase C curr.
-    }else{
+        g_Control.Dutycycle_A= -1;                      //封管
+        g_Control.Dutycycle_B= -1;
+        g_Control.Dutycycle_C= -1;
+        IsrTicker++;    
+    }
+    // else if(IsrTicker<70003){
+    //     if(lsw != 3){                                //非位置环
+    //         if(TestFlag == 0)
+    //             g_Control.iRunState  = 100;
+    //         else
+    //             g_Control.iRunState  = 4444;
+    //     }
+    //     IsrTicker++;
+    // }
+    else{
         SampleAndProtect();                             //电流采样与保护
-        CLARKE_MACRO(clarke1)
-        park1.Alpha = clarke1.Alpha;        
-        park1.Beta  = clarke1.Beta;  
-        park1.Angle = g_Control.angle_e;
-        park1.Sine  = sinf(park1.Angle);
-        park1.Cose  = cosf(park1.Angle);
-        PARK_MACRO(park1)			        //CLARKE和PARK变换
+        // CLARKE_MACRO(clarke1)
+        // park1.Alpha = clarke1.Alpha;        
+        // park1.Beta  = clarke1.Beta;  
+        // park1.Angle = g_Control.angle_e;
+        // park1.Sine  = sinf(park1.Angle);
+        // park1.Cose  = cosf(park1.Angle);
+        // PARK_MACRO(park1)			                //CLARKE和PARK变换
 	
-        if(lsw == 3){				        //位置环进行接触点识别和间隙回退
+        if(lsw == 3){				                    //位置环进行接触点识别和间隙回退
             if(contectFlag == 0)
                 EMB_ContactDetect();                    //计算接触点
             if((contectFlag == 1 ||contectFlag == 2) && reverseFlag == 0) {
                 EMB_afterContactDetect();
             }
         }
-	
-	if ((contectFlag == 1 ||contectFlag == 2) && reverseFlag == 1 )  //识别到接触点
-            g_Control.iRunState = 100;      //调试模式直接启动
+	    //识别到接触点直接启动
+	    if (((contectFlag == 1 ||contectFlag == 2) && reverseFlag == 1) || (lsw != 3))  
+            g_Control.iRunState = 100;   
         
-//        if ((contectFlag == 1 ||contectFlag == 2) && reverseFlag == 1 && TestFlag==0)  //识别到接触点
-//            g_Control.iRunState = 100;      //调试模式直接启动
-//        else if((contectFlag == 1 ||contectFlag == 2) && reverseFlag == 1  && TestFlag==1)
-//            g_Control.iRunState = 4444;   //CAN模式停止运行
-
+        clarke1.As = -(float)(Gu1ReadAdcValue[2]-offsetA)*660/4095;       // Phase A curr.
+        clarke1.Bs = -(float)(Gu1ReadAdcValue[3]-offsetB)*660/4095;       // Phase B curr.
+        clarke1.Cs = -(float)(Gu1ReadAdcValue[0]-offsetC)*660/4095;       // Phase C curr.
     }
 }
 
@@ -560,11 +588,10 @@ inline void MainISR(void){
 inline void Position_Cal(float Target_Force){
     if(Target_Force <= 200.0f){   // 压力太小，直接回零
         target_position = -1.50f;
-	pi_preforce.Out=0;
+	    pi_preforce.Out=0;
     }else{
         target_position = -5.055f + sqrtf(2348000000.0f + 389728.0f * Target_Force) * 0.000103f;
     }
-   
 }
 
 inline void ABSTestRefSet(){
@@ -573,27 +600,27 @@ inline void ABSTestRefSet(){
         if(force_data >= 4500)
             forcecount++;
         if(forcecount >= 600){
-	    forcecount = 0;
+	        forcecount = 0;
             forcestage++;
-	}
+	    }
     }
     else if(forcestage % 4 == 1){
-	g_Control.target_pressure = 3;
-	if(force_data <= 3000)
-	    forcecount++;
+	    g_Control.target_pressure = 3;
+        if(force_data <= 3000)
+            forcecount++;
 	    if(forcecount >= 600){
 	        forcecount = 0;
 	        forcestage++;
 	    }
     }
     else if(forcestage % 4 == 2){
-	g_Control.target_pressure = 4.5;
-	if(force_data >= 4500)
-	    forcecount++;
-	if(forcecount >= 600){
-	    forcecount = 0;
-	    forcestage++;
-	}
+	    g_Control.target_pressure = 4.5;
+	    if(force_data >= 4500)
+	        forcecount++;
+	    if(forcecount >= 600){
+            forcecount = 0;
+            forcestage++;
+	    }
     }
     else if(forcestage % 4 == 3){
         g_Control.target_pressure = 0;
@@ -630,7 +657,7 @@ inline void SlopeSet(float Ref){
     if(Set_Step % 2 == 0)
         SlopeRef = (float)Ref * (Set_count - Set_Step*SlopeSetPeriod*20000)/ (SlopeSetPeriod*20000);
     else if(Set_Step % 2 == 1){
-	SlopeRef = (float)Ref * (Set_count - Set_Step*SlopeSetPeriod*20000) / (SlopeSetPeriod*20000);
+	    SlopeRef = (float)Ref * (Set_count - Set_Step*SlopeSetPeriod*20000) / (SlopeSetPeriod*20000);
         SlopeRef = (float)Ref - SlopeRef;
     }
     Set_count++;
@@ -703,7 +730,7 @@ inline void SetLoopRef(){
         switch(lsw)
         {
             case position:
-                 g_Control.target_pressure = g_Control.target_pressure;	        //CAN给定压力值
+                 g_Control.target_pressure = SATS(g_Control.target_pressure,0,FORCE_HIGH);	        //CAN给定压力值
                  Position_Cal(g_Control.target_pressure*FORCE_PU_RE);
                 // TargetForce_pre = g_Control.target_pressure*FORCE_PU_RE;
                  g_Control.PosRef = target_position;
