@@ -983,13 +983,6 @@ void CAN_FD_P_ANA(CAN_FD_MESSAGE_BUS *msg)
       //  }
 
     }
-    if(!Password_Flag){
-        CANfd_Error = 1;
-    }
-
-    if(CANfd_Error != 0 && msg->ID != 0x1C0){
-        Error_reply();
-    }
 }
 
 

@@ -1,19 +1,19 @@
 QualityReport
-2026年2月2日 11:42:24
+2026年2月3日 17:38:07
 
 ------ Start build(EMB YC_2.0_RL, DefaultBuild) ------
-D:\CSPLus\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe source\main.c source\port.c source\gtm.c source\r_adc.c tmr.c Config_CSIH0\Config_CSIH0.c mttcan_a.c mttcan_p.c can_command.c standardports_p.c CAN_SPI.c PMIC.c canfd.c pi_controller.c flash\source\fad_sample_df.c flash\source\library\r_fad_common_api.c flash\source\library\r_fad_definition.c flash\source\library\r_fad_df_api.c flash\source\library\r_fad_local.c flash\source\library\r_fad_local_clock.c flash\fad_flash.c SENT\RSENT_receive.c global_struct.c source\temperature.c para_update.c source\Loop_Control.c source\Protection.c source\Gap_Control.c flash\Flash_ParaSet.c source\Brake.c source\Alignment.c UDS_APP\OBDII_APP_IO.c UDS_APP\OBDII_Diag_CallBack.c UDS_APP\OBDII_Diag_Snapshot.c UDS_APP\OBDII_DiagData_Detect.c UDS_APP\UDS_APP.c UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC.c UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c UDS_APP\UDS_LIB_Relese\UDS_LIB\UDS_Version.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -IUDS_APP\UDS_LIB_Relese\h -IUDS_APP\UDS_LIB_Relese\UDS_LIB -IUDS_APP -Iflash -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -Xmsg_lang=english
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(40):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(41):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(42):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(43):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(44):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(45):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(46):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(47):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(49):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+D:\cs\CS+\CC\CC-RH\V2.07.00\Bin\ccrh.exe source\main.c source\port.c source\gtm.c source\r_adc.c tmr.c Config_CSIH0\Config_CSIH0.c mttcan_a.c mttcan_p.c can_command.c standardports_p.c CAN_SPI.c PMIC.c canfd.c pi_controller.c flash\source\fad_sample_df.c flash\source\library\r_fad_common_api.c flash\source\library\r_fad_definition.c flash\source\library\r_fad_df_api.c flash\source\library\r_fad_local.c flash\source\library\r_fad_local_clock.c flash\fad_flash.c SENT\RSENT_receive.c global_struct.c source\temperature.c para_update.c source\Loop_Control.c source\Protection.c source\Gap_Control.c flash\Flash_ParaSet.c source\Brake.c source\Alignment.c UDS_APP\OBDII_APP_IO.c UDS_APP\OBDII_Diag_CallBack.c UDS_APP\OBDII_Diag_Snapshot.c UDS_APP\OBDII_DiagData_Detect.c UDS_APP\UDS_APP.c UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC.c UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c UDS_APP\UDS_LIB_Relese\UDS_LIB\UDS_Version.c -Xobj_path=DefaultBuild -Xcpu=g3m -g -g_line -Onothing -IUDS_APP\UDS_LIB_Relese\h -IUDS_APP\UDS_LIB_Relese\UDS_LIB -IUDS_APP -Iflash -ISENT -Iflash\include -Iflash\include\fad -I. -Isource -IConfig_CSIH0 -use_recipf -c -MAKEUD=DefaultBuild -Xexec_time=C:\Users\Administrator\AppData\Local\Temp\CSPlusBuildTool_e918c66128db4ee98e200bccc5bb3227fe2ftvit.1hd -Xmsg_lang=english
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(40):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(41):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(42):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(43):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(44):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(45):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(46):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(47):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(49):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
 source\r_compiler.h(119):W0520301:Typedef name has already been declared (with same type)
 source\r_compiler.h(120):W0520301:Typedef name has already been declared (with same type)
 source\r_compiler.h(121):W0520301:Typedef name has already been declared (with same type)
@@ -24,7 +24,7 @@ source\r_compiler.h(125):W0520301:Typedef name has already been declared (with s
 source\r_compiler.h(126):W0520301:Typedef name has already been declared (with same type)
 source\r_compiler.h(134):W0520301:Typedef name has already been declared (with same type)
 source\r_adc.c(96):W0520177:Function "R_ADC_ScanGroupInit_Hardwaretrigger" was declared but never referenced
-F:\AliYun\YC\EMB _YC_2.0_RL\rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\rtwtypes.h(30):W0520009:Nested comment is not allowed
 mttcan_a.c(238):W0520177:Variable "SendStatus_u08" was declared but never referenced
 mttcan_a.c(552):W0520177:Variable "FilterEntry0" was declared but never referenced
 mttcan_a.c(554):W0520177:Variable "FilterEntry1" was declared but never referenced
@@ -34,7 +34,7 @@ mttcan_a.c(560):W0520177:Variable "FilterEntry4" was declared but never referenc
 mttcan_a.c(562):W0520177:Variable "FilterEntry5" was declared but never referenced
 mttcan_a.c(564):W0520177:Variable "FilterEntry6" was declared but never referenced
 mttcan_a.c(566):W0520177:Variable "FilterEntry7" was declared but never referenced
-F:\AliYun\YC\EMB _YC_2.0_RL\rtwtypes.h(30):W0520009:Nested comment is not allowed
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\rtwtypes.h(30):W0520009:Nested comment is not allowed
 mttcan_p.c(493):W0520111:Statement is unreachable
 mttcan_p.c(517):W0520111:Statement is unreachable
 mttcan_p.c(1102):W0520069:Integer conversion resulted in truncation
@@ -42,15 +42,15 @@ can_command.c(283):W0520167:Argument of type "u16 *" is incompatible with parame
 can_command.c(79):W0520550:Variable "NodeID" was set but never used
 rtwtypes.h(30):W0520009:Nested comment is not allowed
 hv_svgen.h(66):W0520550:Variable "t0" was set but never used
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(40):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(41):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(42):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(43):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(44):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(45):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(46):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(47):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(49):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(40):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(41):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(42):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(43):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(44):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(45):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(46):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(47):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(49):W0520301:Typedef name has already been declared (with same type)
 canfd.c(40):W0520147:Declaration is incompatible with "uint16_T CANfd_Password" (declared at line 160 of "canfd.h")
 canfd.c(268):W0520167:Argument of type "CAN_FD_MESSAGE_BUS *" is incompatible with parameter of type "uint8 *"
 canfd.c(285):W0520147:Declaration is incompatible with "void Recive_Signal_0x6E0(uint8 *)" (declared at line 131)
@@ -58,36 +58,36 @@ canfd.c(436):W0520147:Declaration is incompatible with "void Recive_Signal_0x6EF
 canfd.c(920):W0520068:Integer conversion resulted in a change of sign
 canfd.c(971):W0520167:Argument of type "uint8_T *" is incompatible with parameter of type "rx_type *"
 canfd.c(977):W0520167:Argument of type "uint8_T *" is incompatible with parameter of type "rx_type *"
+canfd.c(1141):W0520186:Pointless comparison of unsigned integer with zero
 canfd.c(1148):W0520186:Pointless comparison of unsigned integer with zero
-canfd.c(1155):W0520186:Pointless comparison of unsigned integer with zero
 hv_svgen.h(66):W0520550:Variable "t0" was set but never used
 flash\fad_flash.c(132):W0520167:Argument of type "unsigned char *" is incompatible with parameter of type "T_u4 *"
 flash\fad_flash.c(136):W0520167:Argument of type "unsigned char *" is incompatible with parameter of type "T_u4 *"
 flash\fad_flash.c(101):W0520550:Variable "Bootloader_FLG" was set but never used
 hv_svgen.h(66):W0520550:Variable "t0" was set but never used
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(40):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(41):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(42):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(43):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(44):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(45):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(46):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(47):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(49):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(40):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(41):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(42):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(43):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(44):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(45):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(46):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(47):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\UDS_APP\UDS_LIB_Relese\h\struct.h(49):W0520301:Typedef name has already been declared (with same type)
 hv_svgen.h(66):W0520550:Variable "t0" was set but never used
 rtwtypes.h(30):W0520009:Nested comment is not allowed
-F:\AliYun\YC\EMB _YC_2.0_RL\source\r_compiler.h(119):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\source\r_compiler.h(120):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\source\r_compiler.h(121):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\source\r_compiler.h(122):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\source\r_compiler.h(123):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\source\r_compiler.h(124):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\source\r_compiler.h(125):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\source\r_compiler.h(126):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\source\r_compiler.h(134):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\source\r_compiler.h(119):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\source\r_compiler.h(120):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\source\r_compiler.h(121):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\source\r_compiler.h(122):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\source\r_compiler.h(123):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\source\r_compiler.h(124):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\source\r_compiler.h(125):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\source\r_compiler.h(126):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\source\r_compiler.h(134):W0520301:Typedef name has already been declared (with same type)
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
 source\r_compiler.h(119):W0520301:Typedef name has already been declared (with same type)
 source\r_compiler.h(120):W0520301:Typedef name has already been declared (with same type)
 source\r_compiler.h(121):W0520301:Typedef name has already been declared (with same type)
@@ -97,17 +97,17 @@ source\r_compiler.h(124):W0520301:Typedef name has already been declared (with s
 source\r_compiler.h(125):W0520301:Typedef name has already been declared (with same type)
 source\r_compiler.h(126):W0520301:Typedef name has already been declared (with same type)
 source\r_compiler.h(134):W0520301:Typedef name has already been declared (with same type)
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
 UDS_APP\OBDII_APP_IO.c(17):W0520513:A value of type "int" cannot be assigned to an entity of type "uint8 *"
 UDS_APP\OBDII_APP_IO.c(17):W0520152:Conversion of nonzero integer to pointer
 UDS_APP\OBDII_APP_IO.c(19):W0520513:A value of type "int" cannot be assigned to an entity of type "uint8 *"
 UDS_APP\OBDII_APP_IO.c(19):W0520152:Conversion of nonzero integer to pointer
 UDS_APP\OBDII_APP_IO.c(21):W0520513:A value of type "int" cannot be assigned to an entity of type "uint8 *"
 UDS_APP\OBDII_APP_IO.c(21):W0520152:Conversion of nonzero integer to pointer
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
 UDS_APP\OBDII_Diag_CallBack.c(244):W0520550:Variable "OBDII_paraInOut_LO" was set but never used
 UDS_APP\OBDII_Diag_CallBack.c(287):W0520111:Statement is unreachable
 UDS_APP\OBDII_Diag_CallBack.c(316):W0520111:Statement is unreachable
@@ -115,7 +115,7 @@ UDS_APP\OBDII_Diag_CallBack.c(320):W0520111:Statement is unreachable
 UDS_APP\OBDII_Diag_CallBack.c(358):W0520177:Variable "CDI_i" was declared but never referenced
 UDS_APP\OBDII_Diag_CallBack.c(414):W0520513:A value of type "unsigned int" cannot be assigned to an entity of type "uint32 *"
 UDS_APP\OBDII_Diag_CallBack.c(414):W0520152:Conversion of nonzero integer to pointer
-F:\AliYun\YC\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\hv_svgen.h(66):W0520550:Variable "t0" was set but never used
 UDS_APP\OBDII_Diag_Snapshot.c(272):W0520177:Variable "cnt" was declared but never referenced
 UDS_APP\OBDII_Diag_Snapshot.c(285):W0520177:Variable "val_did" was declared but never referenced
 UDS_APP\OBDII_Diag_Snapshot.c(387):W0520127:Expected a statement
@@ -138,13 +138,13 @@ UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(294):W0520167:Argument
 UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(294):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "const void *"
 UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(305):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "void *"
 UDS_APP\UDS_LIB_Relese\UDS_LIB\OBDII_DTC_Trans_Protocol.c(305):W0520167:Argument of type "ubyte *" is incompatible with parameter of type "const void *"
-D:\CSPLus\CS+\CC\CC-RH\V2.06.00\Bin\ccrh.exe source\boot.asm source\cstart.asm -Xobj_path=DefaultBuild -Xcpu=g3m -g -c -Xmsg_lang=english
-D:\CSPLus\CS+\CC\CC-RH\V2.06.00\Bin\rlink.exe "-subcommand=DefaultBuild\EMB YC_2.0_RL.clnk"
+D:\cs\CS+\CC\CC-RH\V2.07.00\Bin\ccrh.exe source\boot.asm source\cstart.asm -Xobj_path=DefaultBuild -Xcpu=g3m -g -c -MAKEUD=DefaultBuild -Xexec_time=C:\Users\Administrator\AppData\Local\Temp\CSPlusBuildTool_58588092c9dc41afa3221360893de9a4pgra5um5.j25 -Xmsg_lang=english
+D:\cs\CS+\CC\CC-RH\V2.07.00\Bin\rlink.exe "-MAKEUD=DefaultBuild\EMB YC_2.0_RL.lk.ud" "-subcommand=DefaultBuild\EMB YC_2.0_RL.clnk"
 W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
 W0561322:Section alignment mismatch : ".text"
 W0561017:Paid license of CC-RH V2 is not found, and the evaluation period has expired. Please consider purchasing the product.
 Renesas Optimizing Linker Completed
-F:\AliYun\YC\EMB _YC_2.0_RL>APP_PostBuild.bat
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL>APP_PostBuild.bat
 填充中
 填充完成
 ------ Build ended(Error:0, Warning:138)(EMB YC_2.0_RL, DefaultBuild) ------
@@ -212,25 +212,27 @@ DefaultBuild\EMB YC_2.0_RL.clnk :
 
 
 --- SHA1 hash value of output files ---
-F:\AliYun\YC\EMB _YC_2.0_RL\DefaultBuild\EMB YC_2.0_RL.abs: cb3e80e7427a3b707bd1febc9acdea9acae17989
-F:\AliYun\YC\EMB _YC_2.0_RL\DefaultBuild\EMB YC_2.0_RL.hex: ef6a8e275db9b72737c048c3ae20db8f799dab0c
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\DefaultBuild\EMB YC_2.0_RL.abs: 689b3dbe4fc9e96c4c87c105c6009131de35401c
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\DefaultBuild\EMB YC_2.0_RL.hex: 427cdc510e3229b90d0fa22d46c35db76ff329b3
 
 
 --- System Information ---
 *OS Version
- Microsoft Windows 11 家庭中文版 (-, 10.0.26100, WOW64)
+ Microsoft Windows 10 专业版 (-, 10.0.19045, WOW64)
 *Language
  中文(中国)
 *.NET Framework Version
- Microsoft .NET Framework 4 [.NET 4.8 or later] (533320)
+ Microsoft .NET Framework 4 [.NET 4.8 or later] (528372)
+*WebView2 Version
+ 137.0.3296.93
 
 --- Application Information ---
 *Product Name
  CS+ for CC
 *Package Version
- V8.11.00  [30 Nov 2023]
+ V8.13.00  [05 Dec 2024]
 *Version
- V9.11.00.04 [30 Oct 2023]
+ V9.13.00.05 [12 Nov 2024]
 *Assembly Version
  3.12.10.1
 *Sales Area
@@ -238,16 +240,16 @@ F:\AliYun\YC\EMB _YC_2.0_RL\DefaultBuild\EMB YC_2.0_RL.hex: ef6a8e275db9b72737c0
 *Product License
  
 *Execution Place
- D:\CSPLus\CS+\CC
+ D:\cs\CS+\CC
 *Memory Usage
  *Private Working Set
-  401 MB
+  452 MB
  *Number of GDI Objects
-  2350
+  2042
  *Number of USER Objects
-  1226
+  1072
  *Opened Files
-  14 editors, 14 files, 159 KB
+  1 editors, 1 files, 55 KB
 
 --- Build Tool Plug-in Information ---
 RH850 Build tool CC-RH Plug-in
@@ -273,7 +275,7 @@ RX Build tool CC-RX Plug-in
   BuildToolCCRX.dll
 RH850 Build tool GHS CCRH850 Plug-in
  *Version
-  V1.08.00.00 [03 Apr 2023]
+  V1.10.00.01 [25 Sep 2024]
  *Assembly Version
   1.0.0.0
  *DLL File Name
@@ -282,7 +284,7 @@ RH850 Build tool GHS CCRH850 Plug-in
 --- Debug Tool Plug-in Information ---
 Debugger Collection Plug-in
  *Version
-  V8.11.00.03 [21 Nov 2023]
+  V8.13.00.04 [26 Nov 2024]
  *Assembly Version
   2.12.10.1
  *DLL File Name
@@ -319,7 +321,7 @@ Debug Console Plug-in
   DebugConsole.dll
 Quick and Effective tool solution - QE
  *Version
-  V9.11.00.03 [13 Oct 2023]
+  V9.12.00.01 [08 Apr 2024]
  *Assembly Version
   1.15.10.16
  *DLL File Name
@@ -340,14 +342,14 @@ Program Analyzer Plug-in
   ProgramAnalyzer.dll
 IronPython Console Plug-in
  *Version
-  V1.47.00.02 [01 Nov 2023]
+  V1.49.00.02 [08 Nov 2024]
  *Assembly Version
   1.6.10.23
  *DLL File Name
   PythonConsole.dll
 Editor plug-in DLL
  *Version
-  V1.19.00.01 [24 Oct 2022]
+  V1.20.00.03 [20 May 2024]
  *Assembly Version
   1.1.0.0
  *DLL File Name
@@ -369,25 +371,25 @@ Update Manager Plug-in
 
 Debug Tool Common Interface
  *Version
-  V8.11.00.03 [21 Nov 2023]
+  V8.13.00.04 [26 Nov 2024]
  *Assembly Version
   3.12.10.1
  *DLL File Name
   CommonDebuggerInterface.dll
 Device Information Common Interface
  *Version
-  V9.11.00.03 [13 Oct 2023]
+  V9.13.00.02 [03 Oct 2024]
  *Assembly Version
   3.0.0.0
  *DLL File Name
   DeviceInformation.dll
 
 --- Main Project Information ---
-F:\AliYun\YC\EMB _YC_2.0_RL\EMB YC_2.0_RL.mtpj
+C:\Users\Administrator\Desktop\YC\EMB_YC_RH850\EMB _YC_2.0_RL\EMB YC_2.0_RL.mtpj
 Microcontroller Information
  *R7F701374xAFP
   *File Name: Version
-   RH850_Productlist.xml: V8.100000
+   RH850_Productlist.xml: V8.130000
    R7F701374xAFP_common.xml: V1.30.00.XX.XX
    DR7F701374.DVF: V1.30
    -: -
@@ -397,14 +399,14 @@ Microcontroller Information
 Build Tool Information
  *CC-RH
    * Version of plug-in(*.dll)
-     V8.11.00.02 [27 Oct 2023]
+     V8.13.00.02 [09 Oct 2024]
    * The Version of the Compiler Package
-     V2.06.00
+     V2.07.00
   
 
 Debug Tool Information
  *RH850 E2
-  Debugger Library V8.11.00.03 [21 Nov 2023]
+  Debugger Library V8.13.00.04 [26 Nov 2024]
   
 
 Other Tool Information
