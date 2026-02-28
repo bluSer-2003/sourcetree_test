@@ -118,7 +118,8 @@ void protection(void)
         alarm.current_level3 = 1;
     }
     // π˝¡˜π ’œœﬁ ±ª÷∏¥£¨º–ΩÙ¡¶÷∏¡ÓŒ™0«“π ’œŒ¥≥¨π˝œﬁ∂®¥Œ ˝
-    if((error_state_code_0101>>1)&0x01 == 1 && g_Control.target_pressure <= 0.2f && alarm.current_errcount <= CURRENT_ERR_limit){
+    if((error_state_code_0101>>1)&0x01 == 1 && (lsw == 3 && g_Control.target_pressure <= 0.2f) 
+    						&& alarm.current_errcount <= CURRENT_ERR_limit){
         error_state_code_0101 &= _PORT_CLEAR_BIT1;
         g_Control.iRunState = 100;
         alarm.current_level1 = 0;
@@ -137,7 +138,7 @@ void protection(void)
         alarm.force_outrange = FORCE_OUTLIMIT;
     }
     // —π¡¶≥¨œﬁπ ’œª÷∏¥:º–ΩÙ¡¶÷∏¡ÓŒ™0
-    if(((error_state_code_0101 >> 2) & 0x01) == 1 && g_Control.target_pressure <= 0.2f){
+    if(((error_state_code_0101 >> 2) & 0x01) == 1 && (lsw == 3 && g_Control.target_pressure <= 0.2f)){
         error_state_code_0101 &= _PORT_CLEAR_BIT2;
         On_Mos();
         g_Control.iRunState = 100;
@@ -168,7 +169,7 @@ void protection(void)
     if(alarm.voltage_low >= 20000*2){
         error_state_code_0101 |= _PORT_SET_BIT4;
         alarm.voltage_low = 20000*2;
-	    De_Mos();
+	De_Mos();
     }
     //ƒ∏œﬂ«∑—ππ ’œª÷∏¥
     if(g_Control.Vdc > VOLTAGE_WARN_LOW && ((error_state_code_0101 >> 4) & 0x01) == 1 
@@ -309,7 +310,7 @@ void protection(void)
         De_Mos();
     }
     //Œ¬∂»ºÏ≤‚π ’œª÷∏¥
-    if((Gu1ReadAdcValue[12] <= 3800) && (alarm.ADC12_recovery < 200))
+    if((Gu1ReadAdcValue[12] <= 3800) && (alarm.ADC12_recovery < 200) && ((error_state_code_0101 >> 14) & 0x01) == 1)
         alarm.ADC12_recovery++;
     else if(alarm.ADC12_recovery >= 200){
         error_state_code_0101 &= _PORT_CLEAR_BIT14;

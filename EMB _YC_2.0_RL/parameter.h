@@ -26,9 +26,9 @@
 #define RREMB 3
 #define EMBActuator RREMB
 
-#define TESTFLAG   1      //0:test    1:can
+#define TESTFLAG   0      //0:test    1:can
 #define ALIG_LOOP  0       //Aligment open
-#define stoptime   1      //stop time  0.8,0.5,0.2
+#define stoptime   3      //stop time  0.8,0.5,0.2
 #define savedata_count  3000
 #define Data_Interval stoptime*20000/savedata_count
 #define POS_INTERP_STEPS 19  //??????(ms)
@@ -39,7 +39,7 @@
 #if(motortype==EMB2)
 /*parameter define*/
 #define SPEEDDIR       1
-#define ANGLE_COMP     0.889//0.74//3.963//1.219//1.716//0.74//0.631//1.197//5.714//1.756//5.2766//5.0983//5.706//
+#define ANGLE_COMP     6.28
 
 // Define the electrical motor parametes
 #define POLES  	       5	 // Number of poles
@@ -92,7 +92,7 @@
 #define SPEED_MIN -IS_CURRENT
 #define SPEED_KP   3//2.0//2-0.02
 #define SPEED_KI   0.1//0.05
-#define Speed_Ref  500      //500,1000,2000
+#define Speed_Ref  60      //500,1000,2000
 
 #define idmax   100
 //iq parameter
@@ -100,7 +100,7 @@
 #define IQ_MIN -50.0
 #define IQ_KP   0.5//2
 #define IQ_KI   0.2//0.3
-#define IQ_REF  5
+#define IQ_REF  56.56
 
 //id parameter
 #define ID_MAX  50.0

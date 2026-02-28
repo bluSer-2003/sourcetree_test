@@ -3,6 +3,7 @@
 #include "parameter.h"
 #include "global.h"
 #include "Loop_Control.h"
+#include "math.h"
 
 extern uint32_t force_data;
 extern volatile double angle;
@@ -19,8 +20,8 @@ void CurrentLoop(float IqRef, float Idref, float IqFbk, float IdFbk)
     pi_id.Ref = Idref;  // 设置D轴电流参考值
 
     // 设置电流反馈值，经过PU变换（电流归一化）
-    pi_iq.Fbk = park1.Qs * CURRENT_PU;  // Q轴电流反馈值
-    pi_id.Fbk = park1.Ds * CURRENT_PU;  // D轴电流反馈值
+    pi_iq.Fbk = IqFbk * CURRENT_PU;  // Q轴电流反馈值
+    pi_id.Fbk = IdFbk * CURRENT_PU;  // D轴电流反馈值
 
     // 调用PI控制器计算电流控制输出
     //PI_MACRO(pi_iq);
@@ -61,6 +62,7 @@ inline void FWLoop(void)
         
         // 获取反馈电压
         pi_fw.Fbk = g_Control.FW.Vdcfbkfli;  // 获取反馈电压值
+	pi_fw.Fbk = sqrt(pi_iq.Out*pi_iq.Out + pi_id.Out*pi_id.Out);  // 获取反馈电压值
         
         // 调用PI控制器进行计算
         PI_MACRO(pi_fw);
@@ -87,10 +89,10 @@ void SpeedLoop(float SpdRef, float SpdFbk)
     // 每20次计算一次弱磁限度
     if (g_Control.count.SatCount == 1) {
         // 设置为最大速度-不弱
-        g_Control.FW.Speed = 0;
+        //g_Control.FW.Speed = 0;
         
-        // 如果速度超过2000，则进行弱磁限度计算
-        if (ABS(g_Control.FW.Speed) > 2000) {
+        // 如果速度超过1200，则进行弱磁限度计算
+        if (ABS(g_Control.FW.Speed) > 1500) {
             // 根据速度计算电压上下限
             pi_spd.Umax = POWER / ABS(g_Control.FW.Speed);  // 最大电压
             pi_spd.Umin = -pi_spd.Umax;  // 最小电压
@@ -111,7 +113,7 @@ void SpeedLoop(float SpdRef, float SpdFbk)
     // 转速环控制计算
     if (g_Control.count.SpeedLoopCount == 1) {  // 转速环分频
 
-	    pi_spd.Ref = -SpdRef;  // 设置转速参考值
+	pi_spd.Ref = -SpdRef;  // 设置转速参考值
         pi_spd.Fbk = SpdFbk * SPEEDDIR;  // 设置转速反馈值（方向调节）
 
         // 调用PI控制器进行转速环计算
@@ -128,8 +130,8 @@ void SpeedLoop(float SpdRef, float SpdFbk)
     // 弱磁环控制
     FWLoop();  // 调用弱磁环函数
     
-    g_Control.IqRef = pi_spd.Out;//10;//
-    g_Control.IdRef = 0;
+    //g_Control.IqRef = pi_spd.Out;//10;//
+    //g_Control.IdRef = 0;
     // 电流环控制
     CurrentLoop(g_Control.IqRef, g_Control.IdRef, park1.Qs, park1.Ds);  // 调用电流环函数
 }

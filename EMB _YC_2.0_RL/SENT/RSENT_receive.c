@@ -318,12 +318,13 @@ uint32_t SENT_receive_start( void ){
   //start communication and deal with data from fast and slow channel
   com_start();
  
+  //detect status of communication
+  no_com_detect();
+  
   //Receive force data
   fast_data_receive();
   initial_time++;
 
-  //detect status of communication
-  no_com_detect();
 
   if(SENT_nocom_flag == 0){
     //先检测是否存在数据不合理的情况
