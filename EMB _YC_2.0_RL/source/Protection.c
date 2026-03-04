@@ -118,14 +118,14 @@ void protection(void)
         alarm.current_level3 = 1;
     }
     // 过流故障限时恢复，夹紧力指令为0且故障未超过限定次数
-    if((error_state_code_0101>>1)&0x01 == 1 && (lsw == 3 && g_Control.target_pressure <= 0.2f) 
-    						&& alarm.current_errcount <= CURRENT_ERR_limit){
-        error_state_code_0101 &= _PORT_CLEAR_BIT1;
-        g_Control.iRunState = 100;
-        alarm.current_level1 = 0;
-        alarm.current_level2 = 0;
-        alarm.current_level3 = 0;
-    }
+//    if((error_state_code_0101>>1)&0x01 == 1 && (lsw == 3 && g_Control.target_pressure <= 0.2f) 
+//    						&& alarm.current_errcount <= CURRENT_ERR_limit){
+//        error_state_code_0101 &= _PORT_CLEAR_BIT1;
+//        g_Control.iRunState = 100;
+//        alarm.current_level1 = 0;
+//        alarm.current_level2 = 0;
+//        alarm.current_level3 = 0;
+//    }
     
     // 压力超限保护
     if (force_data > FORCE_HIGH && alarm.force_outrange < FORCE_OUTLIMIT)    
@@ -138,12 +138,12 @@ void protection(void)
         alarm.force_outrange = FORCE_OUTLIMIT;
     }
     // 压力超限故障恢复:夹紧力指令为0
-    if(((error_state_code_0101 >> 2) & 0x01) == 1 && (lsw == 3 && g_Control.target_pressure <= 0.2f)){
-        error_state_code_0101 &= _PORT_CLEAR_BIT2;
-        On_Mos();
-        g_Control.iRunState = 100;
-        alarm.force_outrange = 0;
-    }
+//    if(((error_state_code_0101 >> 2) & 0x01) == 1 && (lsw == 3 && g_Control.target_pressure <= 0.2f)){
+//        error_state_code_0101 &= _PORT_CLEAR_BIT2;
+//        On_Mos();
+//        g_Control.iRunState = 100;
+//        alarm.force_outrange = 0;
+//    }
 
     //压力传感器故障设立：接收不到数据（可能断线）/反馈数据错乱/数据异常偏低
     if(SENT_nocom_flag == 1 || SENT_err_flag == 1 || (SENT_err_flag == 2 && g_Control.target_pressure > 0.2f)){
@@ -151,12 +151,12 @@ void protection(void)
         De_Mos();                                 // 断开MOS管
     }
     // 压力传感器故障恢复
-    if(SENT_nocom_flag == 0 && (SENT_err_flag == 0 ||  (SENT_err_flag == 2 && g_Control.target_pressure <= 0.2f)) 
-        && (((error_state_code_0101 >> 3) &0x01) == 1)){
-            error_state_code_0101 &= _PORT_CLEAR_BIT3;
-            On_Mos();
-            g_Control.iRunState = 100;
-    }
+//    if(SENT_nocom_flag == 0 && (SENT_err_flag == 0 ||  (SENT_err_flag == 2 && g_Control.target_pressure <= 0.2f)) 
+//        && (((error_state_code_0101 >> 3) &0x01) == 1)){
+//            error_state_code_0101 &= _PORT_CLEAR_BIT3;
+//            On_Mos();
+//            g_Control.iRunState = 100;
+//    }
     
     //母线欠压保护(未进入弱磁区)
     if((g_Control.Vdc < VOLTAGE_WARN_LOW) && (ABS(g_Control.FW.Speed) <= 1000) 
@@ -172,16 +172,16 @@ void protection(void)
 	De_Mos();
     }
     //母线欠压故障恢复
-    if(g_Control.Vdc > VOLTAGE_WARN_LOW && ((error_state_code_0101 >> 4) & 0x01) == 1 
-        && alarm.voltage_low < 20000*2)
-        alarm.voltlow_recovery++;
-    else if(alarm.voltlow_recovery >= 20000*2){
-        error_state_code_0101 &= _PORT_CLEAR_BIT4;
-        On_Mos();
-        g_Control.iRunState = 100;
-        alarm.voltlow_recovery = 0;
-        alarm.voltage_low = 0;
-    }
+//    if(g_Control.Vdc > VOLTAGE_WARN_LOW && ((error_state_code_0101 >> 4) & 0x01) == 1 
+//        && alarm.voltage_low < 20000*2)
+//        alarm.voltlow_recovery++;
+//    else if(alarm.voltlow_recovery >= 20000*2){
+//        error_state_code_0101 &= _PORT_CLEAR_BIT4;
+//        On_Mos();
+//        g_Control.iRunState = 100;
+//        alarm.voltlow_recovery = 0;
+//        alarm.voltage_low = 0;
+//    }
 
 
     //母线过压保护
@@ -190,15 +190,15 @@ void protection(void)
         De_Mos();  // 断开MOS管
     }
     //母线过压故障恢复
-    if(g_Control.ControlBoardPowerDC <= VOLTAGE_WARN_LEVEL1 && g_Control.Vdc <=  VOLTAGE_WARN_LEVEL2 
-        && ((error_state_code_0101 >> 4) & 0x01) == 1 && alarm.boardvolt_high_recovery < 20000*2)
-        alarm.boardvolt_high_recovery++;
-    else if(alarm.boardvolt_high_recovery >= 20000*2){
-        error_state_code_0101 &= _PORT_CLEAR_BIT5;
-        On_Mos();
-        g_Control.iRunState = 100;
-        alarm.boardvolt_high_recovery = 0;
-    }
+//    if(g_Control.ControlBoardPowerDC <= VOLTAGE_WARN_LEVEL1 && g_Control.Vdc <=  VOLTAGE_WARN_LEVEL2 
+//        && ((error_state_code_0101 >> 4) & 0x01) == 1 && alarm.boardvolt_high_recovery < 20000*2)
+//        alarm.boardvolt_high_recovery++;
+//    else if(alarm.boardvolt_high_recovery >= 20000*2){
+//        error_state_code_0101 &= _PORT_CLEAR_BIT5;
+//        On_Mos();
+//        g_Control.iRunState = 100;
+//        alarm.boardvolt_high_recovery = 0;
+//    }
 
     //接触点识别超时故障设立
     if(contectFlag == 2)
@@ -213,14 +213,14 @@ void protection(void)
         De_Mos();  // 断开MOS管
     }
     //过温故障处理
-    if(temperature <= 80 && ((error_state_code_0101 >> 7) & 0x01) == 1 && alarm.temp_High_recovery <= 20000*3)
-        alarm.temp_High_recovery++;
-    else if(alarm.temp_High_recovery >= 20000*3){
-        error_state_code_0101 &= _PORT_CLEAR_BIT7;
-        On_Mos();
-        g_Control.iRunState = 100;
-        alarm.temp_High_recovery = 0;
-    }
+//    if(temperature <= 80 && ((error_state_code_0101 >> 7) & 0x01) == 1 && alarm.temp_High_recovery <= 20000*3)
+//        alarm.temp_High_recovery++;
+//    else if(alarm.temp_High_recovery >= 20000*3){
+//        error_state_code_0101 &= _PORT_CLEAR_BIT7;
+//        On_Mos();
+//        g_Control.iRunState = 100;
+//        alarm.temp_High_recovery = 0;
+//    }
 
     //控制器长期欠压
     if(g_Control.Vdc < 8.5)	
@@ -233,15 +233,15 @@ void protection(void)
         De_Mos();
     }
     //控制器长期欠压恢复
-    if(g_Control.Vdc >= 8.5 && ((error_state_code_0101 >> 8) & 0x01) == 1 && alarm.voltlow_recovery2 < 20000*5)
-        alarm.voltlow_recovery2++;
-    else if(alarm.voltlow_recovery2 >= 20000*5){
-        error_state_code_0101 &= _PORT_CLEAR_BIT8;
-        On_Mos();
-        g_Control.iRunState = 100;
-        alarm.voltlow_recovery2 = 0;
-        VolLowCount = 0;
-    }
+//    if(g_Control.Vdc >= 8.5 && ((error_state_code_0101 >> 8) & 0x01) == 1 && alarm.voltlow_recovery2 < 20000*5)
+//        alarm.voltlow_recovery2++;
+//    else if(alarm.voltlow_recovery2 >= 20000*5){
+//        error_state_code_0101 &= _PORT_CLEAR_BIT8;
+//        On_Mos();
+//        g_Control.iRunState = 100;
+//        alarm.voltlow_recovery2 = 0;
+//        VolLowCount = 0;
+//    }
 
     //控制器长期过压
     if(g_Control.Vdc > 18)
@@ -254,15 +254,15 @@ void protection(void)
         De_Mos();
     }
     //控制器长期过压恢复
-    if(g_Control.Vdc < 18 && ((error_state_code_0101 >> 9) & 0x01) == 1 && alarm.boardvolt_high_recovery2 < 20000*5)
-        alarm.boardvolt_high_recovery2++;
-    else if(alarm.boardvolt_high_recovery2 >= 20000*5){
-        error_state_code_0101 &= _PORT_CLEAR_BIT9;
-        On_Mos();
-        g_Control.iRunState = 100;
-        alarm.boardvolt_high_recovery2 = 0;
-        VolHighCount = 0;
-    }
+//    if(g_Control.Vdc < 18 && ((error_state_code_0101 >> 9) & 0x01) == 1 && alarm.boardvolt_high_recovery2 < 20000*5)
+//        alarm.boardvolt_high_recovery2++;
+//    else if(alarm.boardvolt_high_recovery2 >= 20000*5){
+//        error_state_code_0101 &= _PORT_CLEAR_BIT9;
+//        On_Mos();
+//        g_Control.iRunState = 100;
+//        alarm.boardvolt_high_recovery2 = 0;
+//        VolHighCount = 0;
+//    }
 
     //超速保护
     if((ABS(g_Control.m_speed.Speed) > SPEED_WARN) && alarm.spd_outrange < 200){

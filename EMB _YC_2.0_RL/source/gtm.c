@@ -503,7 +503,7 @@ void MainISRInit(void){
         g_Control.pos.PosOld = angle;                   //位置初始化
         g_Control.pos.PosSum = 0;
     }else if(IsrTicker<70003){
-         if(lsw != 3 ){                                //非位置环
+         if(lsw != 3 && lsw != 1 && lsw != 2){                                //非位置环
              if(TestFlag == 0)
                  g_Control.iRunState  = 100;
              else
@@ -524,7 +524,7 @@ void MainISRInit(void){
          park1.Cose  = cosf(park1.Angle);
          PARK_MACRO(park1)			                //CLARKE和PARK变换
 	
-        if(lsw == 3 || lsw == 2){				                    //位置环进行接触点识别和间隙回退
+        if(lsw == 3 || lsw == 2 || lsw == 1){				                    //位置环进行接触点识别和间隙回退
             if(contectFlag == 0)
                 EMB_ContactDetect();                    //计算接触点
             if((contectFlag == 1 ||contectFlag == 2) && reverseFlag == 0) {
@@ -532,7 +532,7 @@ void MainISRInit(void){
             }
         }
 	    //识别到接触点直接启动
-	if (((contectFlag == 1 ||contectFlag == 2) && reverseFlag == 1) || (lsw != 3 && lsw != 2))  
+	if (((contectFlag == 1 ||contectFlag == 2) && reverseFlag == 1) || (lsw != 3 && lsw != 2 && lsw != 1))  
             g_Control.iRunState = 100;   
         
     }
@@ -556,7 +556,8 @@ inline void MainISR(void){
 inline void Position_Cal(float Target_Force){
     if(Target_Force <= 200.0f){   // 压力太小，直接回零
         target_position = -1.50f;
-	    pi_preforce.Out=0;
+	//target_position = 0.0f;
+	pi_preforce.Out=0;
     }else if(Target_Force >= TargetForce_pre ){
         target_position = -4.0f + sqrtf(95832744.0f + 12075.0f * Target_Force) * 0.0004f;
     }else if(Target_Force < TargetForce_pre){
@@ -567,37 +568,37 @@ inline void Position_Cal(float Target_Force){
 inline void ABSTestRefSet(){
     if(forcestage % 4 == 0){
         g_Control.target_pressure = 4.5;
-        if(force_data >= 4500)
+        //if(force_data >= 4500)
             forcecount++;
-        if(forcecount >= 600){
-	        forcecount = 0;
+        if(forcecount >= 2000){
+	    forcecount = 0;
             forcestage++;
-	    }
+	}
     }
     else if(forcestage % 4 == 1){
-	    g_Control.target_pressure = 3;
-        if(force_data <= 3000)
+	g_Control.target_pressure = 3;
+        //if(force_data <= 3000)
             forcecount++;
-	    if(forcecount >= 600){
-	        forcecount = 0;
-	        forcestage++;
-	    }
+	if(forcecount >= 2000){
+	    forcecount = 0;
+	    forcestage++;
+	}
     }
     else if(forcestage % 4 == 2){
-	    g_Control.target_pressure = 4.5;
-	    if(force_data >= 4500)
+	g_Control.target_pressure = 4.5;
+	    //if(force_data >= 4500)
 	        forcecount++;
-	    if(forcecount >= 600){
+	if(forcecount >= 2000){
             forcecount = 0;
             forcestage++;
-	    }
+	}
     }
     else if(forcestage % 4 == 3){
-        g_Control.target_pressure = 0;
-        if(force_data <= 200)
+        g_Control.target_pressure = 1;
+        //if(force_data <= 200)
             forcecount++;
-        if(forcecount >= 600){
-	        forcecount = 0;
+        if(forcecount >= 2000){
+	    forcecount = 0;
             forcestage++;
         }
     }
@@ -649,7 +650,7 @@ inline void SetLoopRef(){
             break;
             case position:
                 //For step input reference:
-                //g_Control.target_pressure = FORCE_REF * FORCE_PU;
+                g_Control.target_pressure = FORCE_REF * FORCE_PU;
                 //Position_Cal(g_Control.target_pressure*FORCE_PU_RE);
         	//TargetForce_pre = g_Control.target_pressure*FORCE_PU_RE;
                 //g_Control.PosRef = target_position;
@@ -665,8 +666,8 @@ inline void SetLoopRef(){
                 //g_Control.target_pressure = sineRef();
                 
                 //For Slope reference:
-                SlopeSet(FORCE_REF);
-                g_Control.target_pressure = SlopeRef * FORCE_PU; 
+                //SlopeSet(FORCE_REF);
+                //g_Control.target_pressure = SlopeRef * FORCE_PU; 
 
         	Position_Cal(g_Control.target_pressure*FORCE_PU_RE);
         	TargetForce_pre = g_Control.target_pressure*FORCE_PU_RE;

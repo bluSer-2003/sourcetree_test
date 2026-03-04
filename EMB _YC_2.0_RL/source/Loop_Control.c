@@ -54,7 +54,7 @@ void CurrentLoop(float IqRef, float Idref, float IqFbk, float IdFbk)
 // 弱磁控制环
 inline void FWLoop(void)
 {
-    //g_Control.count.FWLoopCount=2;
+    g_Control.count.FWLoopCount=2;
     // 当FWLoopCount为1时，进行弱磁环的分频操作
     if (g_Control.count.FWLoopCount == 1) {    
         // 设置参考值
@@ -130,8 +130,8 @@ void SpeedLoop(float SpdRef, float SpdFbk)
     // 弱磁环控制
     FWLoop();  // 调用弱磁环函数
     
-    //g_Control.IqRef = pi_spd.Out;//10;//
-    //g_Control.IdRef = 0;
+    g_Control.IqRef = pi_spd.Out;//10;//
+    g_Control.IdRef = 0;
     // 电流环控制
     CurrentLoop(g_Control.IqRef, g_Control.IdRef, park1.Qs, park1.Ds);  // 调用电流环函数
 }

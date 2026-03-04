@@ -112,7 +112,7 @@
   <is_crc_cmd>true</is_crc_cmd>
   <sid>31</sid>
   <desc>CRCУ  </desc>
-  <data>01 F0 01 CD 19 65 0C</data>
+  <data>01 F0 01 72 A9 B3 AB</data>
   <suppress_response>false</suppress_response>
  </item>
  <item type="general">

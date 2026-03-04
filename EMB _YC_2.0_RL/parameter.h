@@ -24,9 +24,9 @@
 #define FREMB 1
 #define RLEMB 2
 #define RREMB 3
-#define EMBActuator RREMB
+#define EMBActuator RLEMB
 
-#define TESTFLAG   0      //0:test    1:can
+#define TESTFLAG   1      //0:test    1:can
 #define ALIG_LOOP  0       //Aligment open
 #define stoptime   3      //stop time  0.8,0.5,0.2
 #define savedata_count  3000
@@ -65,8 +65,8 @@
 #define SAT_LOOP    20
 
 //position parameter
-#define POS_MAX  20   //1=80
-#define POS_MIN -20 
+#define POS_MAX  25   //1=90
+#define POS_MIN -25 
 #define POS_KP   4.5    //2-0.02
 #define POS_KI   0.02
 #define POS_REF  2*PI*10
@@ -92,7 +92,7 @@
 #define SPEED_MIN -IS_CURRENT
 #define SPEED_KP   3//2.0//2-0.02
 #define SPEED_KI   0.1//0.05
-#define Speed_Ref  60      //500,1000,2000
+#define Speed_Ref  -4000      //500,1000,2000
 
 #define idmax   100
 //iq parameter

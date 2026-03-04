@@ -7,7 +7,7 @@
 
 extern uint32_t force_data;
 int retreatFlag = 0;      // 是否已经触发回退
-int reverseFlag = 1;
+int reverseFlag = 0;
 int timeoutFlag = 0;
 int contectFlag = 0;
 extern volatile double angle;
@@ -136,7 +136,7 @@ void EMB_afterContactDetect(void){
 // ============= 正常情况：反转1.06圈 =============
     //接触点识别完成
     if(contectFlag == 1 || contectFlag == 2 )
-        targetPos = -1.06 *2*PI*POSITION_PU;// 根据输入圈数计算目标位置
+        targetPos = -1.5 *2*PI*POSITION_PU;// 根据输入圈数计算目标位置
     //    
     if((contectFlag == 1 || contectFlag == 2)&& reverseFlag == 0){
         g_Control.PosRef = targetPos;
